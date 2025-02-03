@@ -124,6 +124,7 @@ Route::prefix('admin')->middleware(['auth:web',settings::class])->group(function
     //enquiries
     Route::get('/enquiries', [EnquiriesController::class, 'index'])->name('admin.enquiries.index');
     Route::get('/enquiries/delete/{id}', [EnquiriesController::class, 'delete'])->name('admin.enquiries.delete');
+    Route::get('/enquiries/view/{id}', [EnquiriesController::class, 'view'])->name('admin.enquiries.view');
     
     //Email settings
     Route::get('/emailSettings', [EmailTemplateController::class, 'index'])->name('admin.emailSettings');
