@@ -163,6 +163,8 @@
                     Settings</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/admin/enquiries">Enquiries
                     Settings</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/admin/emailSettings">Email
+                    Settings</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/admin/accountSettings">Account
                     Settings</a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/citiesSettings">Cities

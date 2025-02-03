@@ -44,19 +44,21 @@ $banner = !empty($page_data->page_banner)
             
             @if (count($products) > 0)
             <div class="row">
-
-                @foreach ($products as $product)
+                @foreach ($products as $pro)
+                    <?php $product = $pro['product'] ?? null; ?>
+                    <?php $quantity = $pro['quantity']??1;?>
                     <!-- Example Product Card -->
                     <div class="col-md-4 mb-4">
                         <div class="card h-100">
                             <img src="{{asset('storage')}}/{{$product['product_banner'] ?? ""}}" class="card-img-top" alt="Product Image">
                             <div class="card-body">
                                 <h5 class="card-title">{{$product['product_name'] ?? ""}}</h5>
-                                <p class="card-text">₹ {{$product['product_price'] ?? ""}}</p>
+                                <p class="card-text">₹ {{$product['product_price']??""}}</p>
+                                <p class="card-text">Quantity: {{$quantity}}</p>
                                 <p class="card-text text-muted">{{$product['product_short_description'] ?? ""}}</p>
                             </div>
                             <div class="card-footer text-center">
-                                <button class="btn btn-danger" onclick="removeProduct({{$product['id']}})">Remove from
+                                <button class="btn btn-danger" onclick="removeProduct({{$product['id']??''}})">Remove from
                                     Wishlist</button>
                             </div>
                         </div>
@@ -118,24 +120,30 @@ $banner = !empty($page_data->page_banner)
             title: 'Raise Query',
             html: `
         <input type="text" id="name" class="swal2-input" placeholder="Enter your name">
+        <input type="text" id="email" class="swal2-input" placeholder="Enter your email">
         <input type="text" id="number" class="swal2-input" placeholder="Enter your number">
+        <input type="text" id="location" class="swal2-input" placeholder="Enter your location">
+        <input type="text" id="message" class="swal2-input" placeholder="Enter your message">
     `,
             showCancelButton: true,
             confirmButtonText: 'Submit',
             focusConfirm: false,
             preConfirm: () => {
                 const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
                 const number = document.getElementById('number').value.trim();
+                const location = document.getElementById('location').value.trim();
+                const message = document.getElementById('message').value.trim();
                 // Return the collected data
-                return { name, number};
+                return { name,email, number,location,message };
             },
             allowOutsideClick: () => !Swal.isLoading()
         }).then((result) => {
             if (result.isConfirmed) {
-                const { name, number, query } = result.value;
+                const { name,email, number,location,message, query } = result.value;
 
                 // Make the API call
-                fetch(`/raiseQuery?name=${encodeURIComponent(name)}&number=${encodeURIComponent(number)}`)
+                fetch(`/raiseQuery?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&number=${encodeURIComponent(number)}&location=${encodeURIComponent(location)}&message=${encodeURIComponent(message)}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(response.statusText);

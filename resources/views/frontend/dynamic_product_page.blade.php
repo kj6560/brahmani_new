@@ -21,10 +21,10 @@
     }
 </style>
 @php
-$page_data = $settings['page_data'] ?? null;
-$banner = !empty($page_data->page_banner) 
-    ? asset("storage/".$page_data->page_banner) 
-    : asset("brahmani_frontend_assets/images/bg/titlebar-img.jpg");
+    $page_data = $settings['page_data'] ?? null;
+    $banner = !empty($page_data->page_banner)
+        ? asset("storage/" . $page_data->page_banner)
+        : asset("brahmani_frontend_assets/images/bg/titlebar-img.jpg");
 @endphp
 
 <style>
@@ -100,7 +100,7 @@ $params = !empty($product->pro_params) ? json_decode($product->pro_params) : [];
                         <input type="number" class="form-control" id="quantity" value="1" min="1" style="width: 80px;">
                     </div>
                     <button class="btn btn-primary btn-lg mb-3 me-2" id="wishlist"
-                        onclick="processWishlist({{$product->id}})">
+                        onclick="addToWishlist({{$product->id}})">
                         <i class="bi bi-cart-plus"></i> Add to Wishlist
                     </button>
                     <div class="mt-4">
@@ -109,7 +109,7 @@ $params = !empty($product->pro_params) ? json_decode($product->pro_params) : [];
                             <li>Length: {{$product->length ?? "Not Available"}} Ft.</li>
                             <li>Width: {{$product->width ?? "Not Available"}} Inches</li>
                             <li>Thickness: {{$product->thickness ?? "Not Available"}} mm</li>
-                            <li>Color: {{!empty($product->color) ?ucwords($product->color): "Not Available"}}</li>
+                            <li>Color: {{!empty($product->color) ? ucwords($product->color) : "Not Available"}}</li>
                             @if (isset($product->usage_of_panel))
                                 <li>Usage Of Panels: {{$product->usage_of_panel == 1 ? "Wall" : "Ceiling"}}</li>
                             @else
@@ -144,7 +144,40 @@ $params = !empty($product->pro_params) ? json_decode($product->pro_params) : [];
         document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
         event.target.classList.add('active');
     }
-
+    function addToWishlist(id) {
+        var quantity = document.getElementById('quantity').value;
+        console.log("'{{ csrf_token() }}'");
+        $.ajax({
+            url: '/wishlist', // Update the URL to the appropriate endpoint
+            type: 'POST', // Change to POST (or PUT/PATCH if needed)
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), // Include CSRF token
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify({ // Send data in the request body
+                id: id, // Include the product ID
+                quantity: quantity // Include the quantity
+            }),
+            success: function (response) {
+                console.log(response);
+                if (response.success) {
+                    Swal.fire({
+                        title: 'Done',
+                        text: "Product Added To Wishlist",
+                        icon: 'success',
+                        confirmButtonText: 'Okay',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            //window.location.reload(); // Uncomment if you want to reload the page
+                        }
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
 </script>
 
 @endsection

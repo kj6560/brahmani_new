@@ -49,6 +49,18 @@
             </div>
         </div>
     </div>
+    <div class="card shadow text-white bg-success mb-3" id="emails" style="margin:10px;width: 300px;cursor:pointer;">
+        <div class="card-body">
+            <div class="row">
+                <div class="col" style="margin-top:15px;">
+                    <h3>Email Settings</h3>
+                </div>
+                <div class="col">
+                    <i class="fa fa-4x fa-cogs"></i>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="card shadow text-white bg-success mb-3" id="account" style="margin:10px;width: 300px;cursor:pointer;">
         <div class="card-body">
             <div class="row">
@@ -90,6 +102,9 @@
     }
     document.getElementById('enquiries').onclick = function() {
         window.location.href = "/admin/enquiries";
+    }
+    document.getElementById('emails').onclick = function() {
+        window.location.href = "/admin/emailSettings";
     }
     document.getElementById('account').onclick = function() {
         window.location.href = "/admin/accountSettings";

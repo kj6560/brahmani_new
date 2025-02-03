@@ -13,6 +13,7 @@ if (!empty($page_data['page_meta'])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{$page_data['seo_title'] ?? ""}}</title>
     <meta name="description" content="{{$page_data['seo_desc'] ?? ''}}">
@@ -459,10 +460,10 @@ if (!empty($settings['schema'])) {
             // Reload the page
             location.reload();
         });
-        function processWishlist(id) {
+        function processWishlist(id,quantity) {
             console.log("processing: ", id);
             $.ajax({
-                url: '/wishlist/' + id,
+                url: '/wishlist/' + id+'/'+quantity,
                 type: 'GET',
                 success: function (response) {
                     console.log(response);

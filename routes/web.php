@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\BulkPageController;
+use App\Http\Controllers\Backend\EmailTemplateController;
 use App\Http\Controllers\Backend\EnquiriesController;
 use App\Http\Controllers\Backend\ForwardController;
 use App\Http\Controllers\Backend\FrontendMenuController;
@@ -43,7 +44,7 @@ Route::get('/blogByCategory/{id}', [SiteController::class,'blogByCategory'])->mi
 Route::post('/storeQuery', [SiteController::class,'storeQuery'])->middleware([settings::class])->name('frontend.storeQuery');
 Route::get('/login', [AdminController::class, 'login'])->name('login');
 Route::get('/logout', [AdminController::class, 'logout'])->name('backend.logout');
-Route::get('/wishlist/{id}',[SiteController::class,'wishlist'])->middleware([settings::class])->name('frontend.wishlist');
+Route::post('/wishlist',[SiteController::class,'wishlist'])->middleware([settings::class])->name('frontend.wishlist');
 Route::get('/removeFromWishlist',[SiteController::class,'removeFromWishlist'])->middleware([settings::class])->name('frontend.removeFromWishlist');
 Route::get('/showWishlist',[SiteController::class,'showWishlist'])->middleware([settings::class])->name('frontend.showWishlist');
 Route::get('/raiseQuery',[SiteController::class,'raiseQuery'])->middleware([settings::class])->name('frontend.raiseQuery');
@@ -124,6 +125,12 @@ Route::prefix('admin')->middleware(['auth:web',settings::class])->group(function
     Route::get('/enquiries', [EnquiriesController::class, 'index'])->name('admin.enquiries.index');
     Route::get('/enquiries/delete/{id}', [EnquiriesController::class, 'delete'])->name('admin.enquiries.delete');
     
+    //Email settings
+    Route::get('/emailSettings', [EmailTemplateController::class, 'index'])->name('admin.emailSettings');
+    Route::get('/emailSettings/template/create', [EmailTemplateController::class, 'create'])->name('admin.emailSettings.template.create');
+    Route::get('/emailSettings/template/edit/{id}', [EmailTemplateController::class, 'edit'])->name('admin.emailSettings.template.edit');
+    Route::get('/emailSettings/template/delete/{id}', [EmailTemplateController::class, 'delete'])->name('admin.emailSettings.template.delete');
+    Route::post('/emailSettings/template/store', [EmailTemplateController::class, 'store'])->name('admin.emailSettings.template.store');
     //cities
     Route::get('/citiesSettings', [SettingsController::class, 'citiesSettings'])->name('admin.cities.create');
     Route::post('/storeCities', [SettingsController::class, 'storeCities'])->name('admin.cities.storeCities');
