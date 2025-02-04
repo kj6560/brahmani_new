@@ -200,7 +200,12 @@ if (!empty($settings['schema'])) {
 
                                                 </li>
                                                 <li>
-                                                    <a href="/showWishlist">Wishlist</a>
+                                                    <?php $product_ids = Session::get('wishlist', []); ?>
+                                                    <a href="/showWishlist">Wishlist<?php
+                                                        if(count($product_ids) > 0){
+                                                            echo "<h6 style='color:green'>".count($product_ids)."</h6>";
+                                                        }
+                                                    ?></a>
 
                                                 </li>
                                             </ul>
@@ -463,14 +468,14 @@ if (!empty($settings['schema'])) {
         function processWishlist(id,quantity) {
             console.log("processing: ", id);
             $.ajax({
-                url: '/wishlist/' + id+'/'+quantity,
+                url: '/wishlist/' + id+'/'+1,
                 type: 'GET',
                 success: function (response) {
                     console.log(response);
                     if (response.success) {
                         Swal.fire({
                             title: 'Done',
-                            text: "Product Added To Wishlist",
+                            text: "Product Added To Wishlist.Please go to whishlist section to raise a query",
                             icon: 'success',
                             confirmButtonText: 'Okay',
 

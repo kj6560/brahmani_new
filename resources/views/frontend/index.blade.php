@@ -212,12 +212,12 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
 <!-- Fid Start -->
 <section class="section-lgb">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center text-center">
             <div class="col-md-6 col-xl-4">
                 <div class="pbminfotech-ele-fid-style-2">
                     <div class="pbmit-fld-contents">
                         <div class="pbmit-fld-wrap">
-                            <div class="pbmit-fid-icon-title">
+                            <div class="pbmit-fid-icon-title justify-content-center text-center">
                                 <div class="pbmit-sbox-icon-wrapper pbmit-icon-type-icon">
                                     <i class="pbmit-xinterio-icon pbmit-xinterio-icon-offer"></i>
                                 </div>
@@ -238,7 +238,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                 <div class="pbminfotech-ele-fid-style-2">
                     <div class="pbmit-fld-contents">
                         <div class="pbmit-fld-wrap">
-                            <div class="pbmit-fid-icon-title">
+                            <div class="pbmit-fid-icon-title justify-content-center text-center">
                                 <div class="pbmit-sbox-icon-wrapper pbmit-icon-type-icon">
                                     <i class="pbmit-xinterio-icon pbmit-xinterio-icon-engineer"></i>
                                 </div>
@@ -259,7 +259,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                 <div class="pbminfotech-ele-fid-style-2">
                     <div class="pbmit-fld-contents">
                         <div class="pbmit-fld-wrap">
-                            <div class="pbmit-fid-icon-title">
+                            <div class="pbmit-fid-icon-title justify-content-center text-center">
                                 <div class="pbmit-sbox-icon-wrapper pbmit-icon-type-icon">
                                     <i class="pbmit-xinterio-icon pbmit-xinterio-icon-client"></i>
                                 </div>
@@ -867,7 +867,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                         Malls</span> spaces.</h2>
             </div>
             <div class="play-button">
-                <a class="pbmit-icon pbmin-lightbox-video" href="https://www.youtube.com/watch?v=Sv2_JktdvmQ">
+                <a class="pbmit-icon pbmin-lightbox-video" href="{{$settings['youtube_link_homepage']??''}}">
                     <i class="fa fa-play"></i>
                 </a>
             </div>

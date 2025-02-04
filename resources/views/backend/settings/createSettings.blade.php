@@ -107,6 +107,12 @@
                 <input type="file" class="form-control file-upload-info" name="logo" placeholder="Upload Image">
               </div>
               <div class="form-group">
+                <label for="exampleInputUsername1">Youtube Homepage Link</label>
+                <input type="text" name="youtube_link_homepage"
+                  value="{{!empty($settings) && $settings['youtube_link_homepage'] ? $settings['youtube_link_homepage'] : old('youtube_link_homepage')}}"
+                  class="form-control" id="exampleInputUsername1">
+              </div>
+              <div class="form-group">
                 <label for="exampleInputUsername1">GTag</label>
                 <textarea class="exp_text" name="gtag" rows="12"
                   id="gtag">{{!empty($settings) && $settings['gtag'] ? $settings['gtag'] : old('gtag')}}</textarea>

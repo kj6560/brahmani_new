@@ -163,12 +163,12 @@ $params = !empty($product->pro_params) ? json_decode($product->pro_params) : [];
                 if (response.success) {
                     Swal.fire({
                         title: 'Done',
-                        text: "Product Added To Wishlist",
+                        text: "Product Added To Wishlist.Please go to whishlist section to raise a query",
                         icon: 'success',
                         confirmButtonText: 'Okay',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            //window.location.reload(); // Uncomment if you want to reload the page
+                            window.location.reload(); // Uncomment if you want to reload the page
                         }
                     });
                 }

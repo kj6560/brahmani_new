@@ -261,9 +261,7 @@
                                 <p>Category: {{ $pro->category_name ?? '' }}</p>
                                 <p>Price: {{ $pro->product_price ?? '' }}</p>
                                 <div class="mt-3">
-                                    <button class="btn btn-success" id="wishlist"
-                                        onclick="processWishlist({{ $pro->id }})">Add to
-                                        Wishlist</button>
+                                    
                                     <a class="btn btn-secondary " href="/products/{{ $pro->id ?? 1 }}">See Details</a>
                                 </div>
                             </div>

@@ -222,7 +222,7 @@ class SiteController extends Controller
     {
         $id = $request->id;
         $product_ids = Session::get('wishlist', []);
-        $product_ids = array_diff($product_ids, [$id]);
+        unset($product_ids[$id]);
         Session::put('wishlist', $product_ids);
         return response()->json(['success' => true, 'message' => 'Product removed from wishlist']);
     }
