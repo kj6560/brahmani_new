@@ -72,7 +72,7 @@ class BlogController extends Controller
         $blogCategories = DB::table('categories')->where('active', 1)->get();
         $tags = DB::table('tags')->where('active', 1)->get();
         return view('backend.blog.createBlog', ['settings' => $request->settings, 'categories' => $blogCategories, 'tags' => $tags]);
-    }
+    } 
     public function editBlog(Request $request, $id)
     {
         $blogPost = BlogPost::find($id);
@@ -114,6 +114,8 @@ class BlogController extends Controller
         $blogPost->content = $request->content;
         $blogPost->user_id = auth()->user()->id;
         $blogPost->published_at = Date::now();
+        $blogPost->show_on_homepage = $request->show_on_homepage;
+        $blogPost->show_large_on_homepage = $request->show_large_on_homepage;
         $blogPost->category_id = $request->category_id;
         $blogPost->active = $request->active;
         $blogPost->save();

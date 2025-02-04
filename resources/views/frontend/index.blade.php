@@ -250,7 +250,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                     data-from="0" data-to="150000" data-interval="5000" data-before=""
                                     data-before-style="" data-after="" data-after-style="">150000</span>
                                 <span class="pbmit-fid"><sup>+</sup></span>
-                            </h4> 
+                            </h4>
                         </div>
                     </div>
                 </div>
@@ -297,45 +297,49 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
         <div class="swiper-slider" data-autoplay="false" data-loop="true" data-dots="false" data-arrows="false"
             data-columns="3" data-margin="30" data-effect="slide">
             <div class="swiper-wrapper">
-                
-            @if (!empty($latest_categories) && count($latest_categories) > 0)
-            @foreach ($latest_categories as $categories)
-                <!-- Slide -->
-                <article class="pbmit-ele-service pbmit-service-style-2 swiper-slide">
-                    <div class="pbminfotech-post-item">
-                        <div class="pbminfotech-box-content">
-                            <div class="pbmit-service-image-wrapper">
-                                <div class="pbmit-featured-img-wrapper">
-                                    <div class="pbmit-featured-wrapper">
-                                        <img src="{{asset('storage')}}/{{$categories->pro_cat_image}}" alt="{{$categories->pro_cat_name ?? ''}}"
-                                            class="img-fluid product-image" alt="service-01">
+
+                @if (!empty($latest_categories) && count($latest_categories) > 0)
+                    @foreach ($latest_categories as $categories)
+                        <!-- Slide -->
+                        <article class="pbmit-ele-service pbmit-service-style-2 swiper-slide">
+                            <div class="pbminfotech-post-item">
+                                <div class="pbminfotech-box-content">
+                                    <div class="pbmit-service-image-wrapper">
+                                        <div class="pbmit-featured-img-wrapper">
+                                            <div class="pbmit-featured-wrapper">
+                                                <img src="{{asset('storage')}}/{{$categories->pro_cat_image}}"
+                                                    alt="{{$categories->pro_cat_name ?? ''}}" class="img-fluid product-image"
+                                                    alt="service-01">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pbmit-service-icon elementor-icon">
+                                        <i class=""></i>
+                                    </div>
+                                    <div class="pbmit-content-box">
+                                        <div class="pbmit-serv-cat">
+                                            <a href="#" rel="tag">Kitchen</a>
+                                        </div>
+                                        <h3 class="pbmit-service-title">
+                                            <a
+                                                href="/product_category/{{$categories->id ?? ''}}">{{$categories->pro_cat_name ?? ''}}</a>
+                                        </h3>
+                                        <div class="pbmit-service-description">
+                                            <p>{{$categories->pro_cat_description ?? "Add description by editing 'product category description' "}}.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
+                                <a class="pbmit-service-btn" href="/product_category/{{$categories->id ?? ''}}"
+                                    title="Transforming Rooms">
+                                    <span class="pbmit-button-icon">
+                                        <i class="pbmit-base-icon-pbmit-up-arrow"></i>
+                                    </span>
+                                </a>
                             </div>
-                            <div class="pbmit-service-icon elementor-icon">
-                                <i class=""></i>
-                            </div>
-                            <div class="pbmit-content-box">
-                                <div class="pbmit-serv-cat">
-                                    <a href="#" rel="tag">Kitchen</a>
-                                </div>
-                                <h3 class="pbmit-service-title">
-                                    <a href="/product_category/{{$categories->id ?? ''}}">{{$categories->pro_cat_name ?? ''}}</a>
-                                </h3>
-                                <div class="pbmit-service-description">
-                                    <p>{{$categories->pro_cat_description ?? "Add description by editing 'product category description' "}}.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="pbmit-service-btn" href="/product_category/{{$categories->id ?? ''}}" title="Transforming Rooms">
-                            <span class="pbmit-button-icon">
-                                <i class="pbmit-base-icon-pbmit-up-arrow"></i>
-                            </span>
-                        </a>
-                    </div>
-                </article>
-            @endforeach
-            @endif  
+                        </article>
+                    @endforeach
+                @endif
             </div>
         </div>
         <div class="text-center">
@@ -758,7 +762,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                         </div>
                     </div>
                 </article>
-                
+
                 <!-- Slide4 -->
                 <article class="pbmit-client-style-1 swiper-slide">
                     <div class="pbmit-border-wrapper">
@@ -867,7 +871,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                         Malls</span> spaces.</h2>
             </div>
             <div class="play-button">
-                <a class="pbmit-icon pbmin-lightbox-video" href="{{$settings['youtube_link_homepage']??''}}">
+                <a class="pbmit-icon pbmin-lightbox-video" href="{{$settings['youtube_link_homepage'] ?? ''}}">
                     <i class="fa fa-play"></i>
                 </a>
             </div>
@@ -900,111 +904,47 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             <div class="col-md-12 col-xl-4">
                 <div class="row">
                     <div class="blog-one-left-col">
-                        <article class="pbmit-ele-blog pbmit-blog-style-2 col-md-12">
-                            <div class="post-item">
-                                <div class="pbminfotech-box-content">
-                                    <div class="pbminfotech-content-inner">
-                                        <div class="pbmit-featured-img-wrapper">
-                                            <div class="pbmit-featured-wrapper">
-                                                <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/blog/blog-01.jpg"
-                                                    class="img-fluid" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="pbmit-meta-wraper">
-                                            <div class="pbmit-meta-date-wrapper pbmit-meta-line">
-                                                <div class="pbmit-meta-date">
-                                                    <span class="pbmit-post-date">
-                                                        <i class="pbmit-base-icon-calendar-3"></i>May 09. 2024
-                                                    </span>
+                        @foreach ($blogPosts as $post)
+                            @if(!$post->show_large_on_homepage)
+                                <article class="pbmit-ele-blog pbmit-blog-style-2 col-md-12">
+                                    <div class="post-item">
+                                        <div class="pbminfotech-box-content">
+                                            <div class="pbminfotech-content-inner">
+                                                <div class="pbmit-featured-img-wrapper">
+                                                    <div class="pbmit-featured-wrapper">
+                                                        <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/blog/blog-01.jpg"
+                                                            class="img-fluid" alt="">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="pbmit-meta-author pbmit-meta-line">
-                                                <span class="pbmit-post-author">
-                                                    <i class="pbmit-base-icon-user-3"></i>
-                                                    <span>By</span>admin
-                                                </span>
-                                            </div>
-                                            <div class="pbmit-content-wrapper">
-                                                <h3 class="pbmit-post-title">
-                                                    <a href="blog-single-details.html">Frequently Utilized Metal Welding
-                                                        System</a>
-                                                </h3>
+                                                <div class="pbmit-meta-wraper">
+                                                    <div class="pbmit-meta-date-wrapper pbmit-meta-line">
+                                                        <div class="pbmit-meta-date">
+                                                            <span class="pbmit-post-date">
+                                                                <i class="pbmit-base-icon-calendar-3"></i>May 09. 2024
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pbmit-meta-author pbmit-meta-line">
+                                                        <span class="pbmit-post-author">
+                                                            <i class="pbmit-base-icon-user-3"></i>
+                                                            <span>By</span>admin
+                                                        </span>
+                                                    </div>
+                                                    <div class="pbmit-content-wrapper">
+                                                        <h3 class="pbmit-post-title">
+                                                            <a href="blog-single-details.html">Frequently Utilized Metal Welding
+                                                                System</a>
+                                                        </h3>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="pbmit-ele-blog pbmit-blog-style-2 col-md-12">
-                            <div class="post-item">
-                                <div class="pbminfotech-box-content">
-                                    <div class="pbminfotech-content-inner">
-                                        <div class="pbmit-featured-img-wrapper">
-                                            <div class="pbmit-featured-wrapper">
-                                                <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/blog/blog-02.jpg"
-                                                    class="img-fluid" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="pbmit-meta-wraper">
-                                            <div class="pbmit-meta-date-wrapper pbmit-meta-line">
-                                                <div class="pbmit-meta-date">
-                                                    <span class="pbmit-post-date">
-                                                        <i class="pbmit-base-icon-calendar-3"></i>May 09. 2024
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="pbmit-meta-author pbmit-meta-line">
-                                                <span class="pbmit-post-author">
-                                                    <i class="pbmit-base-icon-user-3"></i>
-                                                    <span>By</span>admin
-                                                </span>
-                                            </div>
-                                            <div class="pbmit-content-wrapper">
-                                                <h3 class="pbmit-post-title">
-                                                    <a href="blog-single-details.html">How Does One Go About Buying
-                                                        Furniture?</a>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="pbmit-ele-blog pbmit-blog-style-2 col-md-12">
-                            <div class="post-item">
-                                <div class="pbminfotech-box-content">
-                                    <div class="pbminfotech-content-inner">
-                                        <div class="pbmit-featured-img-wrapper">
-                                            <div class="pbmit-featured-wrapper">
-                                                <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/blog/blog-03.jpg"
-                                                    class="img-fluid" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="pbmit-meta-wraper">
-                                            <div class="pbmit-meta-date-wrapper pbmit-meta-line">
-                                                <div class="pbmit-meta-date">
-                                                    <span class="pbmit-post-date">
-                                                        <i class="pbmit-base-icon-calendar-3"></i>May 09. 2024
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="pbmit-meta-author pbmit-meta-line">
-                                                <span class="pbmit-post-author">
-                                                    <i class="pbmit-base-icon-user-3"></i>
-                                                    <span>By</span>admin
-                                                </span>
-                                            </div>
-                                            <div class="pbmit-content-wrapper">
-                                                <h3 class="pbmit-post-title">
-                                                    <a href="blog-single-details.html">Four Ways for Creating Extra
-                                                        Space in Small Homes</a>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
+                                </article>
+                            @endif
+                        @endforeach
+
+
                     </div>
                 </div>
             </div>
@@ -1014,10 +954,10 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                         <div class="post-item d-flex">
                             <div class="pbmit-featured-container">
                                 <div class="pbmit-bg-image"
-                                    style="background-image:url('{{asset('brahmani_frontend_assets')}}/images/homepage-1/blog/blog-04b.jpg')">
+                                    style="background-image:url('{{ url('/storage/' . $largeBlog->featured_image) }}')">
                                     <div class="pbmit-featured-img-wrapper">
                                         <div class="pbmit-featured-wrapper">
-                                            <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/blog/blog-04.jpg"
+                                            <img src="{{ url('/storage/' . $largeBlog->featured_image) }}"
                                                 class="img-fluid" alt="blog-01">
                                         </div>
                                     </div>
@@ -1073,7 +1013,9 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                 <h4 class="pbmit-subtitle">Contact Us</h4>
                                 <h2 class="pbmit-title">Happy to answer all your questions</h2>
                                 <div class="pbmit-heading-desc">
-                                    <p>Whether you're a homeowner, contractor, or architect, we're here to help. Get in touch with Brahmani Enterprises for inquiries, quotes, and expert consultations on all your construction material needs and project solutions.</p>
+                                    <p>Whether you're a homeowner, contractor, or architect, we're here to help. Get in
+                                        touch with Brahmani Enterprises for inquiries, quotes, and expert consultations
+                                        on all your construction material needs and project solutions.</p>
                                 </div>
                             </div>
                         </div>
@@ -1086,53 +1028,53 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
 
                         </div>
                         <?php
-                            if(!empty(Session::get('errors'))){
-                                $er = get_object_vars(json_decode(Session::get("errors")));
-                                foreach($er as $key => $value){
-                                    echo '<div class="alert alert-danger">'.$value[0].'</div>';
-                                }
-                            }
+if (!empty(Session::get('errors'))) {
+    $er = get_object_vars(json_decode(Session::get("errors")));
+    foreach ($er as $key => $value) {
+        echo '<div class="alert alert-danger">' . $value[0] . '</div>';
+    }
+}
                         ?>
                         <form class="contact-form" method="post" action="/storeQuery">
-								@csrf
-								<div style="display: none;">
-									<input type="text" name="address" value="">
-								</div>
-								<div class="row">
-									
-									<div class="col-md-6">
-										<input type="text" class="form-control" placeholder="Your Name *" name="name"
-											value="{{old('name') ?? ''}}" required>
-									</div>
-									<div class="col-md-6">
-										<input type="text" class="form-control" placeholder="Your Email *" name="email"
-											value="{{old('email') ?? ''}}" required>
-									</div>
+                            @csrf
+                            <div style="display: none;">
+                                <input type="text" name="address" value="">
+                            </div>
+                            <div class="row">
 
-									<div class="col-md-6">
-										<input type="tel" class="form-control" placeholder="Your Phone *" name="phone"
-											value="{{old('phone') ?? ''}}" required>
-									</div>
-									<div class="col-md-6">
-										<input type="tel" class="form-control" placeholder="Your Location *" name="location"
-											value="{{old('location') ?? ''}}" required>
-									</div>
-									<div class="col-md-12">
-										<textarea name="message" cols="40" rows="10" class="form-control" id="message"
-											placeholder="message" required>{{old('message') ?? ""}}</textarea>
-									</div>
-									<div class="col-md-12">
-										<button class="pbmit-btn pbmit-btn-outline">
-											<i
-												class="form-btn-loader fa fa-circle-o-notch fa-spin fa-fw margin-bottom d-none"></i>
-											<span class="pbmit-button-content-wrapper">
-												<span class="pbmit-button-text">Submit Now</span>
-											</span>
-										</button>
-									</div>
-									<div class="col-md-12 col-lg-12 message-status"></div>
-								</div>
-							</form>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name *" name="name"
+                                        value="{{old('name') ?? ''}}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Email *" name="email"
+                                        value="{{old('email') ?? ''}}" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Your Phone *" name="phone"
+                                        value="{{old('phone') ?? ''}}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Your Location *" name="location"
+                                        value="{{old('location') ?? ''}}" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea name="message" cols="40" rows="10" class="form-control" id="message"
+                                        placeholder="message" required>{{old('message') ?? ""}}</textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="pbmit-btn pbmit-btn-outline">
+                                        <i
+                                            class="form-btn-loader fa fa-circle-o-notch fa-spin fa-fw margin-bottom d-none"></i>
+                                        <span class="pbmit-button-content-wrapper">
+                                            <span class="pbmit-button-text">Submit Now</span>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="col-md-12 col-lg-12 message-status"></div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -1146,7 +1088,10 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
 <section class="section-xl">
     <div class="container-fluid">
         <div class="iframe-area">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.284474292564!2d73.1693684!3d22.342885000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8d81649c68b%3A0xd37951746ee47c7f!2sBrahmani%20Enterprise%20(PVC%20Panels)!5e0!3m2!1sen!2sin!4v1736101539751!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.284474292564!2d73.1693684!3d22.342885000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8d81649c68b%3A0xd37951746ee47c7f!2sBrahmani%20Enterprise%20(PVC%20Panels)!5e0!3m2!1sen!2sin!4v1736101539751!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </section>

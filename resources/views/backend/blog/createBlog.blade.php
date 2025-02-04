@@ -17,10 +17,12 @@
     }
 </style>
 <?php 
-$pTags = $post->tags;
+if(!empty($post->id)){
+    $pTags = $post->tags;
 $allPostTags = [];
 foreach($pTags as $tag){
     $allPostTags[] = $tag->tag_id;
+}
 }
 ?>
 <div class="content-wrapper">
@@ -70,6 +72,29 @@ foreach($pTags as $tag){
                                         </option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="exampleSelectGender">Post Homepage Visibility</label>
+                                <select name="show_on_homepage" class="form-select" id="exampleSelectGender">
+                                    <option selected>Select Visible</option>
+                                    <option value="1" @if(isset($post) && $post->show_on_homepage == 1) selected @endif>Yes
+                                    </option>
+                                    <option value="0" @if(isset($post) && $post->show_on_homepage == 0) selected @endif>No
+                                    </option>
+                                </select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectGender">Show Large On Homepage</label>
+                                <select name="show_large_on_homepage" class="form-select" id="exampleSelectGender">
+                                    <option selected>Select Large Visible</option>
+                                    <option value="1" @if(isset($post) && $post->show_large_on_homepage == 1) selected @endif>Yes
+                                    </option>
+                                    <option value="0" @if(isset($post) && $post->show_large_on_homepage == 0) selected @endif>No
+                                    </option>
+                                </select>
+
                             </div>
                             <div class="form-group">
                             <label for="exampleSelectTags">Post Tags</label>
