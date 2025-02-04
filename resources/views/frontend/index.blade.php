@@ -912,7 +912,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                             <div class="pbminfotech-content-inner">
                                                 <div class="pbmit-featured-img-wrapper">
                                                     <div class="pbmit-featured-wrapper">
-                                                        <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/blog/blog-01.jpg"
+                                                        <img src="{{ url('/storage/' . $post->featured_image) }}"
                                                             class="img-fluid" alt="">
                                                     </div>
                                                 </div>
@@ -920,7 +920,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                                     <div class="pbmit-meta-date-wrapper pbmit-meta-line">
                                                         <div class="pbmit-meta-date">
                                                             <span class="pbmit-post-date">
-                                                                <i class="pbmit-base-icon-calendar-3"></i>May 09. 2024
+                                                                <i class="pbmit-base-icon-calendar-3"></i>{{date("M d, Y", strtotime($post->published_at))}}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -932,8 +932,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                                     </div>
                                                     <div class="pbmit-content-wrapper">
                                                         <h3 class="pbmit-post-title">
-                                                            <a href="blog-single-details.html">Frequently Utilized Metal Welding
-                                                                System</a>
+                                                            <a href="/blog_detail/{{$post->id}}">{{$post->title??""}}</a>
                                                         </h3>
                                                     </div>
                                                 </div>
@@ -968,7 +967,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                     <div class="pbmit-date-admin-wraper d-flex align-items-center">
                                         <div class="pbmit-meta-date pbmit-meta-line">
                                             <span class="pbmit-post-date">
-                                                <i class="pbmit-base-icon-calendar-3"></i>May 09. 2024
+                                                <i class="pbmit-base-icon-calendar-3"></i>{{date("M d, Y", strtotime($largeBlog->published_at))}}
                                             </span>
                                         </div>
                                         <div class="pbmit-meta-author pbmit-meta-line">
@@ -979,15 +978,13 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                         </div>
                                     </div>
                                     <h3 class="pbmit-post-title">
-                                        <a href="blog-single-details.html">How To Choose The Right Furniture Of Your
-                                            Home</a>
+                                        <a href="/blog_detail/{{$largeBlog->id}}">{{$largeBlog->title??""}}</a>
                                     </h3>
                                     <div class="pbminfotech-box-desc">
-                                        Modest, recently established interior design company that seeks to address a
-                                        variety of topics, including…
+                                        {{$largeBlog->content??""}}
                                     </div>
                                 </div>
-                                <a class="pbmit-blog-btn" href="blog-single-details.html">
+                                <a class="pbmit-blog-btn" href="/blog_detail/{{$largeBlog->id}}">
                                     <span class="pbmit-button-icon">
                                         <i class="pbmit-base-icon-pbmit-up-arrow"></i>
                                     </span>
