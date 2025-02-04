@@ -29,8 +29,7 @@ class SiteController extends Controller
             ->orderBy('product_category_order', 'asc')
             ->limit(5)->get();
         $blogPosts = BlogPost::where('show_on_homepage',1)->limit(3)->orderBy('id','desc')->get();
-
-        $largeBlogPost = BlogPost::where('show_on_homepage',1)->where('show_large_on_homepage',1)->first();
+        $largeBlogPost = BlogPost::where('show_large_on_homepage',1)->first();
         return view('frontend.index', ['settings' => $request->settings, 'latest_categories' => $product_categories,'blogPosts'=>$blogPosts,'largeBlog'=>$largeBlogPost]);
     }
     public function companyProfile(Request $request)

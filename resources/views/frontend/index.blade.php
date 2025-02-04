@@ -905,7 +905,6 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                 <div class="row">
                     <div class="blog-one-left-col">
                         @foreach ($blogPosts as $post)
-                            @if(!$post->show_large_on_homepage)
                                 <article class="pbmit-ele-blog pbmit-blog-style-2 col-md-12">
                                     <div class="post-item">
                                         <div class="pbminfotech-box-content">
@@ -940,7 +939,6 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                         </div>
                                     </div>
                                 </article>
-                            @endif
                         @endforeach
 
 
