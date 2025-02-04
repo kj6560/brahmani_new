@@ -61,9 +61,10 @@ class EnquiriesController extends Controller
     public function view(Request $request,$id)
     {
         $enquiry = DB::table('contactQuery')->where('id', $id)->first();
+
         if(!empty($enquiry->id) && !empty($enquiry->product_ids)){
             $product_ids = get_object_vars(json_decode($enquiry->product_ids));
-            $products = DB::table('products')->whereIn('id', $product_ids)->get();
+            $products = DB::table('products')->whereIn('id', array_keys($product_ids))->get();
             $enquiry->products = $products;
         }
         return view('backend.enquiries.view', ['enquiry' => $enquiry,'settings' => $request->settings]);
