@@ -21,14 +21,14 @@ class Email extends Model
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = "smtp.gmail.com";                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = "enquiry.digitalvyapaar@gmail.com";                     //SMTP username
-            $mail->Password   = "";                               //SMTP password
+            $mail->Username   = "info@b-ent.in";                     //SMTP username
+            $mail->Password   = "qspq ugqa ttdx oqwl";                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom("enquiry.digitalvyapaar@gmail.com", 'Mailer');
-            $mail->addAddress("enquiry.digitalvyapaar@gmail.com", $data['name']);     //Add a recipient
+            $mail->setFrom("info@b-ent.in", 'Mailer');
+            $mail->addAddress("info@b-ent.in", $data['name']);     //Add a recipient
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
