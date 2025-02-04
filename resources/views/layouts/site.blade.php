@@ -67,6 +67,49 @@ if (!empty($settings['schema'])) {
 }
 	?>
     <style>
+        .whatsapp-button {
+            position: fixed;
+            bottom: 110px;
+            right: 50px;
+            width: 60px;
+            height: 60px;
+            z-index: 1000;
+            
+        }
+
+        .whatsapp-button img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .whatsapp-button img:hover {
+            transform: scale(1.1);
+        }
+
+        .mail-button {
+            position: fixed;
+            bottom: 110px;
+            left: 50px;
+            width: 60px;
+            height: 60px;
+            z-index: 1;
+        }
+
+        .mail-button img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mail-button img:hover {
+            transform: scale(1.1);
+        }
+
         .dropdown-menu {
             max-height: 200px;
             /* Set a fixed height for the dropdown */
@@ -85,25 +128,39 @@ if (!empty($settings['schema'])) {
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             /* Optional: Add a subtle shadow */
         }
+
         .modal-lg {
-        max-width: 90%; /* Adjust the percentage as needed */
-    }
+            max-width: 90%;
+            /* Adjust the percentage as needed */
+        }
+
+        .phone_whatsapp {
+            height: 73px;
+            width: 40px;
+            border-radius: 50%;
+            /*background-color: green;*/
+            position: fixed;
+            bottom: 55px;
+            right: 40px;
+            z-index: 5;
+            border: none !important;
+        }
     </style>
 </head>
 @php
     use App\Http\Controllers\Controller;
     $success = Session::get('success');
     $error = Session::get('error');
-    
+
     $errorText = "";
-    if(!empty(Session::get("errors"))){
+    if (!empty(Session::get("errors"))) {
         $er = get_object_vars(json_decode(Session::get("errors")));
-        foreach($er as $key => $value){
-            $errorText .= $value[0].'\n';
-        } 
+        foreach ($er as $key => $value) {
+            $errorText .= $value[0] . '\n';
+        }
     }
-                               
- 
+
+
 @endphp
 
 <body>
@@ -123,7 +180,7 @@ if (!empty($settings['schema'])) {
                                         <a href="/">
                                             @if (!empty($settings['logo']))
                                                 <img src="{{asset('storage')}}/{{$settings['logo']}}"
-                                                    alt="{{$settings['Company_Name'] ?? ''}}" >
+                                                    alt="{{$settings['Company_Name'] ?? ''}}">
                                             @endif
                                         </a>
                                     </h6>
@@ -202,9 +259,9 @@ if (!empty($settings['schema'])) {
                                                 <li>
                                                     <?php $product_ids = Session::get('wishlist', []); ?>
                                                     <a href="/showWishlist">Wishlist<?php
-                                                        if(count($product_ids) > 0){
-                                                            echo "<h6 style='color:green'>".count($product_ids)."</h6>";
-                                                        }
+if (count($product_ids) > 0) {
+    echo "<h6 style='color:green'>" . count($product_ids) . "</h6>";
+}
                                                     ?></a>
 
                                                 </li>
@@ -242,6 +299,13 @@ if (!empty($settings['schema'])) {
 
         </div>
         <!-- Page Content End -->
+        <a href="https://wa.me/{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}" class="whatsapp-button" target="_blank">
+            <img src="https://www.authenticdesigner.in/labeling-machine-manufacturer/img/whatsapp-labeling-machine.png" alt="WhatsApp">
+        </a>
+
+        <a href="tel:{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}" class="mail-button" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="call">
+        </a>
 
         <!-- footer -->
         <footer class="site-footer footer-style-1 pbmit-bg-color-secondary">
@@ -254,9 +318,9 @@ if (!empty($settings['schema'])) {
                                     <li><a href="/about_us">About Us</a></li>
                                     <li><a href="#"></a></li>
                                     <li><a href="/contact_us">Contact Us</a></li>
-                                    
+
                                     <li><a href="#"></a></li>
-                                    
+
                                     <li><a href="/blog">Blogs</a></li>
                                     <li><a href="#"></a></li>
                                     <li><a href="/showWishlist">Wishlist</a></li>
@@ -400,7 +464,7 @@ if (!empty($settings['schema'])) {
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
     <!-- JS
 		============================================ -->
@@ -465,10 +529,10 @@ if (!empty($settings['schema'])) {
             // Reload the page
             location.reload();
         });
-        function processWishlist(id,quantity) {
+        function processWishlist(id, quantity) {
             console.log("processing: ", id);
             $.ajax({
-                url: '/wishlist/' + id+'/'+1,
+                url: '/wishlist/' + id + '/' + 1,
                 type: 'GET',
                 success: function (response) {
                     console.log(response);
@@ -494,7 +558,7 @@ if (!empty($settings['schema'])) {
         var success = "{{!empty($success) ? $success : 'NA'}}";
         var error = "{{!empty($error) ? $error : 'NA'}}";
         var errorText = "{{!empty($errorText) ? $errorText : 'NA'}}";
-        console.log(success, error,errorText);
+        console.log(success, error, errorText);
         if (success != 'NA') {
             Swal.fire({
                 title: 'Done',
@@ -526,7 +590,7 @@ if (!empty($settings['schema'])) {
 
             });
         }
-        
+
     </script>
 </body>
 @yield('custom_javascript')
