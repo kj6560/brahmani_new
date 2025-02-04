@@ -71,8 +71,8 @@ if (!empty($settings['schema'])) {
             position: fixed;
             bottom: 110px;
             right: 50px;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             z-index: 1000;
             
         }
@@ -93,8 +93,8 @@ if (!empty($settings['schema'])) {
             position: fixed;
             bottom: 110px;
             left: 50px;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             z-index: 1;
         }
 
