@@ -355,6 +355,8 @@ if (count($product_ids) > 0) {
                                     <li><a href="/sitemap">Sitemap</a></li>
                                     <li><a href="#"></a></li>
                                     <li><a href="/privacy_policy">Privacy Policy</a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="/calculator">Panel Calculator</a></li>
                                 </ul>
                             </aside>
                         </div>

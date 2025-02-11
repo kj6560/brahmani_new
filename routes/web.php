@@ -50,7 +50,8 @@ Route::get('/showWishlist',[SiteController::class,'showWishlist'])->middleware([
 Route::get('/raiseQuery',[SiteController::class,'raiseQuery'])->middleware([settings::class])->name('frontend.raiseQuery');
 Route::get('/faq', [SiteController::class, 'faq'])->middleware([settings::class])->name('frontend.faq');
 Route::get('/privacy_policy', [SiteController::class, 'privacy_policy'])->middleware([settings::class])->name('frontend.privacy_policy');
-
+Route::get('/calculator',[SiteController::class,'calculator'])->middleware([settings::class])->name('frontend.calculator');
+Route::post('/calculate',[SiteController::class,'calculate'])->middleware([settings::class])->name('frontend.calculate');
 //product_category
 Route::get('/product_category/{id}', [DynamicPageController::class, 'loadProductCategory'])->middleware([settings::class])->name("product_category");
 Route::get('/products/{id}', [DynamicPageController::class, 'loadProducts'])->middleware([settings::class])->name("products.load");

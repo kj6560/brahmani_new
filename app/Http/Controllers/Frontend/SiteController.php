@@ -28,9 +28,9 @@ class SiteController extends Controller
             ->where('show_on_home_page', 1)
             ->orderBy('product_category_order', 'asc')
             ->limit(5)->get();
-        $blogPosts = BlogPost::where('show_on_homepage',1)->limit(3)->orderBy('id','desc')->get();
-        $largeBlogPost = BlogPost::where('show_large_on_homepage',1)->first();
-        return view('frontend.index', ['settings' => $request->settings, 'latest_categories' => $product_categories,'blogPosts'=>$blogPosts,'largeBlog'=>$largeBlogPost]);
+        $blogPosts = BlogPost::where('show_on_homepage', 1)->limit(3)->orderBy('id', 'desc')->get();
+        $largeBlogPost = BlogPost::where('show_large_on_homepage', 1)->first();
+        return view('frontend.index', ['settings' => $request->settings, 'latest_categories' => $product_categories, 'blogPosts' => $blogPosts, 'largeBlog' => $largeBlogPost]);
     }
     public function companyProfile(Request $request)
     {
@@ -158,11 +158,11 @@ class SiteController extends Controller
             $product_ids = Session::get('wishlist', []);
 
             $product_details = "";
-            foreach ($product_ids as $product_id=>$quantity) {
+            foreach ($product_ids as $product_id => $quantity) {
                 $product = Product::find($product_id);
                 if ($product) {
-                    $product_details.= "<p><strong>Product Name:</strong>". $product->product_name."</p>
-                                    <p><strong>Product Quantity:</strong>".$quantity."</p><br>";
+                    $product_details .= "<p><strong>Product Name:</strong>" . $product->product_name . "</p>
+                                    <p><strong>Product Quantity:</strong>" . $quantity . "</p><br>";
                 }
             }
             $email_content = str_replace('##product_details##', $product_details, $email_content);
@@ -171,7 +171,7 @@ class SiteController extends Controller
                 'subject' => 'Query from ' . $data['name'],
                 'message' => $email_content
             ];
-            if(!empty($product_ids)){
+            if (!empty($product_ids)) {
                 Email::sendEmail($mailData);
             }
             return redirect()->back()->with('success', 'Your query has been submitted successfully. We will get back to you soon');
@@ -199,10 +199,10 @@ class SiteController extends Controller
         $id = $request->id;
         $quantity = $request->quantity;
         $product_ids = Session::get('wishlist', []);
-        $prod_quantity = $product_ids[$id]??0;
-        if(array_key_exists($id, $product_ids)){
-            $product_ids[$id] = $prod_quantity+$quantity;
-        }else{
+        $prod_quantity = $product_ids[$id] ?? 0;
+        if (array_key_exists($id, $product_ids)) {
+            $product_ids[$id] = $prod_quantity + $quantity;
+        } else {
             $product_ids[$id] = $quantity;
         }
         Session::put('wishlist', $product_ids);
@@ -212,7 +212,7 @@ class SiteController extends Controller
     {
         $product_ids = Session::get('wishlist', []);
         $products = [];
-        foreach ($product_ids as $product_id=>$quantity) {
+        foreach ($product_ids as $product_id => $quantity) {
             $product = Product::find($product_id);
             if ($product) {
                 $products[] = ['product' => $product, 'quantity' => $quantity];
@@ -235,7 +235,7 @@ class SiteController extends Controller
         $message = $request->message;
         $email = $request->email;
         $location = $request->location;
-        
+
         $product_ids = Session::get('wishlist', []);
         $queryContact = new ContactQuery();
         $queryContact->name = $name;
@@ -260,11 +260,11 @@ class SiteController extends Controller
             $product_ids = Session::get('wishlist', []);
 
             $product_details = "";
-            foreach ($product_ids as $product_id=>$quantity) {
+            foreach ($product_ids as $product_id => $quantity) {
                 $product = Product::find($product_id);
                 if ($product) {
-                    $product_details.= "<p><strong>Product Name:</strong>". $product->product_name."</p><br>
-                                    <p><strong>Product Quantity:</strong>".$quantity."</p><br>";
+                    $product_details .= "<p><strong>Product Name:</strong>" . $product->product_name . "</p><br>
+                                    <p><strong>Product Quantity:</strong>" . $quantity . "</p><br>";
                 }
             }
             $email_content = str_replace('##product_details##', $product_details, $email_content);
@@ -273,7 +273,7 @@ class SiteController extends Controller
                 'subject' => 'Query from ' . $name,
                 'message' => $email_content
             ];
-            if(!empty($product_ids)){
+            if (!empty($product_ids)) {
                 Email::sendEmail($mailData);
             }
             Session::forget('wishlist');
@@ -294,5 +294,31 @@ class SiteController extends Controller
     public function privacy_policy(Request $request)
     {
         return view('frontend.privacyPolicy', ['settings' => $request->settings]);
+    }
+    public function calculator(Request $request)
+    {
+        return view('frontend.calculator', ['settings' => $request->settings]);
+    }
+    public function calculate(Request $request)
+    {
+        $data = $request->all();
+        $request->validate([
+            'unit' => 'required|numeric',
+            'panel_height' => 'required|numeric',
+            'panel_width' => 'required|numeric',
+            'wall_height' => 'required|numeric',
+            'wall_width' => 'required|numeric',
+        ]);
+        $unit = $data['unit'];
+        $panel_height = $data['panel_height'];
+        $panel_width = $data['panel_width'];
+        $wall_height = $data['wall_height'];
+        $wall_width = $data['wall_width'];
+        $panel_area = $panel_height * $panel_width;
+        $wall_area = $wall_height * $wall_width;
+        $panels_required = $wall_area / $panel_area;
+        $panels_required = ceil($panels_required);
+        $excess_area = (ceil($panels_required) * $panel_area) - $wall_area;
+        return view('frontend.calculator', ['settings' => $request->settings, 'unit' => $unit, 'panel_area' => $panel_area, 'wall_area' => $wall_area, 'total_panel_required' => $panels_required, 'excess_area' => $excess_area]);
     }
 }
