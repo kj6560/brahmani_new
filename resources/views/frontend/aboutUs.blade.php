@@ -10,6 +10,7 @@ $banner = !empty($page_data->page_banner)
 <style>
 	.pbmit-title-bar-wrapper {
 		background-image: url('{{ $banner }}');
+		max-height: 600px !important;
 	}
 </style>
 <!-- Title Bar -->

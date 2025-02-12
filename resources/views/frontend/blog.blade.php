@@ -2,15 +2,16 @@
 @section('content')
 @php
 $page_data = $settings['page_data'] ?? null;
-$banner = !empty($page_data->page_banner) 
-    ? asset("storage/".$page_data->page_banner) 
-    : asset("brahmani_frontend_assets/images/bg/titlebar-img.jpg");
+$banner = !empty($page_data->page_banner)
+? asset("storage/".$page_data->page_banner)
+: asset("brahmani_frontend_assets/images/bg/titlebar-img.jpg");
 @endphp
 
 <style>
-    .pbmit-title-bar-wrapper {
-        background-image: url('{{ $banner }}');
-    }
+	.pbmit-title-bar-wrapper {
+		background-image: url('{{ $banner }}');
+		max-height: 600px !important;
+	}
 </style>
 <!-- Title Bar -->
 <div class="pbmit-title-bar-wrapper">
@@ -38,13 +39,13 @@ $banner = !empty($page_data->page_banner)
 	</div>
 </div>
 <!-- Title Bar End-->
+<div class="page-content blog">
+	<!-- Blog Grid Col 4 -->
+	<section class="section-md">
+		<div class="container-fluid px-4">
+			<div class="row pbmit-element-posts-wrapper">
+				@foreach ($blogs as $blog)
 
-<!-- Blog Grid Col 4 -->
-<section class="section-md">
-	<div class="container-fluid px-4">
-		<div class="row pbmit-element-posts-wrapper">
-			@foreach ($blogs as $blog)
-			
 				<article class="pbmit-ele-blog pbmit-blog-style-1 col-md-6 col-lg-3">
 					<div class="post-item">
 						<div class="pbminfotech-box-content">
@@ -88,12 +89,13 @@ $banner = !empty($page_data->page_banner)
 						</div>
 					</div>
 				</article>
-			@endforeach
+				@endforeach
 
 
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</div>
 <!-- Blog Grid Col 4 End -->
 
 @endsection

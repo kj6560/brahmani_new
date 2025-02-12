@@ -1760,7 +1760,11 @@ body {
 	color: var(--pbmit-white-color);
 	background-color: var(--pbmit-global-color);
 }
-
+@media(min-width:1500px) {
+	.pbmit-slider-item{
+		height: 600px !important;
+	}
+}
 /** Style 2 **/
 .pbmit-team-style-2 .pbmit-featured-wrapper img,
 .pbmit-team-style-2 .pbmit-featured-wrapper::after,
@@ -3910,6 +3914,7 @@ body {
 .pbmit-title-bar-wrapper,
 .pbmit-title-bar-content{
 	/* min-height: 570px; */
+	max-height: 600px !important;
 }
 .pbmit-title-bar-wrapper:before{
 	content: "";
@@ -5535,10 +5540,10 @@ body {
 	color: var(--pbmit-white-color);
 }
 /** Style 1 **/
+
 .pbmit-slider-one .pbmit-slider-item{
 	display: flex;
 	align-items: center;
-	height: 900px;
 	background-color: rgba(64, 50, 38, 0.2);
 }
 .pbmit-slider-one .pbmit-sub-title{

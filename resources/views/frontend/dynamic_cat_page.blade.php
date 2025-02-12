@@ -6,7 +6,7 @@
 <style>
     .img-fluid {
         width: 392px !important;
-        height: 435px;
+        min-height: 435px;
         padding: 0px !important;
         object-fit: contain;
     }
@@ -89,6 +89,7 @@ $banner = !empty($page_data->page_banner)
 <style>
     .pbmit-title-bar-wrapper {
         background-image: url('{{ $banner }}');
+        max-height: 600px !important;
     }
 </style>
 <!-- Title Bar -->

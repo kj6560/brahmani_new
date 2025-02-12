@@ -7,7 +7,7 @@ if (!empty($page_data['page_meta'])) {
     $metas = json_decode($page_data['page_meta']);
 }
 
-    
+
 ?>
 
 <head>
@@ -25,9 +25,9 @@ if (!empty($page_data['page_meta'])) {
     <meta name="audience" content="All">
     <meta name="Revisit-After" content="7 days">
     @if (!empty($metas))
-        @foreach ($metas as $meta)
-            <meta name="{{$meta->name}}" content="{{$meta->value}}">
-        @endforeach
+    @foreach ($metas as $meta)
+    <meta name="{{$meta->name}}" content="{{$meta->value}}">
+    @endforeach
     @endif
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('brahmani_frontend_assets')}}/images/fevicon.ico">
@@ -61,11 +61,11 @@ if (!empty($page_data['page_meta'])) {
     <link rel="stylesheet" href="{{asset('brahmani_frontend_assets')}}/css/twentytwenty.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php
-echo $settings['gtag'] ?? "";
-if (!empty($settings['schema'])) {
-    echo prepareSchema($settings, $settings['schema']);
-}
-	?>
+    echo $settings['gtag'] ?? "";
+    if (!empty($settings['schema'])) {
+        echo prepareSchema($settings, $settings['schema']);
+    }
+    ?>
     <style>
         .whatsapp-button {
             position: fixed;
@@ -74,7 +74,7 @@ if (!empty($settings['schema'])) {
             width: 50px;
             height: 50px;
             z-index: 1000;
-            
+
         }
 
         .whatsapp-button img {
@@ -145,20 +145,22 @@ if (!empty($settings['schema'])) {
             z-index: 5;
             border: none !important;
         }
+
+        
     </style>
 </head>
 @php
-    use App\Http\Controllers\Controller;
-    $success = Session::get('success');
-    $error = Session::get('error');
+use App\Http\Controllers\Controller;
+$success = Session::get('success');
+$error = Session::get('error');
 
-    $errorText = "";
-    if (!empty(Session::get("errors"))) {
-        $er = get_object_vars(json_decode(Session::get("errors")));
-        foreach ($er as $key => $value) {
-            $errorText .= $value[0] . '\n';
-        }
-    }
+$errorText = "";
+if (!empty(Session::get("errors"))) {
+$er = get_object_vars(json_decode(Session::get("errors")));
+foreach ($er as $key => $value) {
+$errorText .= $value[0] . '\n';
+}
+}
 
 
 @endphp
@@ -179,8 +181,9 @@ if (!empty($settings['schema'])) {
                                     <h6 class="site-title">
                                         <a href="/">
                                             @if (!empty($settings['logo']))
-                                                <img src="{{asset('storage')}}/{{$settings['logo']}}"
-                                                    alt="{{$settings['Company_Name'] ?? ''}}">
+                                            <img src="{{asset('storage')}}/{{$settings['logo']}}"
+                                            class="Logo"
+                                                alt="{{$settings['Company_Name'] ?? ''}}">
                                             @endif
                                         </a>
                                     </h6>
@@ -242,9 +245,9 @@ if (!empty($settings['schema'])) {
                                                     <a href="/product_category/0">Products & Services</a>
                                                     <ul>
                                                         @foreach ($settings['product_categories'] as $category)
-                                                            <li><a
-                                                                    href="/product_category/{{$category->id}}">{{$category->pro_cat_name ?? ""}}</a>
-                                                            </li>
+                                                        <li><a
+                                                                href="/product_category/{{$category->id}}">{{$category->pro_cat_name ?? ""}}</a>
+                                                        </li>
                                                         @endforeach
                                                     </ul>
                                                 </li>
@@ -259,10 +262,10 @@ if (!empty($settings['schema'])) {
                                                 <li>
                                                     <?php $product_ids = Session::get('wishlist', []); ?>
                                                     <a href="/showWishlist">Wishlist<?php
-if (count($product_ids) > 0) {
-    echo "<h6 style='color:green'>" . count($product_ids) . "</h6>";
-}
-                                                    ?></a>
+                                                                                    if (count($product_ids) > 0) {
+                                                                                        echo "<h6 style='color:green'>" . count($product_ids) . "</h6>";
+                                                                                    }
+                                                                                    ?></a>
 
                                                 </li>
                                             </ul>
@@ -334,8 +337,8 @@ if (count($product_ids) > 0) {
                                 <div class="textwidget">
                                     <div class="pbmit-footer-logo">
                                         @if (!empty($settings['logo']) && !empty($settings['Company_Name']))
-                                            <img src="{{asset('storage')}}/{{$settings['logo']}}"
-                                                alt="{{$settings['Company_Name'] ?? ''}}">
+                                        <img src="{{asset('storage')}}/{{$settings['logo']}}"
+                                            alt="{{$settings['Company_Name'] ?? ''}}">
                                         @endif
                                         <h3 style="color: white;">{{$settings['Company_Name'] ?? ''}}</h3>
                                         <p style="color: white;">{{$settings['Office_Address'] ?? ''}}</p>
@@ -514,7 +517,7 @@ if (count($product_ids) > 0) {
     <script src="{{asset('brahmani_frontend_assets')}}/js/scripts.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var search = "<?php echo isset($settings['search']) ? addslashes($settings['search']) : ''; ?>";
             console.log(search);
             if (search !== "") {
@@ -522,7 +525,7 @@ if (count($product_ids) > 0) {
                 productDetailModal.show();
             }
         });
-        document.getElementById('productDetailModal').addEventListener('hide.bs.modal', function () {
+        document.getElementById('productDetailModal').addEventListener('hide.bs.modal', function() {
             // Remove query string
             const url = new URL(window.location.href);
             url.search = ""; // Clear the query string
@@ -531,12 +534,13 @@ if (count($product_ids) > 0) {
             // Reload the page
             location.reload();
         });
+
         function processWishlist(id, quantity) {
             console.log("processing: ", id);
             $.ajax({
                 url: '/wishlist/' + id + '/' + 1,
                 type: 'GET',
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
                     if (response.success) {
                         Swal.fire({
@@ -552,7 +556,7 @@ if (count($product_ids) > 0) {
                         })
                     }
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     console.error(xhr.responseText);
                 }
             });
@@ -592,8 +596,8 @@ if (count($product_ids) > 0) {
 
             });
         }
-
     </script>
 </body>
 @yield('custom_javascript')
+
 </html>
