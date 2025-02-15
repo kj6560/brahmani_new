@@ -54,9 +54,11 @@ $banner = !empty($page_data->page_banner)
             @foreach($allUrls as $file=>$urls)
             <ul>
                 <label>{{$file}}</label>
+                <br>
                 @foreach($urls as $url)
-                <li>{{$url}}</li>
+                    <li>{{$url}}</li>
                 @endforeach
+                <br>
             </ul>
             @endforeach
         </div>
