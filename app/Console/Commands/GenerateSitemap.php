@@ -21,7 +21,7 @@ class GenerateSitemap extends Command
             ->add(Url::create(url('/contact-us')))
             ->writeToFile(public_path('sitemap-pages.xml'));
 
-        // Generate sitemap for products
+
         $sitemapProducts = Sitemap::create();
         $products = Product::all();
         foreach ($products as $product) {
@@ -29,8 +29,8 @@ class GenerateSitemap extends Command
         }
         $sitemapProducts->writeToFile(public_path('sitemap-products.xml'));
 
-        // Generate sitemap index file ✅ **Corrected**
-        $baseUrl = request()->getSchemeAndHttpHost(); // Get base URL dynamically
+
+        $baseUrl = request()->getSchemeAndHttpHost(); 
 
         $sitemapIndex = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
