@@ -9,7 +9,7 @@ use Spatie\Sitemap\Tags\Url;
 
 class GenerateSitemap extends Command
 {
-    protected $signature = 'sitemap:generate';
+    protected $signature = 'command:generate';
     protected $description = 'Generate multiple sitemaps';
 
     public function handle()
