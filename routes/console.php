@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Support\Facades\Schedule;
 
-$schedule = new Schedule();
-$schedule->command('command:generate')->everySixHours()->withoutOverlapping()->runInBackground();
+Schedule::command('command:generate')->everyMinute()->withoutOverlapping()->runInBackground();
