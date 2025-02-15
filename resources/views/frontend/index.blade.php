@@ -9,6 +9,36 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
         max-height: 400px;
         object-fit: cover;
     }
+
+    .swiper-navigation {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .previ,
+    .nex {
+        background: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
+    .swiper-button-prev {
+        left: -5px;
+        /* Move left button outside */
+    }
+
+    .swiper-button-next {
+        right: -5px;
+        /* Move right button outside */
+    }
 </style>
 <div class="pbmit-slider-area pbmit-slider-one">
     <div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="true" data-arrows="false"
@@ -16,32 +46,32 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
         <div class="swiper-wrapper">
             <!-- Slide1 -->
             @foreach ($sliders as $slider)
-                <?php    $sliderUrl = asset('storage') . "/" . $slider?>
-                <div class="swiper-slide">
-                    <div class="pbmit-slider-item">
-                        <div class="pbmit-slider-bg" style="background-image: url({{$sliderUrl}});">
-                        </div>
-                        <div class="container">
-                            <div class="row text-center">
-                                <div class="col-md-12">
-                                    <div class="pbmit-slider-content">
-                                        <h5 class="pbmit-sub-title transform-top transform-delay-1">Build Smart.</h5>
-                                        <h2 class="pbmit-title transform-bottom-1 transform-delay-2">
-                                            Innovative Materials<br> Lasting Impact.
-                                        </h2>
-                                        <div class="pbmit-button transform-bottom-1 transform-delay-3">
-                                            <a class="pbmit-btn pbmit-btn-outline" href="/contact_us">
-                                                <span class="pbmit-button-content-wrapper">
-                                                    <span class="pbmit-button-text">Raise A Query</span>
-                                                </span>
-                                            </a>
-                                        </div>
+            <?php $sliderUrl = asset('storage') . "/" . $slider ?>
+            <div class="swiper-slide">
+                <div class="pbmit-slider-item">
+                    <div class="pbmit-slider-bg" style="background-image: url({{$sliderUrl}});">
+                    </div>
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-md-12">
+                                <div class="pbmit-slider-content">
+                                    <h5 class="pbmit-sub-title transform-top transform-delay-1">Build Smart.</h5>
+                                    <h2 class="pbmit-title transform-bottom-1 transform-delay-2">
+                                        Innovative Materials<br> Lasting Impact.
+                                    </h2>
+                                    <div class="pbmit-button transform-bottom-1 transform-delay-3">
+                                        <a class="pbmit-btn pbmit-btn-outline" href="/contact_us">
+                                            <span class="pbmit-button-content-wrapper">
+                                                <span class="pbmit-button-text">Raise A Query</span>
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             @endforeach
 
         </div>
@@ -287,65 +317,67 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
     <div class="container">
         <div class="text-center position-relative">
             <div class="pbmit-heading-subheading text-center animation-style2">
-                <h4 class="pbmit-subtitle">Exlpore</h4>
+                <h4 class="pbmit-subtitle">Explore</h4>
                 <h2 class="pbmit-title">What we offer for you</h2>
             </div>
             <div class="pbmit-service-highlight">
                 <h2>Our Products</h2>
             </div>
         </div>
-        <div class="swiper-slider" data-autoplay="false" data-loop="true" data-dots="false" data-arrows="false"
+
+        <!-- Swiper Navigation Buttons -->
+        <div class="swiper-navigation">
+            <button class="swiper-button-prev previ">‹</button>
+            <button class="swiper-button-next nex">›</button>
+        </div>
+
+        <div class="swiper-slider slider2" data-autoplay="false" data-loop="true" data-dots="false" data-arrows="false"
             data-columns="3" data-margin="30" data-effect="slide">
             <div class="swiper-wrapper">
-
                 @if (!empty($latest_categories) && count($latest_categories) > 0)
-                    @foreach ($latest_categories as $categories)
-                        <!-- Slide -->
-                        <article class="pbmit-ele-service pbmit-service-style-2 swiper-slide">
-                            <div class="pbminfotech-post-item">
-                                <div class="pbminfotech-box-content">
-                                    <div class="pbmit-service-image-wrapper">
-                                        <div class="pbmit-featured-img-wrapper">
-                                            <div class="pbmit-featured-wrapper">
-                                                <img src="{{asset('storage')}}/{{$categories->pro_cat_image}}"
-                                                    alt="{{$categories->pro_cat_name ?? ''}}" class="img-fluid product-image"
-                                                    alt="service-01">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="pbmit-service-icon elementor-icon">
-                                        <i class=""></i>
-                                    </div>
-                                    <div class="pbmit-content-box">
-                                        <div class="pbmit-serv-cat">
-                                            <a href="#" rel="tag">Kitchen</a>
-                                        </div>
-                                        <h3 class="pbmit-service-title">
-                                            <a
-                                                href="/product_category/{{$categories->id ?? ''}}">{{$categories->pro_cat_name ?? ''}}</a>
-                                        </h3>
-                                        <div class="pbmit-service-description">
-                                            <p>{{$categories->pro_cat_description ?? "Add description by editing 'product category description' "}}.
-                                            </p>
-                                        </div>
+                @foreach ($latest_categories as $categories)
+                <!-- Slide -->
+                <article class="pbmit-ele-service pbmit-service-style-2 swiper-slide">
+                    <div class="pbminfotech-post-item">
+                        <div class="pbminfotech-box-content">
+                            <div class="pbmit-service-image-wrapper">
+                                <div class="pbmit-featured-img-wrapper">
+                                    <div class="pbmit-featured-wrapper">
+                                        <img src="{{asset('storage')}}/{{$categories->pro_cat_image}}"
+                                            alt="{{$categories->pro_cat_name ?? ''}}" class="img-fluid product-image">
                                     </div>
                                 </div>
-                                <a class="pbmit-service-btn" href="/product_category/{{$categories->id ?? ''}}"
-                                    title="Transforming Rooms">
-                                    <span class="pbmit-button-icon">
-                                        <i class="pbmit-base-icon-pbmit-up-arrow"></i>
-                                    </span>
-                                </a>
                             </div>
-                        </article>
-                    @endforeach
+                            <div class="pbmit-content-box">
+                                <div class="pbmit-serv-cat">
+                                    <a href="#" rel="tag">Kitchen</a>
+                                </div>
+                                <h3 class="pbmit-service-title">
+                                    <a href="/product_category/{{$categories->id ?? ''}}">
+                                        {{$categories->pro_cat_name ?? ''}}
+                                    </a>
+                                </h3>
+                                <div class="pbmit-service-description">
+                                    <p>{{$categories->pro_cat_description ?? "Add description by editing 'product category description' "}}.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="pbmit-service-btn" href="/product_category/{{$categories->id ?? ''}}"
+                            title="Transforming Rooms">
+                            <span class="pbmit-button-icon">
+                                <i class="pbmit-base-icon-pbmit-up-arrow"></i>
+                            </span>
+                        </a>
+                    </div>
+                </article>
+                @endforeach
                 @endif
             </div>
         </div>
+
         <div class="text-center">
             <div class="pbmit-service-text">
-                <p>Have a specific need? We can help! <a href="/contact_us"><span class="pbmit-globalcolor">Contact
-                            us</span></a></p>
+                <p>Have a specific need? We can help! <a href="/contact_us"><span class="pbmit-globalcolor">Contact us</span></a></p>
             </div>
         </div>
     </div>
@@ -905,40 +937,40 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                 <div class="row">
                     <div class="blog-one-left-col">
                         @foreach ($blogPosts as $post)
-                                <article class="pbmit-ele-blog pbmit-blog-style-2 col-md-12">
-                                    <div class="post-item">
-                                        <div class="pbminfotech-box-content">
-                                            <div class="pbminfotech-content-inner">
-                                                <div class="pbmit-featured-img-wrapper">
-                                                    <div class="pbmit-featured-wrapper">
-                                                        <img src="{{ url('/storage/' . $post->featured_image) }}"
-                                                            class="img-fluid" alt="">
-                                                    </div>
+                        <article class="pbmit-ele-blog pbmit-blog-style-2 col-md-12">
+                            <div class="post-item">
+                                <div class="pbminfotech-box-content">
+                                    <div class="pbminfotech-content-inner">
+                                        <div class="pbmit-featured-img-wrapper">
+                                            <div class="pbmit-featured-wrapper">
+                                                <img src="{{ url('/storage/' . $post->featured_image) }}"
+                                                    class="img-fluid" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="pbmit-meta-wraper">
+                                            <div class="pbmit-meta-date-wrapper pbmit-meta-line">
+                                                <div class="pbmit-meta-date">
+                                                    <span class="pbmit-post-date">
+                                                        <i class="pbmit-base-icon-calendar-3"></i>{{date("M d, Y", strtotime($post->published_at))}}
+                                                    </span>
                                                 </div>
-                                                <div class="pbmit-meta-wraper">
-                                                    <div class="pbmit-meta-date-wrapper pbmit-meta-line">
-                                                        <div class="pbmit-meta-date">
-                                                            <span class="pbmit-post-date">
-                                                                <i class="pbmit-base-icon-calendar-3"></i>{{date("M d, Y", strtotime($post->published_at))}}
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="pbmit-meta-author pbmit-meta-line">
-                                                        <span class="pbmit-post-author">
-                                                            <i class="pbmit-base-icon-user-3"></i>
-                                                            <span>By</span>admin
-                                                        </span>
-                                                    </div>
-                                                    <div class="pbmit-content-wrapper">
-                                                        <h3 class="pbmit-post-title">
-                                                            <a href="/blog_detail/{{$post->id}}">{{$post->title??""}}</a>
-                                                        </h3>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                            <div class="pbmit-meta-author pbmit-meta-line">
+                                                <span class="pbmit-post-author">
+                                                    <i class="pbmit-base-icon-user-3"></i>
+                                                    <span>By</span>admin
+                                                </span>
+                                            </div>
+                                            <div class="pbmit-content-wrapper">
+                                                <h3 class="pbmit-post-title">
+                                                    <a href="/blog_detail/{{$post->id}}">{{$post->title??""}}</a>
+                                                </h3>
                                             </div>
                                         </div>
                                     </div>
-                                </article>
+                                </div>
+                            </div>
+                        </article>
                         @endforeach
 
 
@@ -1023,12 +1055,12 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
 
                         </div>
                         <?php
-if (!empty(Session::get('errors'))) {
-    $er = get_object_vars(json_decode(Session::get("errors")));
-    foreach ($er as $key => $value) {
-        echo '<div class="alert alert-danger">' . $value[0] . '</div>';
-    }
-}
+                        if (!empty(Session::get('errors'))) {
+                            $er = get_object_vars(json_decode(Session::get("errors")));
+                            foreach ($er as $key => $value) {
+                                echo '<div class="alert alert-danger">' . $value[0] . '</div>';
+                            }
+                        }
                         ?>
                         <form class="contact-form" method="post" action="/storeQuery">
                             @csrf
@@ -1090,4 +1122,17 @@ if (!empty(Session::get('errors'))) {
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var swiper = new Swiper('.slider2', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+                nextEl: '.nex',
+                prevEl: '.previ',
+            }
+        });
+    });
+</script>
 @endsection

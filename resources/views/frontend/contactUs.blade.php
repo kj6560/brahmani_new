@@ -2,15 +2,17 @@
 @section('content')
 @php
 $page_data = $settings['page_data'] ?? null;
-$banner = !empty($page_data->page_banner) 
-    ? asset("storage/".$page_data->page_banner) 
-    : asset("brahmani_frontend_assets/images/bg/titlebar-img.jpg");
+$banner = !empty($page_data->page_banner)
+? asset("storage/".$page_data->page_banner)
+: asset("brahmani_frontend_assets/images/bg/titlebar-img.jpg");
 @endphp
 
 <style>
-    .pbmit-title-bar-wrapper {
-        background-image: url('{{ $banner }}');
-    }
+	.pbmit-title-bar-wrapper {
+		background-image: url('{{ $banner }}');
+		max-height: 600px !important;
+		padding-top: 100px;
+	}
 </style>
 <!-- Title Bar -->
 <div class="pbmit-title-bar-wrapper">
@@ -56,7 +58,7 @@ $banner = !empty($page_data->page_banner)
 									<h4 class="pbmit-subtitle">Contact Us</h4>
 									<h2 class="pbmit-title">Happy to answer all your questions</h2>
 									<div class="pbmit-heading-desc">
-									Whether you're a homeowner, contractor, or architect, we're here to help. Get in touch with Brahmani Enterprises for inquiries, quotes, and expert consultations on all your construction material needs and project solutions.
+										Whether you're a homeowner, contractor, or architect, we're here to help. Get in touch with Brahmani Enterprises for inquiries, quotes, and expert consultations on all your construction material needs and project solutions.
 									</div>
 								</div>
 							</div>
@@ -69,20 +71,20 @@ $banner = !empty($page_data->page_banner)
 
 							</div>
 							<?php
-                            if(!empty(Session::get('errors'))){
-                                $er = get_object_vars(json_decode(Session::get("errors")));
-                                foreach($er as $key => $value){
-                                    echo '<div class="alert alert-danger">'.$value[0].'</div>';
-                                }
-                            }
-                        ?>
+							if (!empty(Session::get('errors'))) {
+								$er = get_object_vars(json_decode(Session::get("errors")));
+								foreach ($er as $key => $value) {
+									echo '<div class="alert alert-danger">' . $value[0] . '</div>';
+								}
+							}
+							?>
 							<form class="contact-form" method="post" action="/storeQuery">
 								@csrf
 								<div style="display: none;">
 									<input type="text" name="address" value="">
 								</div>
 								<div class="row">
-									
+
 									<div class="col-md-6">
 										<input type="text" class="form-control" placeholder="Your Name *" name="name"
 											value="{{old('name') ?? ''}}" required>
@@ -129,7 +131,7 @@ $banner = !empty($page_data->page_banner)
 	<section class="section-xl">
 		<div class="container-fluid">
 			<div class="iframe-area">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.284474292564!2d73.1693684!3d22.342885000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8d81649c68b%3A0xd37951746ee47c7f!2sBrahmani%20Enterprise%20(PVC%20Panels)!5e0!3m2!1sen!2sin!4v1736101539751!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.284474292564!2d73.1693684!3d22.342885000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8d81649c68b%3A0xd37951746ee47c7f!2sBrahmani%20Enterprise%20(PVC%20Panels)!5e0!3m2!1sen!2sin!4v1736101539751!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 			</div>
 		</div>
 	</section>

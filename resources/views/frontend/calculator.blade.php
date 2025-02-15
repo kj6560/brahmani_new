@@ -8,6 +8,11 @@ $banner = !empty($page_data->page_banner)
 
 @endphp
 <style>
+    .pbmit-title-bar-wrapper {
+        background-image: url('{{ $banner }}');
+		max-height: 600px !important;
+		padding-top: 100px;
+    }
     /* Centering container */
     .container {
         display: flex;

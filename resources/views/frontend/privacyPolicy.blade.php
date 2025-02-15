@@ -10,6 +10,8 @@ $banner = !empty($page_data->page_banner)
 <style>
     .pbmit-title-bar-wrapper {
         background-image: url('{{ $banner }}');
+		max-height: 600px !important;
+		padding-top: 100px;
     }
     .header-style-1{
 		position: relative;

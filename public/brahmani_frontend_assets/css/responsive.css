@@ -3223,6 +3223,7 @@ body {
 	}
 	.pbmit-slider-item{
 		max-height: 600px !important; 
+		margin-top: 100px;
 	}
 	/*=== Section-Title ===*/
 	.pbmit-heading-subheading .pbmit-title {
@@ -3787,6 +3788,7 @@ body {
 	}
 	.pbmit-slider-item .pbmit-title-bar-wrapper{
 		max-height: 600px !important; 
+		margin-top: 100px;
 	}
 	.about-us-five-bg .ihbox-style-area {
 		display: none;
@@ -3799,6 +3801,7 @@ body {
 	}
 	.pbmit-slider-item .pbmit-title-bar-wrapper .pbmit-title-bar-wrapper{
 		max-height: 600px !important; 
+		margin-top: 100px;
 	}
 	/*=== Header ===*/
 	.site-header .pbmit-header-search-btn a {
@@ -3882,7 +3885,8 @@ body {
 		max-width: 60px !important;
 	}
 	.pbmit-slider-item .pbmit-title-bar-wrapper{
-		max-height: 600px;
+		max-height: 600px !important;
+		margin-top: 100px;
 	}
 	.pbmit-slider-two .pbmit-slider-content {
 		text-align: center;
@@ -3907,7 +3911,8 @@ body {
 		max-width: 60px !important;
 	}
 	.pbmit-slider-item .pbmit-title-bar-wrapper{
-		max-height: 600px;
+		max-height: 600px !important;
+		margin-top: 100px;
 	}
 	/*=== Homepage 02 ===*/
 	.pbmit-ihbox-style-7 .pbmit-icon-wrapper {
@@ -3930,7 +3935,8 @@ body {
 		max-width: 50px !important;
 	}
 	.pbmit-slider-item .pbmit-title-bar-wrapper{
-		max-height: 600px;
+		max-height: 600px !important;
+		margin-top: 100px;
 	}
 	/*=== Banner Slider ===*/
 	.pbmit-slider-one .pbmit-title {

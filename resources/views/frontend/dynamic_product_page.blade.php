@@ -19,6 +19,7 @@
     .thumbnail.active {
         opacity: 1;
     }
+    
 </style>
 @php
     $page_data = $settings['page_data'] ?? null;
@@ -30,6 +31,8 @@
 <style>
     .pbmit-title-bar-wrapper {
         background-image: url('{{ $banner }}');
+		max-height: 600px !important;
+		padding-top: 100px;
     }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
