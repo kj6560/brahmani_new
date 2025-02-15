@@ -50,12 +50,16 @@ $banner = !empty($page_data->page_banner)
 <div class="page-content about-us">
 
     <div class="container my-5">
-        @foreach($allUrls as $file=>$urls)
-        <h5>{{$file}}</h5>
-        @foreach($urls as $url)
-        <h6>{{$url}}</h6>
-        @endforeach
-        @endforeach
+        <div class="col">
+            @foreach($allUrls as $file=>$urls)
+            <ul>
+                <label>{{$file}}</label>
+                @foreach($urls as $url)
+                <li>{{$url}}</li>
+                @endforeach
+            </ul>
+            @endforeach
+        </div>
 
     </div>
 
