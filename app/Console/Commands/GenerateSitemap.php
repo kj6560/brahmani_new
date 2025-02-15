@@ -36,10 +36,10 @@ class GenerateSitemap extends Command
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>{$baseUrl}/sitemap-pages.xml</loc>
+        <url><loc>{$baseUrl}/sitemap-pages.xml</loc></url>
     </sitemap>
     <sitemap>
-        <loc>{$baseUrl}/sitemap-products.xml</loc>
+    <url><loc>{$baseUrl}/sitemap-products.xml</loc></url>
     </sitemap>
 </sitemapindex>
 XML;

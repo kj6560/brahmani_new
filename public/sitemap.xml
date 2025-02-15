@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>https://brahmanienterprise.co.in/sitemap-pages.xml</loc>
+        <url><loc>https://brahmanienterprise.co.in/sitemap-pages.xml</loc></url>
     </sitemap>
     <sitemap>
-        <loc>https://brahmanienterprise.co.in/sitemap-products.xml</loc>
+    <url><loc>https://brahmanienterprise.co.in/sitemap-products.xml</loc></url>
     </sitemap>
 </sitemapindex>

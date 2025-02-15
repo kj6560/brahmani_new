@@ -38,7 +38,46 @@ class SiteController extends Controller
     }
     public function sitemap(Request $request)
     {
-        return view('frontend.sitemap', ['settings' => $request->settings]);
+        $sitemapUrls = $this->getSitemapUrls(public_path('sitemap.xml'));
+        $allurls = [];
+        foreach ($sitemapUrls as $urls) {
+            $url = explode("https://brahmanienterprise.co.in/", $urls)[1];
+            $allurls[$url] = $this->getSitemapUrls1(public_path($url));
+        }
+        return view('frontend.sitemap', ['settings' => $request->settings,'allUrls'=>$allurls]);
+    }
+    public function getSitemapUrls($sitemapPath)
+    {
+        if (!file_exists($sitemapPath)) {
+            return ['error' => 'Sitemap file not found'];
+        }
+
+        // Load the sitemap XML
+        $xml = simplexml_load_file($sitemapPath);
+        $urls = [];
+
+        // Extract all <loc> values
+        foreach ($xml->sitemap as $sitemap) {
+            $urls[] = (string) $sitemap->url->loc;
+        }
+
+        return $urls;
+    }
+    public function getSitemapUrls1($sitemapPath)
+    {
+        if (!file_exists($sitemapPath)) {
+            return ['error' => 'Sitemap file not found'];
+        }
+
+        // Load the sitemap XML
+        $xml = simplexml_load_file($sitemapPath);
+        $urls = [];
+
+        // Extract all <loc> values
+        foreach ($xml->url as $sitemap) {
+            $urls[] = (string)$sitemap->loc;
+        }
+        return $urls;
     }
     public function testimonial(Request $request)
     {
