@@ -5,6 +5,7 @@
 $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->page_sliders) : [];
 ?>
 <style>
+
     .product-image {
         max-height: 400px;
         object-fit: cover;
@@ -1117,7 +1118,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
         <div class="iframe-area">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.284474292564!2d73.1693684!3d22.342885000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8d81649c68b%3A0xd37951746ee47c7f!2sBrahmani%20Enterprise%20(PVC%20Panels)!5e0!3m2!1sen!2sin!4v1736101539751!5m2!1sen!2sin"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                width="600" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
