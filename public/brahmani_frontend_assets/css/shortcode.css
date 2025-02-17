@@ -1763,6 +1763,7 @@ body {
 @media(min-width:1500px) {
 	.pbmit-slider-item{
 		min-height: 750px !important;
+		margin-top: 150px;
 	}
 }
 /** Style 2 **/
