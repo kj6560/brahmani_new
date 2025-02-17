@@ -5,7 +5,6 @@
 $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->page_sliders) : [];
 ?>
 <style>
-
     .product-image {
         max-height: 400px;
         object-fit: cover;
@@ -50,8 +49,9 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             <?php $sliderUrl = asset('storage') . "/" . $slider ?>
             <div class="swiper-slide">
                 <div class="pbmit-slider-item">
-                    <img src="{{$sliderUrl}}" alt="Slider Image">
-                    
+                    <div class="pbmit-slider-bg img-fluid" style="background-image: url({{$sliderUrl}});">
+                    </div>
+
                 </div>
             </div>
             @endforeach
