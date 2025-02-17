@@ -934,7 +934,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             </div>
         </div>
         <div class="row g-0 align-items-center">
-            <div class="col-md-12 col-xl-4">
+            <div class="col-md-12 col-xl-4 col-12">
                 <div class="row">
                     <div class="blog-one-left-col">
                         @foreach ($blogPosts as $post)
@@ -978,7 +978,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-xl-8">
+            <div class="col-md-12 col-xl-8 col-12">
                 <div class="blog-one-right-col">
                     <article class="pbmit-ele-blog pbmit-blog-style-3">
                         <div class="post-item d-flex">
