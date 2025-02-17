@@ -337,39 +337,41 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                 @if (!empty($latest_categories) && count($latest_categories) > 0)
                 @foreach ($latest_categories as $categories)
                 <!-- Slide -->
-                <article class="pbmit-ele-service pbmit-service-style-2 swiper-slide">
-                    <div class="pbminfotech-post-item">
-                        <div class="pbminfotech-box-content">
-                            <div class="pbmit-service-image-wrapper">
-                                <div class="pbmit-featured-img-wrapper">
-                                    <div class="pbmit-featured-wrapper">
-                                        <img src="{{asset('storage')}}/{{$categories->pro_cat_image}}"
-                                            alt="{{$categories->pro_cat_name ?? ''}}" class="img-fluid product-image">
+                <div class="col">
+                    <article class="pbmit-ele-service pbmit-service-style-2 swiper-slide">
+                        <div class="pbminfotech-post-item">
+                            <div class="pbminfotech-box-content">
+                                <div class="pbmit-service-image-wrapper">
+                                    <div class="pbmit-featured-img-wrapper">
+                                        <div class="pbmit-featured-wrapper">
+                                            <img src="{{asset('storage')}}/{{$categories->pro_cat_image}}"
+                                                alt="{{$categories->pro_cat_name ?? ''}}" class="img-fluid product-image">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pbmit-content-box">
+                                    <div class="pbmit-serv-cat">
+                                        <a href="#" rel="tag">Kitchen</a>
+                                    </div>
+                                    <h3 class="pbmit-service-title">
+                                        <a href="/product_category/{{$categories->id ?? ''}}">
+                                            {{$categories->pro_cat_name ?? ''}}
+                                        </a>
+                                    </h3>
+                                    <div class="pbmit-service-description">
+                                        <p>{{$categories->pro_cat_description ?? "Add description by editing 'product category description' "}}.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="pbmit-content-box">
-                                <div class="pbmit-serv-cat">
-                                    <a href="#" rel="tag">Kitchen</a>
-                                </div>
-                                <h3 class="pbmit-service-title">
-                                    <a href="/product_category/{{$categories->id ?? ''}}">
-                                        {{$categories->pro_cat_name ?? ''}}
-                                    </a>
-                                </h3>
-                                <div class="pbmit-service-description">
-                                    <p>{{$categories->pro_cat_description ?? "Add description by editing 'product category description' "}}.</p>
-                                </div>
-                            </div>
+                            <a class="pbmit-service-btn" href="/product_category/{{$categories->id ?? ''}}"
+                                title="Transforming Rooms">
+                                <span class="pbmit-button-icon">
+                                    <i class="pbmit-base-icon-pbmit-up-arrow"></i>
+                                </span>
+                            </a>
                         </div>
-                        <a class="pbmit-service-btn" href="/product_category/{{$categories->id ?? ''}}"
-                            title="Transforming Rooms">
-                            <span class="pbmit-button-icon">
-                                <i class="pbmit-base-icon-pbmit-up-arrow"></i>
-                            </span>
-                        </a>
-                    </div>
-                </article>
+                    </article>
+                </div>
                 @endforeach
                 @endif
             </div>
