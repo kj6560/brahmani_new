@@ -40,37 +40,38 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
         /* Move right button outside */
     }
 </style>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100"
-                src="https://brahmanienterprise.co.in/storage/uploads/1735544202_demo1-slide-03.jpg"
-                alt="First slide">
+<div class="pbmit-slider-area pbmit-slider-one">
+    <div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="true" data-arrows="false"
+        data-columns="1" data-margin="0" data-effect="fade">
+        <div class="swiper-wrapper">
+            <!-- Slide1 -->
+            @foreach ($sliders as $slider)
+            <?php $sliderUrl = asset('storage') . "/" . $slider ?>
+            <div class="swiper-slide">
+                <div class="pbmit-slider-item">
+                    <div class="pbmit-slider-bg img-fluid" style="background-image: url({{$sliderUrl}});">
+                    </div>
+
+                </div>
+            </div>
+            @endforeach
+
         </div>
-        <div class="carousel-item">
-            <img class="d-block w-100"
-                src="https://brahmanienterprise.co.in/storage/uploads/1735544202_demo1-slide-03.jpg"
-                alt="Second slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100"
-                src="https://brahmanienterprise.co.in/storage/uploads/1735544202_demo1-slide-03.jpg"
-                alt="Third slide">
+        <div class="pbmit-slider-dots-corner">
+            <div class="pbmit-sticky-corner pbmit-top-right-corner">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg"
+                    data-stylerecorder="true">
+                    <path d="M20 20V0C20 16 16 20 0 20H20Z" fill="red" data-stylerecorder="true"></path>
+                </svg>
+            </div>
+            <div class="pbmit-sticky-corner pbmit-bottom-left-corner">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg"
+                    data-stylerecorder="true">
+                    <path d="M20 20V0C20 16 16 20 0 20H20Z" fill="red" data-stylerecorder="true"></path>
+                </svg>
+            </div>
         </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
 </div>
 
 <!-- About -->
