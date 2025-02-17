@@ -331,13 +331,13 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             <button class="swiper-button-next nex">›</button>
         </div>
 
-        <div class="swiper-slider slider2" data-autoplay="false" data-loop="true" data-dots="false" data-arrows="false"
-            data-columns="3" data-margin="30" data-effect="slide">
-            <div class="swiper-wrapper">
-                @if (!empty($latest_categories) && count($latest_categories) > 0)
-                @foreach ($latest_categories as $categories)
-                <!-- Slide -->
-                <div class="col">
+        <div class="col">
+            <div class="swiper-slider slider2" data-autoplay="false" data-loop="true" data-dots="false" data-arrows="false"
+                data-columns="3" data-margin="30" data-effect="slide">
+                <div class="swiper-wrapper">
+                    @if (!empty($latest_categories) && count($latest_categories) > 0)
+                    @foreach ($latest_categories as $categories)
+                    <!-- Slide -->
                     <article class="pbmit-ele-service pbmit-service-style-2 swiper-slide">
                         <div class="pbminfotech-post-item">
                             <div class="pbminfotech-box-content">
@@ -371,9 +371,9 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                             </a>
                         </div>
                     </article>
+                    @endforeach
+                    @endif
                 </div>
-                @endforeach
-                @endif
             </div>
         </div>
 
