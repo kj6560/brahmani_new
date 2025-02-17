@@ -5545,8 +5545,8 @@ body {
 .pbmit-slider-one .pbmit-slider-item{
 	display: flex;
 	align-items: center;
-	background-color: rgba(64, 50, 38, 0.2);
-	min-height: 700px;
+	/* background-color: rgba(64, 50, 38, 0.2); */
+	min-height: calc(100vh);
 	/* width: calc(100vw);
 	min-height: calc(100vh); */
 }
