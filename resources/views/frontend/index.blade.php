@@ -51,7 +51,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             <div class="swiper-slide">
                 <div class="pbmit-slider-item">
                     <img src="{{$sliderUrl}}" class="pbmit-slider-bg img-fluid w-100" alt="Slider Image">
-                    <div class="container">
+                    <!-- <div class="container">
                         <div class="row text-center">
                             <div class="col-md-12">
                                 <div class="pbmit-slider-content">
@@ -69,7 +69,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             @endforeach
