@@ -39,85 +39,59 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
         right: -5px;
         /* Move right button outside */
     }
-
-    .carousel-container {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-    }
-
-    .carousel {
-        display: flex;
-        height: 100%;
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .slide {
-        min-width: 100vw;
-        height: 100vh;
-    }
-
-    .slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .prev,
-    .next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-    }
-
-    .prev {
-        left: 10px;
-    }
-
-    .next {
-        right: 10px;
-    }
 </style>
-
-<div class="container">
-    <div class="carousel-container">
-        <div class="carousel">
+<div class="pbmit-slider-area pbmit-slider-one">
+    <div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="true" data-arrows="false"
+        data-columns="1" data-margin="0" data-effect="fade">
+        <div class="swiper-wrapper">
+            <!-- Slide1 -->
             @foreach ($sliders as $slider)
-            <?php $sliderUrl = asset('storage') . "/" . $slider;
-            ?>
-            <div class="slide">
-                <img src="{{$sliderUrl}}" alt="Slide 1">
-                <div class="container">
-                    <div class="row text-center">
-                        <div class="col-md-12">
-                            <div class="pbmit-slider-content text-center">
-                                <h5 class="pbmit-sub-title transform-top transform-delay-1">Build Smart.</h5>
-                                <h2 class="pbmit-title transform-bottom-1 transform-delay-2">
-                                    Innovative Materials<br> Lasting Impact.
-                                </h2>
-                                <div class="pbmit-button transform-bottom-1 transform-delay-3">
-                                    <a class="pbmit-btn pbmit-btn-outline" href="/contact_us">
-                                        <span class="pbmit-button-content-wrapper">
-                                            <span class="pbmit-button-text">Raise A Query</span>
-                                        </span>
-                                    </a>
+            <?php $sliderUrl = asset('storage') . "/" . $slider ?>
+            <div class="swiper-slide">
+                <div class="pbmit-slider-item">
+                    <div class="pbmit-slider-bg img-fluid" style="background-image: url({{$sliderUrl}});">
+                    </div>
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-md-12">
+                                <div class="pbmit-slider-content">
+                                    <h5 class="pbmit-sub-title transform-top transform-delay-1">Build Smart.</h5>
+                                    <h2 class="pbmit-title transform-bottom-1 transform-delay-2">
+                                        Innovative Materials<br> Lasting Impact.
+                                    </h2>
+                                    <div class="pbmit-button transform-bottom-1 transform-delay-3">
+                                        <a class="pbmit-btn pbmit-btn-outline" href="/contact_us">
+                                            <span class="pbmit-button-content-wrapper">
+                                                <span class="pbmit-button-text">Raise A Query</span>
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             @endforeach
+
+        </div>
+        <div class="pbmit-slider-dots-corner">
+            <div class="pbmit-sticky-corner pbmit-top-right-corner">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg"
+                    data-stylerecorder="true">
+                    <path d="M20 20V0C20 16 16 20 0 20H20Z" fill="red" data-stylerecorder="true"></path>
+                </svg>
+            </div>
+            <div class="pbmit-sticky-corner pbmit-bottom-left-corner">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg"
+                    data-stylerecorder="true">
+                    <path d="M20 20V0C20 16 16 20 0 20H20Z" fill="red" data-stylerecorder="true"></path>
+                </svg>
+            </div>
         </div>
     </div>
 </div>
+
 <!-- About -->
 <section class="section-xl">
     <div class="container">
@@ -1161,16 +1135,5 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             }
         });
     });
-</script>
-<script>
-    let index = 0;
-    const slides = document.querySelectorAll(".slide");
-    const totalSlides = slides.length;
-
-    function moveSlide(step) {
-        index = (index + step + totalSlides) % totalSlides;
-        document.querySelector(".carousel").style.transform = `translateX(-${index * 100}%)`;
-    }
-    setInterval(() => moveSlide(1), 3000);
 </script>
 @endsection
