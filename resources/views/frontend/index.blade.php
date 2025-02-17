@@ -331,49 +331,47 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             <button class="swiper-button-next nex">›</button>
         </div>
 
-        <div class="col">
-            <div class="swiper-slider slider2" data-autoplay="false" data-loop="true" data-dots="false" data-arrows="false"
-                data-columns="3" data-margin="30" data-effect="slide">
-                <div class="swiper-wrapper">
-                    @if (!empty($latest_categories) && count($latest_categories) > 0)
-                    @foreach ($latest_categories as $categories)
-                    <!-- Slide -->
-                    <article class="pbmit-ele-service pbmit-service-style-2 swiper-slide">
-                        <div class="pbminfotech-post-item">
-                            <div class="pbminfotech-box-content">
-                                <div class="pbmit-service-image-wrapper">
-                                    <div class="pbmit-featured-img-wrapper">
-                                        <div class="pbmit-featured-wrapper">
-                                            <img src="{{asset('storage')}}/{{$categories->pro_cat_image}}"
-                                                alt="{{$categories->pro_cat_name ?? ''}}" class="img-fluid product-image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pbmit-content-box">
-                                    <div class="pbmit-serv-cat">
-                                        <a href="#" rel="tag">Kitchen</a>
-                                    </div>
-                                    <h3 class="pbmit-service-title">
-                                        <a href="/product_category/{{$categories->id ?? ''}}">
-                                            {{$categories->pro_cat_name ?? ''}}
-                                        </a>
-                                    </h3>
-                                    <div class="pbmit-service-description">
-                                        <p>{{$categories->pro_cat_description ?? "Add description by editing 'product category description' "}}.</p>
+        <div class="swiper-slider slider2" data-autoplay="false" data-loop="true" data-dots="false" data-arrows="false"
+            data-columns="3" data-margin="30" data-effect="slide">
+            <div class="swiper-wrapper">
+                @if (!empty($latest_categories) && count($latest_categories) > 0)
+                @foreach ($latest_categories as $categories)
+                <!-- Slide -->
+                <article class="pbmit-ele-service pbmit-service-style-2 swiper-slide">
+                    <div class="pbminfotech-post-item">
+                        <div class="pbminfotech-box-content">
+                            <div class="pbmit-service-image-wrapper">
+                                <div class="pbmit-featured-img-wrapper">
+                                    <div class="pbmit-featured-wrapper">
+                                        <img src="{{asset('storage')}}/{{$categories->pro_cat_image}}"
+                                            alt="{{$categories->pro_cat_name ?? ''}}" class="img-fluid product-image">
                                     </div>
                                 </div>
                             </div>
-                            <a class="pbmit-service-btn" href="/product_category/{{$categories->id ?? ''}}"
-                                title="Transforming Rooms">
-                                <span class="pbmit-button-icon">
-                                    <i class="pbmit-base-icon-pbmit-up-arrow"></i>
-                                </span>
-                            </a>
+                            <div class="pbmit-content-box">
+                                <div class="pbmit-serv-cat">
+                                    <a href="#" rel="tag">Kitchen</a>
+                                </div>
+                                <h3 class="pbmit-service-title">
+                                    <a href="/product_category/{{$categories->id ?? ''}}">
+                                        {{$categories->pro_cat_name ?? ''}}
+                                    </a>
+                                </h3>
+                                <div class="pbmit-service-description">
+                                    <p>{{$categories->pro_cat_description ?? "Add description by editing 'product category description' "}}.</p>
+                                </div>
+                            </div>
                         </div>
-                    </article>
-                    @endforeach
-                    @endif
-                </div>
+                        <a class="pbmit-service-btn" href="/product_category/{{$categories->id ?? ''}}"
+                            title="Transforming Rooms">
+                            <span class="pbmit-button-icon">
+                                <i class="pbmit-base-icon-pbmit-up-arrow"></i>
+                            </span>
+                        </a>
+                    </div>
+                </article>
+                @endforeach
+                @endif
             </div>
         </div>
 
@@ -1134,6 +1132,26 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                 nextEl: '.nex',
                 prevEl: '.previ',
             }
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var swiper = new Swiper(".swiper-slider", {
+            slidesPerView: window.innerWidth < 768 ? 1 : 3, // 1 for mobile, 3 for desktop
+            spaceBetween: 30,
+            loop: true,
+            autoplay: false,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        // Update on window resize
+        window.addEventListener("resize", function() {
+            swiper.params.slidesPerView = window.innerWidth < 768 ? 1 : 3;
+            swiper.update();
         });
     });
 </script>
