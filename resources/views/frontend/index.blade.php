@@ -1137,7 +1137,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var swiper = new Swiper(".swiper-slider", {
+        var swiper = new Swiper(".slider2", {
             slidesPerView: window.innerWidth < 768 ? 1 : 3, // 1 for mobile, 3 for desktop
             spaceBetween: 30,
             loop: true,
