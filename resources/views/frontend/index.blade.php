@@ -49,8 +49,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             <?php $sliderUrl = asset('storage') . "/" . $slider ?>
             <div class="swiper-slide">
                 <div class="pbmit-slider-item">
-                    <div class="pbmit-slider-bg img-fluid" style="background-image: url({{$sliderUrl}});">
-                    </div>
+                    <img src="{{$sliderUrl}}" class="pbmit-slider-bg img-fluid w-100" alt="Slider Image">
                     <div class="container">
                         <div class="row text-center">
                             <div class="col-md-12">
