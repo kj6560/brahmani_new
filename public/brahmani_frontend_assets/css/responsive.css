@@ -4659,6 +4659,12 @@ body {
 }
 
 @media (min-width: 768px) {
+	.pbmit-bg-image {
+        height: 250px; /* Reduce height on mobile */
+    }
+    .pbmit-featured-wrapper img {
+        height: auto; /* Ensure proportional scaling */
+    }
 	.Logo {
 		max-width: 70px !important;
 	}
