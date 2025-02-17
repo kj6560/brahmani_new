@@ -51,25 +51,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             <div class="swiper-slide">
                 <div class="pbmit-slider-item">
                     <img src="{{$sliderUrl}}" class="pbmit-slider-bg img-fluid w-100" alt="Slider Image">
-                    <!-- <div class="container">
-                        <div class="row text-center">
-                            <div class="col-md-12">
-                                <div class="pbmit-slider-content">
-                                    <h5 class="pbmit-sub-title transform-top transform-delay-1">Build Smart.</h5>
-                                    <h2 class="pbmit-title transform-bottom-1 transform-delay-2">
-                                        Innovative Materials<br> Lasting Impact.
-                                    </h2>
-                                    <div class="pbmit-button transform-bottom-1 transform-delay-3">
-                                        <a class="pbmit-btn pbmit-btn-outline" href="/contact_us">
-                                            <span class="pbmit-button-content-wrapper">
-                                                <span class="pbmit-button-text">Raise A Query</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+                    
                 </div>
             </div>
             @endforeach
@@ -978,7 +960,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-xl-8 col-12">
+            <div class="col-md-12 col-xl-8 col">
                 <div class="blog-one-right-col">
                     <article class="pbmit-ele-blog pbmit-blog-style-3">
                         <div class="post-item d-flex">
