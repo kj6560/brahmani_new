@@ -5546,9 +5546,8 @@ body {
 	display: flex;
 	align-items: center;
 	background-color: rgba(64, 50, 38, 0.2);
-	min-height: calc(110vh);
+	min-height: calc(130vh);
 	width: calc(100vw);
-	margin-top: 130px;
 	/* width: calc(100vw);
 	min-height: calc(100vh); */
 }
