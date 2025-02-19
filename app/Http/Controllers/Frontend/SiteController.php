@@ -44,7 +44,7 @@ class SiteController extends Controller
             $url = explode("https://brahmanienterprise.co.in/", $urls)[1];
             $allurls[$url] = $this->getSitemapUrls1(public_path($url));
         }
-        return view('frontend.sitemap', ['settings' => $request->settings,'allUrls'=>$allurls]);
+        return view('frontend.sitemap', ['settings' => $request->settings, 'allUrls' => $allurls]);
     }
     public function getSitemapUrls($sitemapPath)
     {
@@ -75,7 +75,7 @@ class SiteController extends Controller
 
         // Extract all <loc> values
         foreach ($xml->url as $sitemap) {
-            $urls[] = (string)$sitemap->loc;
+            $urls[] = (string) $sitemap->loc;
         }
         return $urls;
     }
@@ -340,24 +340,101 @@ class SiteController extends Controller
     }
     public function calculate(Request $request)
     {
-        $data = $request->all();
-        $request->validate([
-            'unit' => 'required|numeric',
-            'panel_height' => 'required|numeric',
-            'panel_width' => 'required|numeric',
-            'wall_height' => 'required|numeric',
-            'wall_width' => 'required|numeric',
+        // Get panel dimensions
+        $panel_width = $this->convertToMeters($request->panel_width, $request->panel_width_unit);
+        $panel_height = $this->convertToMeters($request->panel_height, $request->panel_height_unit);
+        $panel_area = $panel_width * $panel_height;
+    
+        $panel_width_unit = $request->panel_width_unit;
+        $panel_height_unit = $request->panel_height_unit;
+    
+        // Get wall dimensions
+        $wall_widths = $request->wall_width;
+        $wall_width_units = $request->wall_width_unit;
+        $wall_heights = $request->wall_height;
+        $wall_height_units = $request->wall_height_unit;
+    
+        $total_wall_area = 0;
+        $wall_panel_data = [];
+    
+        // Calculate total wall area and per-wall panel requirement
+        for ($i = 0; $i < count($wall_widths); $i++) {
+            $wall_width_m = $this->convertToMeters($wall_widths[$i], $wall_width_units[$i]);
+            $wall_height_m = $this->convertToMeters($panel_height > $wall_heights[$i] ? $panel_height : $wall_heights[$i], $wall_height_units[$i]);
+    
+            // Initial wall area before subtracting obstructions
+            $wall_area = $wall_width_m * $wall_height_m;
+            $obstruction_data = [];
+            $obstruction_area = 0;
+    
+            // Process obstructions for the current wall
+            if (!empty($request->obstructions[$i])) {
+                foreach ($request->obstructions[$i] as $obstruction) {
+                    $obs_width_m = $this->convertToMeters($obstruction['width'], $obstruction['width_unit']);
+                    $obs_height_m = $this->convertToMeters($obstruction['height'], $obstruction['height_unit']);
+                    $obs_area = $obs_width_m * $obs_height_m;
+                    $obstruction_area += $obs_area;
+    
+                    $obstruction_data[] = [
+                        'width' => $obstruction['width'],
+                        'width_unit' => $obstruction['width_unit'],
+                        'height' => $obstruction['height'],
+                        'height_unit' => $obstruction['height_unit'],
+                        'area' => $obs_area,
+                    ];
+                }
+            }
+    
+            // Subtract obstruction area from the wall area
+            $net_wall_area = max(0, $wall_area - $obstruction_area);
+            $total_wall_area += $net_wall_area;
+            $panels_required = ceil($net_wall_area / $panel_area);
+    
+            $wall_panel_data[] = [
+                'width' => $wall_widths[$i],
+                'width_unit' => $wall_width_units[$i],
+                'height' => $wall_heights[$i],
+                'height_unit' => $wall_height_units[$i],
+                'wall_area' => $wall_area,
+                'obstruction_area' => $obstruction_area,
+                'net_wall_area' => $net_wall_area,
+                'panels_required' => $panels_required,
+                'obstructions' => $obstruction_data,
+            ];
+        }
+    
+        // Calculate total required panels
+        $total_panel_required = ceil($total_wall_area / $panel_area);
+        $used_panel_area = $total_panel_required * $panel_area;
+        $excess_area = $used_panel_area - $total_wall_area;
+    
+        return redirect()->back()->with([
+            'panel_width' => $request->panel_width,
+            'panel_width_unit' => $request->panel_width_unit,
+            'panel_height' => $request->panel_height,
+            'panel_height_unit' => $request->panel_height_unit,
+            'walls' => $wall_panel_data,
+            'panel_area' => $panel_area,
+            'total_wall_area' => $total_wall_area,
+            'total_panel_required' => $total_panel_required,
+            'excess_area' => $excess_area
         ]);
-        $unit = $data['unit'];
-        $panel_height = $data['panel_height'];
-        $panel_width = $data['panel_width'];
-        $wall_height = $data['wall_height'];
-        $wall_width = $data['wall_width'];
-        $panel_area = $panel_height * $panel_width;
-        $wall_area = $wall_height * $wall_width;
-        $panels_required = $wall_area / $panel_area;
-        $panels_required = ceil($panels_required);
-        $excess_area = (ceil($panels_required) * $panel_area) - $wall_area;
-        return view('frontend.calculator', ['settings' => $request->settings, 'unit' => $unit, 'panel_area' => $panel_area, 'wall_area' => $wall_area, 'total_panel_required' => $panels_required, 'excess_area' => $excess_area]);
+    }
+    
+
+    public function convertToMeters($value, $unit)
+    {
+        switch ($unit) {
+            case "mm":
+                return $value / 1000; // Convert mm to meters
+            case "cm":
+                return $value / 100; // Convert cm to meters
+            case "m":
+                return $value; // Already in meters
+            case "ft":
+                return $value * 0.3048; // Convert feet to meters
+            default:
+                return $value; // Invalid unit
+        }
     }
 }
