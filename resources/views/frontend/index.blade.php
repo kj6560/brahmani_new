@@ -47,10 +47,19 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
     }
 </style>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <div class="pbmit-slider-dots-corner">
+        <div class="pbmit-sticky-corner pbmit-top-right-corner">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg"
+                data-stylerecorder="true">
+                <path d="M20 20V0C20 16 16 20 0 20H20Z" fill="red" data-stylerecorder="true"></path>
+            </svg>
+        </div>
+        <div class="pbmit-sticky-corner pbmit-bottom-left-corner">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg"
+                data-stylerecorder="true">
+                <path d="M20 20V0C20 16 16 20 0 20H20Z" fill="red" data-stylerecorder="true"></path>
+            </svg>
+        </div>
     </div>
     <div class="carousel-inner">
         @foreach ($sliders as $slider)
@@ -59,32 +68,8 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             <img src="{{$sliderUrl}}" class="d-block w-100" alt="...">
         </div>
         @endforeach
-        <!-- <div class="carousel-item active">
-            <img src="https://brahmanienterprise.co.in/storage/uploads/1735544202_demo1-slide-03.jpg" class="d-block w-100" alt="...">
 
-        </div>
-        <div class="carousel-item">
-            <img src="https://brahmanienterprise.co.in/storage/uploads/1735544202_demo1-slide-03.jpg" class="d-block w-100" alt="...">
 
-        </div>
-        <div class="carousel-item">
-            <img src="https://brahmanienterprise.co.in/storage/uploads/1735544202_demo1-slide-03.jpg" class="d-block w-100" alt="...">
-
-        </div> -->
-        <div class="pbmit-slider-dots-corner">
-            <div class="pbmit-sticky-corner pbmit-top-right-corner">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg"
-                    data-stylerecorder="true">
-                    <path d="M20 20V0C20 16 16 20 0 20H20Z" fill="red" data-stylerecorder="true"></path>
-                </svg>
-            </div>
-            <div class="pbmit-sticky-corner pbmit-bottom-left-corner">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg"
-                    data-stylerecorder="true">
-                    <path d="M20 20V0C20 16 16 20 0 20H20Z" fill="red" data-stylerecorder="true"></path>
-                </svg>
-            </div>
-        </div>
     </div>
 
 </div>
