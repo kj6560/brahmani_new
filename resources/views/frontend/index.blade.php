@@ -45,6 +45,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             height: 100vh;
         }
     }
+    
 </style>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
     <div class="carousel-indicators">
