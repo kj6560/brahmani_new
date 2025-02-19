@@ -39,24 +39,27 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
         right: -5px;
         /* Move right button outside */
     }
+
+    .carousel img {
+        height: 100vh;
+    }
 </style>
-<div class="pbmit-slider-area pbmit-slider-one">
-    <div class="swiper-slider" data-autoplay="true" data-loop="true" data-dots="true" data-arrows="false"
-        data-columns="1" data-margin="0" data-effect="fade">
-        <div class="swiper-wrapper">
-            <!-- Slide1 -->
-            @foreach ($sliders as $slider)
-            <?php $sliderUrl = asset('storage') . "/" . $slider ?>
-            <div class="swiper-slide">
-                <div class="pbmit-slider-item">
-                    <div class="pbmit-slider-bg img-fluid" style="background-image: url({{$sliderUrl}});">
-                    </div>
-
-                </div>
-            </div>
-            @endforeach
-
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        
+        @foreach ($sliders as $slider)
+        <?php $sliderUrl = asset('storage') . "/" . $slider ?>
+        
+        <div class="carousel-item">
+            <img src="{{$sliderUrl}}" class="d-block w-100" alt="...">
         </div>
+        @endforeach
+
         <div class="pbmit-slider-dots-corner">
             <div class="pbmit-sticky-corner pbmit-top-right-corner">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="" xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +75,9 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
             </div>
         </div>
     </div>
+
 </div>
+
 
 <!-- About -->
 <section class="section-xl">
