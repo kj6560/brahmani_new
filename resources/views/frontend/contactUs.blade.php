@@ -42,14 +42,14 @@ $banner = !empty($page_data->page_banner)
 	<div class="banner_new">
 		<img src="{{ $banner }}" alt="Banner">
 		<div class="banner_new-text">
-		<h1 class="pbmit-tbar-title"> About Us</h1>
+		<h1 class="pbmit-tbar-title"> Contact Us</h1>
 			<span>
 				<a title="" href="/" class="home"><span class="r_text">Home</span></a>
 			</span>
 			<span class="sep">
 				<i class="pbmit-base-icon-angle-right"></i>
 			</span>
-			<span><span class="r_text"> About Us</span></span>
+			<span><span class="r_text"> Contact Us</span></span>
 		</div>
 	</div>
 	<!-- Title Bar End-->
