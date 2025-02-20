@@ -126,7 +126,7 @@ $banner = !empty($page_data->page_banner)
 	<div class="banner_new">
 		<img src="{{ $banner }}" alt="Banner">
 		<div class="banner_new-text">
-		<h1 class="pbmit-tbar-title"> About Us</h1>
+		<h1 class="pbmit-tbar-title">{{$category->pro_cat_name ??"Categories"}}</h1>
 			<span>
 				<a title="" href="/" class="home"><span class="r_text">Home</span></a>
 			</span>
