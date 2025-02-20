@@ -85,8 +85,7 @@ class settings
             $page = Pages::where('page_url', null)->first();
         } else {
             $p_ar = explode("/", $current_url['path']);
-            dd($p_ar);
-            $page = Pages::where('page_url',$p_ar[0])->first();
+            $page = Pages::where('page_url',$p_ar[1])->first();
         }
         if (!empty($page->id)) {
             $allSettings['page_data'] = $page;

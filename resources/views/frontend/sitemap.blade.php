@@ -19,32 +19,52 @@ $banner = !empty($page_data->page_banner)
         margin: 0px 0px 0;
     }
 </style>
-<!-- Title Bar -->
-<div class="pbmit-title-bar-wrapper">
-    <div class="container">
-        <div class="pbmit-title-bar-content">
-            <div class="pbmit-title-bar-content-inner">
-                <div class="pbmit-tbar">
-                    <div class="pbmit-tbar-inner container">
-                        <h1 class="pbmit-tbar-title"> Sitemap</h1>
-                    </div>
-                </div>
-                <div class="pbmit-breadcrumb">
-                    <div class="pbmit-breadcrumb-inner">
-                        <span>
-                            <a title="" href="/" class="home"><span>Home</span></a>
-                        </span>
-                        <span class="sep">
-                            <i class="pbmit-base-icon-angle-right"></i>
-                        </span>
-                        <span><span class="post-root post post-post current-item"> Sitemap</span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Title Bar End-->
+<style>
+		.banner_new {
+			position: relative;
+			width: 100%;
+			margin: auto;
+		}
+
+		.banner_new img {
+			width: 100%;
+			display: block;
+		}
+
+		.banner_new-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: white;
+			font-size: 24px;
+			font-weight: bold;
+			text-align: center;
+			background: rgba(0, 0, 0, 0.5);
+			/* Optional: Background for better readability */
+			padding: 10px 20px;
+			border-radius: 5px;
+		}
+		.r_text{
+			color: #fff;
+			font-size: 16px;
+		}
+	</style>
+	<!-- Title Bar -->
+	<div class="banner_new">
+		<img src="{{ $banner }}" alt="Banner">
+		<div class="banner_new-text">
+		<h1 class="pbmit-tbar-title"> About Us</h1>
+			<span>
+				<a title="" href="/" class="home"><span class="r_text">Home</span></a>
+			</span>
+			<span class="sep">
+				<i class="pbmit-base-icon-angle-right"></i>
+			</span>
+			<span><span class="r_text"> About Us</span></span>
+		</div>
+	</div>
+	<!-- Title Bar End-->
 
 <!-- Page Content -->
 <div class="page-content about-us">
