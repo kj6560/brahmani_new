@@ -300,9 +300,25 @@ $errorText .= $value[0] . '\n';
 
         </div>
         <!-- Page Content End -->
-        <a href="https://api.whatsapp.com/send?phone={{ urlencode($settings['Official_Number']) }}" class="whatsapp-button" target="_blank">
+        <a href="https://wa.me/{{ preg_replace('/\D/', '', $settings['Official_Number']) }}"
+            class="whatsapp-button" target="_blank">
             <img src="https://www.authenticdesigner.in/labeling-machine-manufacturer/img/whatsapp-labeling-machine.png" alt="WhatsApp">
         </a>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelector(".whatsapp-button").addEventListener("click", function(event) {
+                    event.preventDefault();
+                    let phone = "{{ preg_replace('/\D/', '', $settings['Official_Number']) }}";
+                    let url = window.innerWidth > 768 ? "https://web.whatsapp.com/send?phone=" + phone : "https://wa.me/" + phone;
+                    console.log("Opening WhatsApp URL: ", url);
+                    let newTab = window.open(url, "_blank");
+                    if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+                        alert("Popup blocked! Please allow popups for this site.");
+                    }
+                });
+            });
+        </script>
 
         <a href="tel:{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}" class="mail-button" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="call">
