@@ -158,14 +158,14 @@ $banner = !empty($page_data->page_banner)
                                     <div class="pbminfotech-post-content">
                                         <div class="pbmit-featured-img-wrapper">
                                             <div class="pbmit-featured-wrapper">
-                                            <a href="/products/{{$category_product->id}}"
+                                            <a href="/products/{{$category_product->product_slug}}"
                                             rel="tag"><img src="{{asset('storage')}}/{{$category_product->product_banner}}"
                                                     class="img-fluid" alt="{{$category_product->product_name ?? ''}}"></a>
                                             </div>
                                         </div>
                                         <div class="pbminfotech-titlebox">
                                                 <div class="pbmit-port-cat text-center">
-                                                    <h2><a href="/products/{{$category_product->id}}"
+                                                    <h2><a href="/products/{{$category_product->product_slug}}"
                                                             rel="tag">{{$category_product->product_name ?? ""}}</a></h2>
                                                 </div>
 

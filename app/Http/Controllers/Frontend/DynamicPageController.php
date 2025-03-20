@@ -52,10 +52,10 @@ class DynamicPageController extends Controller
         $category_products = $category_products->paginate(12);
         return view('frontend.dynamic_cat_page', ['settings' => $request->settings, 'category' => $product_category, 'category_products' => $category_products,'filters' => $filters]);
     }
-    public function loadProducts(Request $request, $id)
+    public function loadProducts(Request $request, $slug)
     {
         $product = Product::leftJoin('product_images as pi', 'pi.product_id', '=', 'products.id')
-            ->where('products.id', $id)
+            ->where('products.product_slug', $slug)
             ->where('pi.image_status', 1)
             ->where('products.product_status', 1)
             ->select(
