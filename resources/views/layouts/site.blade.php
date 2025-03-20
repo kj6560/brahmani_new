@@ -145,8 +145,6 @@ if (!empty($page_data['page_meta'])) {
             z-index: 5;
             border: none !important;
         }
-
-        
     </style>
 </head>
 @php
@@ -182,7 +180,7 @@ $errorText .= $value[0] . '\n';
                                         <a href="/">
                                             @if (!empty($settings['logo']))
                                             <img src="{{asset('storage')}}/{{$settings['logo']}}"
-                                            class="Logo"
+                                                class="Logo"
                                                 alt="{{$settings['Company_Name'] ?? ''}}">
                                             @endif
                                         </a>
@@ -302,7 +300,7 @@ $errorText .= $value[0] . '\n';
 
         </div>
         <!-- Page Content End -->
-        <a href="https://wa.me/{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}" class="whatsapp-button" target="_blank">
+        <a href="https://api.whatsapp.com/send?phone={{ urlencode($settings['Official_Number']) }}" class="whatsapp-button" target="_blank">
             <img src="https://www.authenticdesigner.in/labeling-machine-manufacturer/img/whatsapp-labeling-machine.png" alt="WhatsApp">
         </a>
 
