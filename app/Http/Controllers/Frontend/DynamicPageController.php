@@ -15,15 +15,15 @@ class DynamicPageController extends Controller
         return view('frontend.dynamic_page', ['settings' => $request->settings]);
 
     }
-    public function loadProductCategory(Request $request, $id)
+    public function loadProductCategory(Request $request, $slug)
     {
         $filters = $request->all();
-        $product_category = ProductCategory::find($id);
+        $product_category = ProductCategory::where('pro_cat_slug',$slug)->first();
         $category_products = Product::
             where('product_status', 1)
             ->groupBy('id');
-        if($id!=0){
-            $category_products = $category_products->where('product_category', $id);
+        if(!empty($slug)){
+            $category_products = $category_products->where('product_category', $product_category->id);
         }
         if((isset($filters['Min_Price']) && $filters['Min_Price'] != '') && ($filters['Min_Price'] != 0 && $filters['Max_Price'] != 0)){
             $category_products = $category_products->where('product_price', '>=', $filters['Min_Price']);

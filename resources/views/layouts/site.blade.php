@@ -244,7 +244,7 @@ $errorText .= $value[0] . '\n';
                                                     <ul>
                                                         @foreach ($settings['product_categories'] as $category)
                                                         <li><a
-                                                                href="/product_category/{{$category->id}}">{{$category->pro_cat_name ?? ""}}</a>
+                                                                href="/product_category/{{$category->pro_cat_slug}}">{{$category->pro_cat_name ?? ""}}</a>
                                                         </li>
                                                         @endforeach
                                                     </ul>

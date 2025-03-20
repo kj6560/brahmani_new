@@ -53,7 +53,7 @@ Route::get('/privacy_policy', [SiteController::class, 'privacy_policy'])->middle
 Route::get('/calculator',[SiteController::class,'calculator'])->middleware([settings::class])->name('frontend.calculator');
 Route::post('/calculate',[SiteController::class,'calculate'])->middleware([settings::class])->name('frontend.calculate');
 //product_category
-Route::get('/product_category/{id}', [DynamicPageController::class, 'loadProductCategory'])->middleware([settings::class])->name("product_category");
+Route::get('/product_category/{slug}', [DynamicPageController::class, 'loadProductCategory'])->middleware([settings::class])->name("product_category");
 Route::get('/products/{id}', [DynamicPageController::class, 'loadProducts'])->middleware([settings::class])->name("products.load");
 //dynamic pages
 $pages = DB::table('pages')->get();
