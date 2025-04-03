@@ -691,7 +691,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                 <div class="pbmit-ihbox-headingicon">
                     <div class="pbmit-ihbox-contents d-flex align-items-center">
                         <div class="pbmit-title-wrap">
-                            <h2 class="pbmit-element-title">4.82</h2>
+                            <h2 class="pbmit-element-title">4.9</h2>
                         </div>
                         <div class="pbmit-icon-wrap">
                             <div class="pbmit-ihbox-svg">
@@ -717,7 +717,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                 </div>
                             </div>
                             <h4 class="pbmit-element-heading">
-                                643 Rating
+                                1000+ Rating
                             </h4>
                         </div>
                     </div>
