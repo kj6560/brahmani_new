@@ -424,17 +424,15 @@ $errorText .= $value[0] . '\n';
                 </div>
             </div>
             <div class="pbmit-footer-text-area">
-                <div class="container">
-                    <div class="pbmit-footer-text-inner">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="pbmit-footer-copyright-text-area"> Copyright © {{date('Y')}}
-                                    {{$settings['Company_Name'] ?? ""}}, All Rights Reserved.
-                                </div>
+                <div class="pbmit-footer-text-inner">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="pbmit-footer-copyright-text-area"> Copyright © {{date('Y')}}
+                                {{$settings['Company_Name'] ?? ""}}, All Rights Reserved.
                             </div>
-                            <div class="col-md-6">
-                                <div class="pbmit-footer-copyright-text-area"> Designed By <a href="https://digitalvyapaar.com" target="_blank">Digital Vyapaar</a>
-                                </div>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <div class="pbmit-footer-copyright-text-area"> Designed By <a href="https://digitalvyapaar.com" target="_blank">Digital Vyapaar</a>
                             </div>
                         </div>
                     </div>
