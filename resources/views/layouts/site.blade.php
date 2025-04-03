@@ -30,7 +30,7 @@ if (!empty($page_data['page_meta'])) {
     @endforeach
     @endif
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('brahmani_frontend_assets')}}/images/fevicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('brahmani_frontend_assets')}}/images/favicon.ico">
     <!-- CSS
          ============================================ -->
     <!-- Bootstrap CSS -->
