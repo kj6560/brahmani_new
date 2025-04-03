@@ -427,9 +427,13 @@ $errorText .= $value[0] . '\n';
                 <div class="container">
                     <div class="pbmit-footer-text-inner">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="pbmit-footer-copyright-text-area"> Copyright © {{date('Y')}}
-                                    {{$settings['Company_Name'] ?? ""}}, All Rights Reserved. Designed By <a href="https://digitalvyapaar.com" target="_blank">Digital Vyapaar</a>
+                                    {{$settings['Company_Name'] ?? ""}}, All Rights Reserved.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pbmit-footer-copyright-text-area"> Designed By <a href="https://digitalvyapaar.com" target="_blank">Digital Vyapaar</a>
                                 </div>
                             </div>
                         </div>
