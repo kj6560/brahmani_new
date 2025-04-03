@@ -329,7 +329,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                     <a href="#" rel="tag">Kitchen</a>
                                 </div>
                                 <h3 class="pbmit-service-title">
-                                    <a href="/product_category/{{$categories->slug}}">
+                                    <a href="/product_category/{{$categories->pro_cat_slug}}">
                                         {{$categories->pro_cat_name ?? ''}}
                                     </a>
                                 </h3>
@@ -338,7 +338,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                 </div>
                             </div>
                         </div>
-                        <a class="pbmit-service-btn" href="/product_category/{{$categories->id ?? ''}}"
+                        <a class="pbmit-service-btn" href="/product_category/{{$categories->pro_cat_slug}}"
                             title="Transforming Rooms">
                             <span class="pbmit-button-icon">
                                 <i class="pbmit-base-icon-pbmit-up-arrow"></i>
