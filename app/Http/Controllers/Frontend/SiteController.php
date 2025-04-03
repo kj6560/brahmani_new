@@ -210,8 +210,10 @@ class SiteController extends Controller
                 'subject' => 'Query from ' . $data['name'],
                 'message' => $email_content
             ];
-            if (!empty($product_ids)) {
+            try{
                 Email::sendEmail($mailData);
+            }catch(\Exception $e){
+                print_r($e->getmessage());
             }
             return redirect()->back()->with('success', 'Your query has been submitted successfully. We will get back to you soon');
         } else {

@@ -25,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\RateLimiter;
 
-RateLimiter::for('storeQuery', function ($request) {
-    return Limit::perMinute(5)->by($request->ip());
-});
+// RateLimiter::for('storeQuery', function ($request) {
+//     return Limit::perMinute(5)->by($request->ip());
+// });
 
 
 //frontend routes
