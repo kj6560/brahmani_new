@@ -133,7 +133,7 @@ $banner = !empty($page_data->page_banner)
 			<span class="sep">
 				<i class="pbmit-base-icon-angle-right"></i>
 			</span>
-			<span><span class="r_text"> About Us</span></span>
+			<span><span class="r_text"> Categories</span></span>
 		</div>
 	</div>
 	<!-- Title Bar End-->
