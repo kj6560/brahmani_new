@@ -307,20 +307,20 @@ $errorText .= $value[0] . '\n';
 
         <script>
             document.addEventListener("DOMContentLoaded", function() {
+                var productDetailModal = new bootstrap.Modal(document.getElementById('citySelectModal'));
+                var callModel = new bootstrap.Modal(document.getElementById('citySelectModalForCall'));
                 document.querySelector(".whatsapp-button").addEventListener("click", function(event) {
                     event.preventDefault();
-                    let phone = "{{ preg_replace('/\D/', '', $settings['Official_Number']) }}";
-                    let url = window.innerWidth > 768 ? "https://web.whatsapp.com/send?phone=" + phone : "https://wa.me/" + phone;
-                    console.log("Opening WhatsApp URL: ", url);
-                    let newTab = window.open(url, "_blank");
-                    if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
-                        alert("Popup blocked! Please allow popups for this site.");
-                    }
+                    productDetailModal.show();
+                });
+                document.querySelector(".call_button").addEventListener("click", function(event) {
+                    event.preventDefault();
+                    callModel.show();
                 });
             });
         </script>
 
-        <a href="tel:{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}" class="mail-button" target="_blank">
+        <a href="tel:{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}" class="mail-button call_button" id="call_button" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="call">
         </a>
 
@@ -487,6 +487,69 @@ $errorText .= $value[0] . '\n';
             </div>
         </div>
     </div>
+    <div class="modal fade" id="citySelectModal" tabindex="-1" aria-labelledby="cityModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productDetailModalLabel">Select City</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body (added this!) -->
+                <div class="modal-body">
+                    <label>
+                        <button class="btn btn-success" id="vadodara">Vadodara</button>
+
+                    </label>
+                    <br /><br />
+                    <label>
+                        <button class="btn btn-success" id="merut">Merut</button>
+
+                    </label>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="citySelectModalForCall" tabindex="-1" aria-labelledby="cityModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productDetailModalLabel">Select City</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body (added this!) -->
+                <div class="modal-body">
+                    <label>
+                        <button class="btn btn-success" id="vadodaraCall">Vadodara</button>
+
+                    </label>
+                    <br /><br />
+                    <label>
+                        <button class="btn btn-success" id="merutCall">Merut</button>
+
+                    </label>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- JS
 		============================================ -->
     <!-- jQuery JS -->
@@ -611,6 +674,38 @@ $errorText .= $value[0] . '\n';
                 confirmButtonText: 'Okay',
 
             });
+        }
+        var vadodara = document.getElementById('vadodara');
+        var merut = document.getElementById('merut');
+        var vadodaraCall = document.getElementById('vadodaraCall');
+        var merutCall = document.getElementById('merutCall');
+        var city = "vadodara";
+        vadodara.addEventListener('click', function() {
+            triggerWhatsapp("{{ preg_replace('/\D/', '', $settings['Official_Number_Vadodara']) }}");
+        });
+        merut.addEventListener('click', function() {
+            triggerWhatsapp("{{ preg_replace('/\D/', '', $settings['Official_Number_Merut']) }}");
+        });
+        vadodaraCall.addEventListener('click', function() {
+            triggerCall("{{ preg_replace('/\D/', '', $settings['Official_Number_Vadodara']) }}");
+        });
+        merutCall.addEventListener('click', function() {
+            triggerCall("{{ preg_replace('/\D/', '', $settings['Official_Number_Merut']) }}");
+        });
+        function triggerCall(number){
+            var url = "tel:{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}";
+            let newTab = window.open(url);
+            if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+                alert("Popup blocked! Please allow popups for this site.");
+            }
+        }
+        function triggerWhatsapp(number) {
+            let url = window.innerWidth > 768 ? "https://web.whatsapp.com/send?phone=" + number : "https://wa.me/" + number;
+            console.log("Opening WhatsApp URL: ", url);
+            let newTab = window.open(url);
+            if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
+                alert("Popup blocked! Please allow popups for this site.");
+            }
         }
     </script>
 </body>

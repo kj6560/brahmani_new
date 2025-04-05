@@ -50,6 +50,18 @@
               </div>
 
               <div class="form-group">
+                <label for="exampleInputUsername1">Office Number vadodara</label>
+                <input type="text" name="Official_Number_Vadodara"
+                  value="{{!empty($settings) && $settings['Official_Number_Vadodara'] ? $settings['Official_Number_Vadodara'] : old('Official_Number_Vadodara')}}"
+                  class="form-control" id="exampleInputUsername1">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputUsername1">Office Number Merut</label>
+                <input type="text" name="Official_Number_Merut"
+                  value="{{!empty($settings) && $settings['Official_Number_Merut'] ? $settings['Official_Number_Merut'] : old('Official_Number_Merut')}}"
+                  class="form-control" id="exampleInputUsername1">
+              </div>
+              <div class="form-group">
                 <label for="exampleInputUsername1">Office Email</label>
                 <input type="text" name="Official_Email"
                   value="{{!empty($settings) && $settings['Official_Email'] ? $settings['Official_Email'] : old('Official_Email')}}"
