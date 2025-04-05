@@ -240,7 +240,7 @@ $errorText .= $value[0] . '\n';
                                                 </li>
 
                                                 <li class="dropdown">
-                                                    <a href="/product_category/0">Products & Services</a>
+                                                    <a href="/product_category_all">Products & Services</a>
                                                     <ul>
                                                         @foreach ($settings['product_categories'] as $category)
                                                         <li><a
