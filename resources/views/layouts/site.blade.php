@@ -69,7 +69,7 @@ if (!empty($page_data['page_meta'])) {
     <style>
         .whatsapp-button {
             position: fixed;
-            bottom: 110px;
+            bottom: 160px;
             right: 50px;
             width: 50px;
             height: 50px;
@@ -91,7 +91,7 @@ if (!empty($page_data['page_meta'])) {
 
         .mail-button {
             position: fixed;
-            bottom: 110px;
+            bottom: 160px;
             left: 50px;
             width: 50px;
             height: 50px;
