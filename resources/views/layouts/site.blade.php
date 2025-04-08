@@ -505,7 +505,7 @@ $errorText .= $value[0] . '\n';
                     </label>
                     <br /><br />
                     <label>
-                        <button class="btn btn-success" id="merut">Merut</button>
+                        <button class="btn btn-success" id="merut">Meerut</button>
 
                     </label>
                 </div>
@@ -536,7 +536,7 @@ $errorText .= $value[0] . '\n';
                     </label>
                     <br /><br />
                     <label>
-                        <button class="btn btn-success" id="merutCall">Merut</button>
+                        <button class="btn btn-success" id="merutCall">Meerut</button>
 
                     </label>
                 </div>
