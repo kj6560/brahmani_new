@@ -693,7 +693,7 @@ $errorText .= $value[0] . '\n';
             triggerCall("{{ preg_replace('/\D/', '', $settings['Official_Number_Merut']) }}");
         });
         function triggerCall(number){
-            var url = "tel:{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}";
+            var url = "tel:"+number;
             let newTab = window.open(url);
             if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
                 alert("Popup blocked! Please allow popups for this site.");
