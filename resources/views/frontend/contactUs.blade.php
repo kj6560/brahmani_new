@@ -75,7 +75,7 @@ $banner = !empty($page_data->page_banner)
 									<div class="pbmit-heading-desc">
 										<p>
 											Whether you're a homeowner, contractor, or architect, we're here to help. Get in touch with Brahmani Enterprises for inquiries, quotes, and expert consultations on all your construction material needs and project solutions.
-											<br>
+											<br><br>
 
 											<b>Vadodara Office:</b><br>
 											{{ $settings['vadodara_address'] ?? '' }}
