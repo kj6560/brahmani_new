@@ -79,7 +79,7 @@ $banner = !empty($page_data->page_banner)
 											consultations on all your construction material needs and project solutions.
 											<br><br>
 
-											<b>Vadodara Office:</b><br>
+											<br><b>Vadodara Office:</b><br>
 											{{ $settings['vadodara_address'] ?? '' }}
 
 											<br><b>Contact:</b><br>
