@@ -79,6 +79,20 @@
                   value="{{!empty($settings) && $settings['vadodara_location'] ? $settings['vadodara_location'] : old('vadodara_location')}}"
                   class="form-control" id="exampleInputUsername1">
               </div>
+
+              <div class="form-group">
+                <label for="exampleInputUsername1">Address Merut</label>
+                <input type="text" name="meerut_address"
+                  value="{{!empty($settings) && $settings['meerut_address'] ? $settings['meerut_address'] : old('meerut_address')}}"
+                  class="form-control" id="exampleInputUsername1">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputUsername1">Address Vadodara</label>
+                <input type="text" name="vadodara_address"
+                  value="{{!empty($settings) && $settings['vadodara_address'] ? $settings['vadodara_address'] : old('vadodara_address')}}"
+                  class="form-control" id="exampleInputUsername1">
+              </div>
+
             </div>
             <div class="row" style="background-color:grey;">
               <label for="exampleInputUsername1" style="color:white;">Social Media Links</label>
