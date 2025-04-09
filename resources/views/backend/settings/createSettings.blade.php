@@ -67,7 +67,18 @@
                   value="{{!empty($settings) && $settings['Official_Email'] ? $settings['Official_Email'] : old('Official_Email')}}"
                   class="form-control" id="exampleInputUsername1">
               </div>
-
+              <div class="form-group">
+                <label for="exampleInputUsername1">Location Merut</label>
+                <input type="text" name="meerut_location"
+                  value="{{!empty($settings) && $settings['meerut_location'] ? $settings['meerut_location'] : old('meerut_location')}}"
+                  class="form-control" id="exampleInputUsername1">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputUsername1">Location Vadodara</label>
+                <input type="text" name="vadodara_location"
+                  value="{{!empty($settings) && $settings['vadodara_location'] ? $settings['vadodara_location'] : old('vadodara_location')}}"
+                  class="form-control" id="exampleInputUsername1">
+              </div>
             </div>
             <div class="row" style="background-color:grey;">
               <label for="exampleInputUsername1" style="color:white;">Social Media Links</label>
