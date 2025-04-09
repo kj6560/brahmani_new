@@ -1097,12 +1097,18 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                     echo $settings['vadodara_location'];
                     ?>
                 </div>
+                <div class="text-center">
+                    <h6>Vadodara</h6>
+                </div>
             </div>
             <div class="col">
                 <div class="iframe-area">
                     <?php
                     echo $settings['meerut_location'];
                     ?>
+                </div>
+                <div class="text-center">
+                    <h6>Meerut</h6>
                 </div>
             </div>
         </div>
