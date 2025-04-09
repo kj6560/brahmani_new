@@ -8,51 +8,52 @@ $banner = !empty($page_data->page_banner)
 @endphp
 
 <style>
-		.banner_new {
-			position: relative;
-			width: 100%;
-			margin: auto;
-		}
+	.banner_new {
+		position: relative;
+		width: 100%;
+		margin: auto;
+	}
 
-		.banner_new img {
-			width: 100%;
-			display: block;
-		}
+	.banner_new img {
+		width: 100%;
+		display: block;
+	}
 
-		.banner_new-text {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			color: white;
-			font-size: 24px;
-			font-weight: bold;
-			text-align: center;
-			background: rgba(0, 0, 0, 0.5);
-			/* Optional: Background for better readability */
-			padding: 10px 20px;
-			border-radius: 5px;
-		}
-		.r_text{
-			color: #fff;
-			font-size: 16px;
-		}
-	</style>
-	<!-- Title Bar -->
-	<div class="banner_new">
-		<img src="{{ $banner }}" alt="Banner">
-		<div class="banner_new-text">
+	.banner_new-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+		font-size: 24px;
+		font-weight: bold;
+		text-align: center;
+		background: rgba(0, 0, 0, 0.5);
+		/* Optional: Background for better readability */
+		padding: 10px 20px;
+		border-radius: 5px;
+	}
+
+	.r_text {
+		color: #fff;
+		font-size: 16px;
+	}
+</style>
+<!-- Title Bar -->
+<div class="banner_new">
+	<img src="{{ $banner }}" alt="Banner">
+	<div class="banner_new-text">
 		<h1 class="pbmit-tbar-title"> Contact Us</h1>
-			<span>
-				<a title="" href="/" class="home"><span class="r_text">Home</span></a>
-			</span>
-			<span class="sep">
-				<i class="pbmit-base-icon-angle-right"></i>
-			</span>
-			<span><span class="r_text"> Contact Us</span></span>
-		</div>
+		<span>
+			<a title="" href="/" class="home"><span class="r_text">Home</span></a>
+		</span>
+		<span class="sep">
+			<i class="pbmit-base-icon-angle-right"></i>
+		</span>
+		<span><span class="r_text"> Contact Us</span></span>
 	</div>
-	<!-- Title Bar End-->
+</div>
+<!-- Title Bar End-->
 
 
 <!-- Contact Us Content -->
@@ -144,12 +145,31 @@ $banner = !empty($page_data->page_banner)
 	<!-- Iframe -->
 	<section class="section-xl">
 		<div class="container-fluid">
-			<div class="iframe-area">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.284474292564!2d73.1693684!3d22.342885000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8d81649c68b%3A0xd37951746ee47c7f!2sBrahmani%20Enterprise%20(PVC%20Panels)!5e0!3m2!1sen!2sin!4v1736101539751!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			<div class="row">
+				<div class="col">
+					<div class="iframe-area">
+						<?php
+						echo $settings['vadodara_location'];
+						?>
+					</div>
+					<div class="text-center">
+						<h6>Vadodara</h6>
+					</div>
+				</div>
+				<div class="col">
+					<div class="iframe-area">
+						<?php
+						echo $settings['meerut_location'];
+						?>
+					</div>
+					<div class="text-center">
+						<h6>Meerut</h6>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Iframe End-->
+	<!-- Iframe -->
 
 </div>
 <!-- Contact Us Content End -->
