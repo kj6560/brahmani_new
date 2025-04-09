@@ -76,7 +76,7 @@ $banner = !empty($page_data->page_banner)
 										Whether you're a homeowner, contractor, or architect, we're here to help. Get in touch with Brahmani Enterprises for inquiries, quotes, and expert consultations on all your construction material needs and project solutions.
 										<br><br>
 										<p>
-										<b>Merrut Branch Office:</b><br>
+										<b>Meerut Branch Office:</b><br>
 											{{ $settings['meerut_address'] ?? '' }}
 
 										<br><b>Contact:</b><br>
