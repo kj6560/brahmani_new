@@ -73,24 +73,24 @@ $banner = !empty($page_data->page_banner)
 									<h4 class="pbmit-subtitle">Contact Us</h4>
 									<h2 class="pbmit-title">Happy to answer all your questions</h2>
 									<div class="pbmit-heading-desc">
+										<p>
+											Whether you're a homeowner, contractor, or architect, we're here to help. Get in touch with Brahmani Enterprises for inquiries, quotes, and expert consultations on all your construction material needs and project solutions.
+											<br>
 
+											<b>Vadodara Office:</b><br>
+											{{ $settings['vadodara_address'] ?? '' }}
 
-										Whether you're a homeowner, contractor, or architect, we're here to help. Get in touch with Brahmani Enterprises for inquiries, quotes, and expert consultations on all your construction material needs and project solutions.
-										<br>
+											<br><b>Contact:</b><br>
+											{{ $settings['Official_Number_Vadodara'] ?? '' }}
 
-										<b>Vadodara Office:</b><br>
-										{{ $settings['vadodara_address'] ?? '' }}
+											<b>Meerut Branch Office:</b><br>
+											{{ $settings['meerut_address'] ?? '' }}
 
-										<br><b>Contact:</b><br>
-										{{ $settings['Official_Number_Vadodara'] ?? '' }}
+											<br><b>Contact:</b><br>
+											{{ $settings['Official_Number_Merut'] ?? '' }}
 
-										<b>Meerut Branch Office:</b><br>
-										{{ $settings['meerut_address'] ?? '' }}
-
-										<br><b>Contact:</b><br>
-										{{ $settings['Official_Number_Merut'] ?? '' }}
-
-										<br>
+											<br>
+										</p>
 									</div>
 								</div>
 							</div>
