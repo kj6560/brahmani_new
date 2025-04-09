@@ -87,7 +87,7 @@ $banner = !empty($page_data->page_banner)
 										<b>Vadodara Office:</b><br>
 											{{ $settings['vadodara_address'] ?? '' }}
 
-										<br><b>Contact:</b><br><br>
+										<br><b>Contact:</b><br>
 											{{ $settings['Official_Number_Vadodara'] ?? '' }}
 										</p>
 									</div>
