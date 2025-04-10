@@ -17,6 +17,13 @@ class LogUserVisit
      */
     public function handle($request, Closure $next)
     {
+        $exists = DB::table('visits')
+            ->where('ip_address', $request->ip())
+            ->where('url', $request->path())
+            ->exists();
+        if ($exists) {
+            return $next($request);
+        }
         DB::table('visits')->insert([
             'user_id' => Auth::check() ? Auth::id() : null,
             'ip_address' => $request->ip(),
