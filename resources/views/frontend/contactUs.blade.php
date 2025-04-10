@@ -25,7 +25,7 @@ $banner = !empty($page_data->page_banner)
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: white;
-		font-size: 24px;
+		font-size: 18px;
 		font-weight: bold;
 		text-align: center;
 		background: rgba(0, 0, 0, 0.5);
@@ -36,7 +36,7 @@ $banner = !empty($page_data->page_banner)
 
 	.r_text {
 		color: #fff;
-		font-size: 16px;
+		font-size: 14px;
 	}
 </style>
 <!-- Title Bar -->
