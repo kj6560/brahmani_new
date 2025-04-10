@@ -25,28 +25,14 @@ $banner = !empty($page_data->page_banner)
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: white;
-		font-size: 24px;
+		font-size: 3vw;
+		/* Responsive font size */
 		font-weight: bold;
 		text-align: center;
 		background: rgba(0, 0, 0, 0.5);
-		padding: 10px 20px;
-		border-radius: 5px;
+		padding: 2vw 4vw;
+		border-radius: 1vw;
 	}
-
-	@media (max-width: 768px) {
-		.banner_new-text {
-			font-size: 18px;
-			padding: 18px 24px;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.banner_new-text {
-			font-size: 14px;
-			padding: 18px 24px;
-		}
-	}
-
 
 
 	.r_text {
