@@ -21,7 +21,7 @@ $banner = !empty($page_data->page_banner)
 
 	.banner_new-text {
 		position: absolute;
-		top: 50%;
+		top: 60%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: white;
