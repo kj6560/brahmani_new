@@ -15,7 +15,7 @@
               <th>Visitor user id</th>
               <th>Visitor's Ip</th>
               <th>Visiting Url</th>
-              
+              <th>Date</th>
             </tr>
           </thead>
           <tbody>
