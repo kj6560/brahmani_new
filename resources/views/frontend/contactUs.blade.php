@@ -36,7 +36,7 @@ $banner = !empty($page_data->page_banner)
 	@media (max-width: 768px) {
 		.banner_new-text {
 			font-size: 18px;
-			padding: 8px 16px;
+			padding: 18px 24px;
 		}
 	}
 
