@@ -19,6 +19,7 @@ use App\Http\Controllers\Frontend\ExportersCategory;
 use App\Http\Controllers\Frontend\ManufacturersCategory;
 use App\Http\Controllers\Frontend\SiteController;
 use App\Http\Controllers\Frontend\SuppliersCategory;
+use App\Http\Middleware\LogUserVisit;
 use App\Http\Middleware\settings;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\Route;
@@ -31,35 +32,35 @@ use Illuminate\Support\Facades\RateLimiter;
 
 
 //frontend routes
-Route::get('/', [SiteController::class, 'index'])->middleware([settings::class])->name('frontend.index');
-Route::get('/companyProfile', [SiteController::class, 'companyProfile'])->middleware([settings::class])->name('frontend.companyProfile');
+Route::get('/', [SiteController::class, 'index'])->middleware([settings::class,LogUserVisit::class])->name('frontend.index');
+Route::get('/companyProfile', [SiteController::class, 'companyProfile'])->middleware([settings::class,LogUserVisit::class])->name('frontend.companyProfile');
 Route::get('/pageError', [SiteController::class, 'pageError'])->name('frontend.pageError');
-Route::get('/sitemap', [SiteController::class, 'sitemap'])->middleware([settings::class])->name('frontend.sitemap');
-Route::get('/contact_us', [SiteController::class,'contactUs'])->middleware([settings::class])->name('frontend.contactUs');
-Route::get('/about_us', [SiteController::class,'aboutUs'])->middleware([settings::class])->name('frontend.aboutUs');
-Route::get('/blog', [SiteController::class,'blog'])->middleware([settings::class])->name('frontend.blog');
-Route::get('/blog_detail/{id}', [SiteController::class,'blogDetails'])->middleware([settings::class])->name('frontend.blogDetails');
-Route::get('/blogByTags/{id}', [SiteController::class,'blogByTags'])->middleware([settings::class])->name('frontend.blogByTags');
-Route::get('/blogByCategory/{id}', [SiteController::class,'blogByCategory'])->middleware([settings::class])->name('frontend.blogByCategory');
-Route::post('/storeQuery', [SiteController::class,'storeQuery'])->middleware([settings::class])->name('frontend.storeQuery');
+Route::get('/sitemap', [SiteController::class, 'sitemap'])->middleware([settings::class,LogUserVisit::class])->name('frontend.sitemap');
+Route::get('/contact_us', [SiteController::class,'contactUs'])->middleware([settings::class,LogUserVisit::class])->name('frontend.contactUs');
+Route::get('/about_us', [SiteController::class,'aboutUs'])->middleware([settings::class,LogUserVisit::class])->name('frontend.aboutUs');
+Route::get('/blog', [SiteController::class,'blog'])->middleware([settings::class,LogUserVisit::class])->name('frontend.blog');
+Route::get('/blog_detail/{id}', [SiteController::class,'blogDetails'])->middleware([settings::class,LogUserVisit::class])->name('frontend.blogDetails');
+Route::get('/blogByTags/{id}', [SiteController::class,'blogByTags'])->middleware([settings::class,LogUserVisit::class])->name('frontend.blogByTags');
+Route::get('/blogByCategory/{id}', [SiteController::class,'blogByCategory'])->middleware([settings::class,LogUserVisit::class])->name('frontend.blogByCategory');
+Route::post('/storeQuery', [SiteController::class,'storeQuery'])->middleware([settings::class,LogUserVisit::class])->name('frontend.storeQuery');
 Route::get('/login', [AdminController::class, 'login'])->name('login');
 Route::get('/logout', [AdminController::class, 'logout'])->name('backend.logout');
-Route::post('/wishlist',[SiteController::class,'wishlist'])->middleware([settings::class])->name('frontend.wishlist');
-Route::get('/removeFromWishlist',[SiteController::class,'removeFromWishlist'])->middleware([settings::class])->name('frontend.removeFromWishlist');
-Route::get('/showWishlist',[SiteController::class,'showWishlist'])->middleware([settings::class])->name('frontend.showWishlist');
-Route::get('/raiseQuery',[SiteController::class,'raiseQuery'])->middleware([settings::class])->name('frontend.raiseQuery');
-Route::get('/faq', [SiteController::class, 'faq'])->middleware([settings::class])->name('frontend.faq');
-Route::get('/privacy_policy', [SiteController::class, 'privacy_policy'])->middleware([settings::class])->name('frontend.privacy_policy');
-Route::get('/calculator',[SiteController::class,'calculator'])->middleware([settings::class])->name('frontend.calculator');
-Route::post('/calculate',[SiteController::class,'calculate'])->middleware([settings::class])->name('frontend.calculate');
+Route::post('/wishlist',[SiteController::class,'wishlist'])->middleware([settings::class,LogUserVisit::class])->name('frontend.wishlist');
+Route::get('/removeFromWishlist',[SiteController::class,'removeFromWishlist'])->middleware([settings::class,LogUserVisit::class])->name('frontend.removeFromWishlist');
+Route::get('/showWishlist',[SiteController::class,'showWishlist'])->middleware([settings::class,LogUserVisit::class])->name('frontend.showWishlist');
+Route::get('/raiseQuery',[SiteController::class,'raiseQuery'])->middleware([settings::class,LogUserVisit::class])->name('frontend.raiseQuery');
+Route::get('/faq', [SiteController::class, 'faq'])->middleware([settings::class,LogUserVisit::class])->name('frontend.faq');
+Route::get('/privacy_policy', [SiteController::class, 'privacy_policy'])->middleware([settings::class,LogUserVisit::class])->name('frontend.privacy_policy');
+Route::get('/calculator',[SiteController::class,'calculator'])->middleware([settings::class,LogUserVisit::class])->name('frontend.calculator');
+Route::post('/calculate',[SiteController::class,'calculate'])->middleware([settings::class,LogUserVisit::class])->name('frontend.calculate');
 //product_category
-Route::get('/product_category_all', [DynamicPageController::class, 'loadProductCategoryAll'])->middleware([settings::class])->name("product_category_all");
-Route::get('/product_category/{slug}', [DynamicPageController::class, 'loadProductCategory'])->middleware([settings::class])->name("product_category");
-Route::get('/products/{id}', [DynamicPageController::class, 'loadProducts'])->middleware([settings::class])->name("products.load");
+Route::get('/product_category_all', [DynamicPageController::class, 'loadProductCategoryAll'])->middleware([settings::class,LogUserVisit::class])->name("product_category_all");
+Route::get('/product_category/{slug}', [DynamicPageController::class, 'loadProductCategory'])->middleware([settings::class,LogUserVisit::class])->name("product_category");
+Route::get('/products/{id}', [DynamicPageController::class, 'loadProducts'])->middleware([settings::class,LogUserVisit::class])->name("products.load");
 //dynamic pages
 $pages = DB::table('pages')->get();
 foreach($pages as $page){
-    Route::get('/dPage/'.$page->page_url, [DynamicPageController::class, 'loadPage'])->middleware([settings::class])->name("dynamic".$page->page_url);
+    Route::get('/dPage/'.$page->page_url, [DynamicPageController::class, 'loadPage'])->middleware([settings::class,LogUserVisit::class])->name("dynamic".$page->page_url);
 }
 
 
