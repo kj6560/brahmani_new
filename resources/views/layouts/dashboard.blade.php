@@ -35,7 +35,7 @@
   use Illuminate\Support\Facades\Session;
   $success = Session::get('success');
   $error = Session::get('error');
-@endphp
+  @endphp
   <div class="container-scroller">
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
@@ -163,20 +163,14 @@
                     Settings</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/admin/enquiries">Enquiries
                     Settings</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/emailSettings">Email
+                <li class="nav-item"> <a class="nav-link" href="/admin/emailSettings">Email
                     Settings</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/admin/accountSettings">Account
-                    Settings</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/citiesSettings">Cities
-                    Settings</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/statesSettings">States
-                    Settings</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="/admin/countriesSettings">Countries
-                    Settings</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/visitorTrace">Visitor Trace</a></li>
+
               </ul>
             </div>
           </li>
-          
+
         </ul>
       </nav>
       <!-- partial -->
@@ -255,4 +249,5 @@
   }
 </script>
 @yield('custom_javascript')
+
 </html>

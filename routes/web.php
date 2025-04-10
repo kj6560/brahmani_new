@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImageController;
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\VisitorsController;
 use App\Http\Controllers\Frontend\DynamicPageController;
 use App\Http\Controllers\Frontend\ExportersCategory;
 use App\Http\Controllers\Frontend\ManufacturersCategory;
@@ -167,4 +168,7 @@ Route::prefix('admin')->middleware(['auth:web',settings::class])->group(function
     Route::get('/blogSettings/tags/edit/{id}', [BlogController::class, 'editTag'])->name('admin.blogSettings.editTag');
     Route::get('/blogSettings/tags/delete/{id}', [BlogController::class, 'deleteTag'])->name('admin.blogSettings.deleteTag');
     Route::post('/blogSettings/tags/store', [BlogController::class, 'storeTag'])->name('admin.blogSettings.storeTag');
+
+    //visitors
+    Route::get('/visitorTrace', [VisitorsController::class, 'index'])->name('admin.visitors.index');
 });
