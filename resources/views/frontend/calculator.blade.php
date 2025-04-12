@@ -25,6 +25,7 @@
                                 <option value="cm">cm</option>
                                 <option value="m">m</option>
                                 <option value="ft">ft</option>
+                                <option value="in">Inch</option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -38,6 +39,7 @@
                                 <option value="cm">cm</option>
                                 <option value="m">m</option>
                                 <option value="ft">ft</option>
+                                <option value="in">Inch</option>
                             </select>
                         </div>
                     </div>
@@ -66,6 +68,7 @@
                     <option value="cm">cm</option>
                     <option value="m">m</option>
                     <option value="ft">ft</option>
+                    <option value="in">Inch</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -79,6 +82,7 @@
                     <option value="cm">cm</option>
                     <option value="m">m</option>
                     <option value="ft">ft</option>
+                    <option value="in">Inch</option>
                 </select>
             </div>
         </div>`;
@@ -129,6 +133,8 @@
                                 @endif>m</option>
                                 <option value="ft" @if (isset($panel_width_unit) && $panel_width_unit == 'ft') selected
                                 @endif>ft</option>
+                                <option value="in" @if (isset($panel_width_unit) && $panel_width_unit == 'in') selected
+                                @endif>Inch</option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -148,6 +154,8 @@
                                 @endif>m</option>
                                 <option value="ft" @if (!empty($panel_height_unit) && $panel_height_unit == 'ft') selected
                                 @endif>ft</option>
+                                <option value="in" @if (!empty($panel_height_unit) && $panel_height_unit == 'in') selected
+                                @endif>Inch</option>
                             </select>
                         </div>
                     </div>
@@ -175,6 +183,7 @@
                                                 <option value="cm" @if($wall['width_unit'] == 'cm') selected @endif>cm</option>
                                                 <option value="m" @if($wall['width_unit'] == 'm') selected @endif>m</option>
                                                 <option value="ft" @if($wall['width_unit'] == 'ft') selected @endif>ft</option>
+                                                <option value="in" @if($wall['width_unit'] == 'in') selected @endif>Inch</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3">
@@ -189,6 +198,7 @@
                                                 <option value="cm" @if($wall['height_unit'] == 'cm') selected @endif>cm</option>
                                                 <option value="m" @if($wall['height_unit'] == 'm') selected @endif>m</option>
                                                 <option value="ft" @if($wall['height_unit'] == 'ft') selected @endif>ft</option>
+                                                <option value="in" @if($wall['height_unit'] == 'in') selected @endif>Inch</option>
                                             </select>
                                         </div>
                                     </div>
@@ -218,6 +228,8 @@
                                                             </option>
                                                             <option value="ft" @if($obstruction['width_unit'] == 'ft') selected @endif>ft
                                                             </option>
+                                                            <option value="in" @if($obstruction['width_unit'] == 'in') selected @endif>Inch
+                                                            </option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-3">
@@ -237,6 +249,8 @@
                                                             <option value="m" @if($obstruction['height_unit'] == 'm') selected @endif>m
                                                             </option>
                                                             <option value="ft" @if($obstruction['height_unit'] == 'ft') selected @endif>ft
+                                                            </option>
+                                                            <option value="in" @if($obstruction['height_unit'] == 'in') selected @endif>Inch
                                                             </option>
                                                         </select>
                                                     </div>

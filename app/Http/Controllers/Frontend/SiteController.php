@@ -210,9 +210,9 @@ class SiteController extends Controller
                 'subject' => 'Query from ' . $data['name'],
                 'message' => $email_content
             ];
-            try{
+            try {
                 Email::sendEmail($mailData);
-            }catch(\Exception $e){
+            } catch (\Exception $e) {
                 print_r($e->getmessage());
             }
             return redirect()->back()->with('success', 'Your query has been submitted successfully. We will get back to you soon');
@@ -346,28 +346,28 @@ class SiteController extends Controller
         $panel_width = $this->convertToMeters($request->panel_width, $request->panel_width_unit);
         $panel_height = $this->convertToMeters($request->panel_height, $request->panel_height_unit);
         $panel_area = $panel_width * $panel_height;
-    
+
         $panel_width_unit = $request->panel_width_unit;
         $panel_height_unit = $request->panel_height_unit;
-    
+
         // Get wall dimensions
         $wall_widths = $request->wall_width;
         $wall_width_units = $request->wall_width_unit;
         $wall_heights = $request->wall_height;
         $wall_height_units = $request->wall_height_unit;
-    
+
         $total_wall_area = 0;
         $wall_panel_data = [];
-    
+
         // Calculate total wall area and per-wall panel requirement
         for ($i = 0; $i < count($wall_widths); $i++) {
             $wHeight = $this->convertToMeters($wall_heights[$i], $wall_height_units[$i]);
-            $mPanelHeight=0.0;
-            if($wHeight <= $panel_height/2){
+            $mPanelHeight = 0.0;
+            if ($wHeight <= $panel_height / 2) {
                 $mPanelHeight = $wHeight;
-            }else if($wHeight > $panel_height/2 && $wHeight <= $panel_height){
+            } else if ($wHeight > $panel_height / 2 && $wHeight <= $panel_height) {
                 $mPanelHeight = $panel_height;
-            }else if($wHeight > $panel_height){
+            } else if ($wHeight > $panel_height) {
                 $mPanelHeight = $wHeight;
             }
 
@@ -377,7 +377,7 @@ class SiteController extends Controller
             $wall_area = $wall_width_m * $wall_height_m;
             $obstruction_data = [];
             $obstruction_area = 0;
-    
+
             // Process obstructions for the current wall
             if (!empty($request->obstructions[$i])) {
                 foreach ($request->obstructions[$i] as $obstruction) {
@@ -385,7 +385,7 @@ class SiteController extends Controller
                     $obs_height_m = $this->convertToMeters($obstruction['height'], $obstruction['height_unit']);
                     $obs_area = $obs_width_m * $obs_height_m;
                     $obstruction_area += $obs_area;
-    
+
                     $obstruction_data[] = [
                         'width' => $obstruction['width'],
                         'width_unit' => $obstruction['width_unit'],
@@ -395,12 +395,12 @@ class SiteController extends Controller
                     ];
                 }
             }
-    
+
             // Subtract obstruction area from the wall area
             $net_wall_area = max(0, $wall_area - $obstruction_area);
             $total_wall_area += $net_wall_area;
             $panels_required = ceil($net_wall_area / $panel_area);
-    
+
             $wall_panel_data[] = [
                 'width' => $wall_widths[$i],
                 'width_unit' => $wall_width_units[$i],
@@ -413,12 +413,12 @@ class SiteController extends Controller
                 'obstructions' => $obstruction_data,
             ];
         }
-    
+
         // Calculate total required panels
         $total_panel_required = ceil($total_wall_area / $panel_area);
         $used_panel_area = $total_panel_required * $panel_area;
         $excess_area = $used_panel_area - $total_wall_area;
-    
+
         return redirect()->back()->with([
             'panel_width' => $request->panel_width,
             'panel_width_unit' => $request->panel_width_unit,
@@ -431,7 +431,7 @@ class SiteController extends Controller
             'excess_area' => $excess_area
         ]);
     }
-    
+
 
     public function convertToMeters($value, $unit)
     {
@@ -444,8 +444,10 @@ class SiteController extends Controller
                 return $value; // Already in meters
             case "ft":
                 return $value * 0.3048; // Convert feet to meters
+            case "in":
+                return $value * 0.0254; // Convert inches to meters
             default:
-                return $value; // Invalid unit
+                return $value; // Invalid or unsupported unit
         }
     }
 }
