@@ -397,22 +397,22 @@ $errorText .= $value[0] . '\n';
                             <div class="col-md-4 pbmit-footer-right-social">
                                 <ul class="pbmit-social-links">
                                     <li class="pbmit-social-li pbmit-social-facebook">
-                                        <a title="Facebook" href="{{$setting['Facebook_Link'] ?? '#'}}" target="_blank">
+                                        <a title="Facebook" href="{{$settings['Facebook_Link'] ?? '#'}}" target="_blank">
                                             <span><i class="pbmit-base-icon-facebook-f"></i></span>
                                         </a>
                                     </li>
                                     <li class="pbmit-social-li pbmit-social-twitter">
-                                        <a title="Twitter" href="{{$setting['Twitter_Link'] ?? '#'}}" target="_blank">
+                                        <a title="Twitter" href="{{$settings['Twitter_Link'] ?? '#'}}" target="_blank">
                                             <span><i class="pbmit-base-icon-twitter-2"></i></span>
                                         </a>
                                     </li>
                                     <li class="pbmit-social-li pbmit-social-linkedin">
-                                        <a title="LinkedIn" href="{{$setting['Linkedin_Link'] ?? '#'}}" target="_blank">
+                                        <a title="LinkedIn" href="{{$settings['Linkedin_Link'] ?? '#'}}" target="_blank">
                                             <span><i class="pbmit-base-icon-linkedin-in"></i></span>
                                         </a>
                                     </li>
                                     <li class="pbmit-social-li pbmit-social-instagram">
-                                        <a title="Instagram" href="{{$setting['Instagram_Link'] ?? '#'}}"
+                                        <a title="Instagram" href="{{$settings['Instagram_Link'] ?? '#'}}"
                                             target="_blank">
                                             <span><i class="pbmit-base-icon-instagram"></i></span>
                                         </a>
