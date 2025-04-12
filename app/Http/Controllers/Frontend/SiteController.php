@@ -361,9 +361,18 @@ class SiteController extends Controller
     
         // Calculate total wall area and per-wall panel requirement
         for ($i = 0; $i < count($wall_widths); $i++) {
+            $wHeight = $this->convertToMeters($wall_heights[$i], $wall_height_units[$i]);
+            $mPanelHeight=0.0;
+            if($wHeight <= $panel_height/2){
+                $mPanelHeight = $wHeight;
+            }else if($wHeight > $panel_height/2 && $wHeight <= $panel_height){
+                $mPanelHeight = $panel_height;
+            }else if($wHeight > $panel_height){
+                $mPanelHeight = $wHeight;
+            }
+
             $wall_width_m = $this->convertToMeters($wall_widths[$i], $wall_width_units[$i]);
-            $wall_height_m = $this->convertToMeters($panel_height > $wall_heights[$i] ? $panel_height : $wall_heights[$i], $wall_height_units[$i]);
-    
+            $wall_height_m = $mPanelHeight;
             // Initial wall area before subtracting obstructions
             $wall_area = $wall_width_m * $wall_height_m;
             $obstruction_data = [];
