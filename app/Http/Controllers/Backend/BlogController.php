@@ -111,7 +111,7 @@ class BlogController extends Controller
         $blogPost->title = $request->title;
         $blogPost->slug = $this->convertToSlug($request->title);
         $blogPost->small_desc = $request->small_desc;
-        $blogPost->content = $request->content;
+        $blogPost->content = nl2br($request->content);
         $blogPost->user_id = auth()->user()->id;
         $blogPost->published_at = Date::now();
         $blogPost->show_on_homepage = $request->show_on_homepage;

@@ -29,4 +29,14 @@ if (!function_exists('prepareSchema')) {
         return $schema;
     }
 }
+if(!function_exists('getVisitorCount')){
+    function getVisitorCount(){
+        $count = DB::table('visits')->count();
+        if($count){
+            return $count;
+        }else{
+            return 0;
+        }
+    }
+}
 

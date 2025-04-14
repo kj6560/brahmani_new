@@ -179,8 +179,5 @@ foreach($pTags as $tag){
     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
   });
 </script>
-<textarea>
-  Welcome to TinyMCE!
-</textarea>
 
 @endsection

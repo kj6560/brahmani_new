@@ -107,7 +107,7 @@ $banner = !empty($page_data->page_banner)
 										</span>
 									</div>
 									<div class="pbmit-entry-content">
-										{{$blog->content}}
+										{!!  $blog->content !!}
 									</div>
 
 								</div>

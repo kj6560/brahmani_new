@@ -356,6 +356,7 @@ $errorText .= $value[0] . '\n';
                                         @endif
                                         <h3 style="color: white;">{{$settings['Company_Name'] ?? ''}}</h3>
                                         <p style="color: white;">{{$settings['Office_Address'] ?? ''}}</p>
+                                        <p style="color: white;">Total Visitors: {{ getVisitorCount() ?? ''}}</p>
                                     </div>
                                 </div>
                             </aside>
