@@ -399,8 +399,7 @@ class SiteController extends Controller
             // Subtract obstruction area from the wall area
             $net_wall_area = max(0, $wall_area - $obstruction_area);
             $total_wall_area += $net_wall_area;
-            $panels_required = ceil($net_wall_area / $panel_area);
-
+            $panels_required = ceil(round($net_wall_area / $panel_area, 6));
             $wall_panel_data[] = [
                 'width' => $wall_widths[$i],
                 'width_unit' => $wall_width_units[$i],
@@ -415,7 +414,7 @@ class SiteController extends Controller
         }
 
         // Calculate total required panels
-        $total_panel_required = ceil($total_wall_area / $panel_area);
+        $total_panel_required = ceil(round($total_wall_area / $panel_area, 6));
         $used_panel_area = $total_panel_required * $panel_area;
         $excess_area = $used_panel_area - $total_wall_area;
 
