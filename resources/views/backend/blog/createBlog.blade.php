@@ -47,9 +47,9 @@ foreach($pTags as $tag){
                         <div class="col" style="margin: 20px;">
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Title</label>
-                                <input type="text" name="title"
-                                    value="{{!empty($post) && $post->title ? $post->title : old('title')}}"
-                                    class="form-control" id="exampleInputUsername1">
+                                <textarea class="exp_text" name="title" rows="3"
+                                    id="title">{{!empty($post) && $post->title ? $post->title : old('title')}}</textarea>
+                                
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Post Small Description</label>
@@ -58,7 +58,7 @@ foreach($pTags as $tag){
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Post Content</label>
-                                <textarea class="exp_text" name="content" rows="20"
+                                <textarea class="exp_text" name="content" rows="30"
                                     id="content">{{!empty($post) && $post->content ? $post->content : old('content')}}</textarea>
                             </div>
 
