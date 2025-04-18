@@ -985,10 +985,10 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                         </div>
                                     </div>
                                     <h3 class="pbmit-post-title">
-                                        <a href="/blog_detail/{{$largeBlog->id}}">{{$largeBlog->title??""}}</a>
+                                        <a href="/blog_detail/{{$largeBlog->id}}">{!! $largeBlog->title??"" !!}</a>
                                     </h3>
                                     <div class="pbminfotech-box-desc">
-                                        {{$largeBlog->content??""}}
+                                        {!! !  !!$largeBlog->content??"" !!}
                                     </div>
                                 </div>
                                 <a class="pbmit-blog-btn" href="/blog_detail/{{$largeBlog->id}}">

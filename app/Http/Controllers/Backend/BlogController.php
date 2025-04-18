@@ -108,7 +108,7 @@ class BlogController extends Controller
             $productBanner = $featured_image->storeAs('uploads', $imageName, 'public');
             $blogPost->featured_image = $productBanner;
         }
-        $blogPost->title = $request->title;
+        $blogPost->title = nl2br($request->title);
         $blogPost->slug = $this->convertToSlug($request->title);
         $blogPost->small_desc = $request->small_desc;
         $blogPost->content = nl2br($request->content);
