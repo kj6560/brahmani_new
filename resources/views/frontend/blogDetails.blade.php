@@ -49,7 +49,7 @@ $banner = !empty($page_data->page_banner)
 	<div class="banner_new">
 		<img src="{{ $banner }}" alt="Banner">
 		<div class="banner_new-text">
-		<h1 class="pbmit-tbar-title"> {{$blog->title}}</h1>
+		<h1 class="pbmit-tbar-title"> {!! $blog->title !!}</h1>
 			<span>
 				<a title="" href="/" class="home"><span class="r_text">Home</span></a>
 			</span>
@@ -62,7 +62,7 @@ $banner = !empty($page_data->page_banner)
 			<span class="sep">
 				<i class="pbmit-base-icon-angle-right"></i>
 			</span>
-			<span><span class="r_text"> {{$blog->title}}</span></span>
+			<span><span class="r_text"> {!! $blog->title !!}</span></span>
 		</div>
 	</div>
 	<!-- Title Bar End-->
@@ -107,7 +107,7 @@ $banner = !empty($page_data->page_banner)
 										</span>
 									</div>
 									<div class="pbmit-entry-content">
-										{!!  $blog->content !!}
+									{!! $blog->content !!}
 									</div>
 
 								</div>

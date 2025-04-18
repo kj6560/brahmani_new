@@ -103,10 +103,10 @@ $banner = !empty($page_data->page_banner)
 									</div>
 								</div>
 								<h3 class="pbmit-post-title">
-									<a href="/blog_detail/{{$blog->id}}">{{$blog->title}}</a>
+									<a href="/blog_detail/{{$blog->id}}">{!! $blog->title !!}</a>
 								</h3>
 								<div class="pbminfotech-box-desc">
-									{{$blog->small_desc}}…
+								{!! $blog->small_desc !!}
 								</div>
 							</div>
 						</div>
