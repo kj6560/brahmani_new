@@ -953,6 +953,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                     </div>
                 </div>
             </div>
+            @if (!empty($largePost->id))
             <div class="col-md-12 col-xl-8 col">
                 <div class="blog-one-right-col">
                     <article class="pbmit-ele-blog pbmit-blog-style-3">
@@ -1000,6 +1001,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                     </article>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </section>
