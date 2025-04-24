@@ -108,10 +108,10 @@ class BlogController extends Controller
             $productBanner = $featured_image->storeAs('uploads', $imageName, 'public');
             $blogPost->featured_image = $productBanner;
         }
-        $blogPost->title = nl2br($request->title);
+        $blogPost->title = $request->title;
         $blogPost->slug = $this->convertToSlug($request->title);
         $blogPost->small_desc = $request->small_desc;
-        $blogPost->content = nl2br($request->content);
+        $blogPost->content = $request->content;
         $blogPost->user_id = auth()->user()->id;
         $blogPost->published_at = Date::now();
         $blogPost->show_on_homepage = $request->show_on_homepage;
