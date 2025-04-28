@@ -102,13 +102,13 @@ class SiteController extends Controller
 
         return view('frontend.blog', ['settings' => $request->settings, 'blogs' => $blogs]);
     }
-    public function blogDetails(Request $request, $id)
+    public function blogDetails(Request $request, $slug)
     {
         $blog = BlogPost::join('users', 'users.id', '=', 'blog_posts.user_id')
             ->leftJoin('post_tags', 'post_tags.post_id', '=', 'blog_posts.id')
             ->leftJoin('tags', 'tags.id', '=', 'post_tags.tag_id')
             ->where('blog_posts.active', 1)
-            ->where('blog_posts.id', $id)
+            ->where('blog_posts.slug', $slug)
             ->select(
                 'blog_posts.*',
                 'users.name as user_name',
@@ -117,13 +117,13 @@ class SiteController extends Controller
             ->groupBy('blog_posts.id') // Group by the blog post ID
             ->first();
         $recentBlogs = BlogPost::where('blog_posts.active', 1)
-            ->whereNotIn('blog_posts.id', [$id])
+            ->whereNotIn('blog_posts.slug', [$slug])
             ->orderBy('blog_posts.id', 'desc')
             ->limit(5)
             ->get();
         $allTags = DB::table('tags')->get();
-        $prevPost = BlogPost::select('id', 'title')->where('id', '=', $id - 1)->first();
-        $nextPost = BlogPost::select('id', 'title')->where('id', '=', $id + 1)->first();
+        $prevPost = BlogPost::select('id', 'title')->where('id', '=', $blog->id - 1)->first();
+        $nextPost = BlogPost::select('id', 'title')->where('id', '=', $blog->id + 1)->first();
         $blogCategories = BlogCategory::all();
 
         return view('frontend.blogDetails', ['settings' => $request->settings, 'recent' => $recentBlogs, 'blog' => $blog, 'allTags' => $allTags, 'prevPost' => $prevPost, 'nextPost' => $nextPost, 'blogCategories' => $blogCategories]);

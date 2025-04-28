@@ -40,7 +40,7 @@ Route::get('/sitemap', [SiteController::class, 'sitemap'])->middleware([settings
 Route::get('/contact_us', [SiteController::class,'contactUs'])->middleware([settings::class,LogUserVisit::class])->name('frontend.contactUs');
 Route::get('/about_us', [SiteController::class,'aboutUs'])->middleware([settings::class,LogUserVisit::class])->name('frontend.aboutUs');
 Route::get('/blog', [SiteController::class,'blog'])->middleware([settings::class,LogUserVisit::class])->name('frontend.blog');
-Route::get('/blog_detail/{id}', [SiteController::class,'blogDetails'])->middleware([settings::class,LogUserVisit::class])->name('frontend.blogDetails');
+Route::get('/blog_detail/{slug}', [SiteController::class,'blogDetails'])->middleware([settings::class,LogUserVisit::class])->name('frontend.blogDetails');
 Route::get('/blogByTags/{id}', [SiteController::class,'blogByTags'])->middleware([settings::class,LogUserVisit::class])->name('frontend.blogByTags');
 Route::get('/blogByCategory/{id}', [SiteController::class,'blogByCategory'])->middleware([settings::class,LogUserVisit::class])->name('frontend.blogByCategory');
 Route::post('/storeQuery', [SiteController::class,'storeQuery'])->middleware([settings::class,LogUserVisit::class])->name('frontend.storeQuery');

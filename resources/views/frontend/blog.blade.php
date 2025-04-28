@@ -79,13 +79,13 @@ $banner = !empty($page_data->page_banner)
 											class="img-fluid" alt="">
 									</div>
 								</div>
-								<a class="pbmit-blog-btn" href="/blog_detail/{{$blog->id}}"
+								<a class="pbmit-blog-btn" href="/blog_detail/{{$blog->slug}}"
 									title="How To Choose The Right  Furniture Of Your Home">
 									<span class="pbmit-button-icon">
 										<i class="pbmit-base-icon-pbmit-up-arrow"></i>
 									</span>
 								</a>
-								<a class="pbmit-link" href="/blog_detail/{{$blog->id}}"></a>
+								<a class="pbmit-link" href="/blog_detail/{{$blog->slug}}"></a>
 							</div>
 							<div class="pbmit-content-wrapper">
 								<div class="pbmit-date-wraper d-flex align-items-center">
@@ -103,7 +103,7 @@ $banner = !empty($page_data->page_banner)
 									</div>
 								</div>
 								<h3 class="pbmit-post-title">
-									<a href="/blog_detail/{{$blog->id}}">{!! $blog->title !!}</a>
+									<a href="/blog_detail/{{$blog->slug}}">{!! $blog->title !!}</a>
 								</h3>
 								<div class="pbminfotech-box-desc">
 								{!! $blog->small_desc !!}

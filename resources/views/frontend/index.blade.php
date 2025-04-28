@@ -105,11 +105,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                         <h4 class="pbmit-subtitle">since 2009</h4>
                         <h2 class="pbmit-title">Building Excellence, Together.</h2>
                         <div class="pbmit-heading-desc">
-                            Brahmani Enterprises is a leading provider of high-quality construction materials, serving
-                            the Indian market for over 16 years. We specialize in a wide range of products, including
-                            PVC panels, louvers, gypsum boards, and more. Our commitment to quality, customer
-                            satisfaction, and innovation has made us a trusted partner for builders, contractors, and
-                            homeowners across the country.
+                        {{$settings['building_excellence_together_content'] ?? ''}}
                         </div>
                     </div>
                     <div class="row g-3">

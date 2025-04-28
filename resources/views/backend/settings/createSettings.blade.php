@@ -155,6 +155,17 @@
                   id="gtag">{{!empty($settings) && $settings['gtag'] ? $settings['gtag'] : old('gtag')}}</textarea>
               </div>
             </div>
+            <div class="row" style="background-color:grey;">
+              <label for="exampleInputUsername1" style="color:white;">Homepage Settings</label>
+            </div>
+
+            <div class="col" style="margin: 20px;">
+              <div class="form-group">
+                <label for="exampleInputUsername1">Building Excellence, Together</label>
+                <textarea class="exp_text" name="building_excellence_together_content" rows="12"
+                  id="gtag">{{!empty($settings) && $settings['building_excellence_together_content'] ? $settings['building_excellence_together_content'] : old('building_excellence_together_content')}}</textarea>
+              </div>
+            </div>
             <button type="submit" class="btn btn-primary me-2">Submit</button>
           </form>
         </div>

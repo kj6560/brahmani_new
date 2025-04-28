@@ -1,7 +1,10 @@
 @extends("layouts.dashboard")
 @section('content')
 <?php
-$product_ids = get_object_vars(json_decode($enquiry->product_ids));
+if(!empty($enquiry->product_ids)){
+    $product_ids = get_object_vars(json_decode($enquiry->product_ids));
+}
+
 ?>
 <div class="col-11 grid-margin stretch-card">
   <div class="card">
@@ -26,6 +29,7 @@ $product_ids = get_object_vars(json_decode($enquiry->product_ids));
                 </div>
             </div>
 
+            @if (!empty($enquiry->products))
             <!-- Product Information -->
             <div class="mb-4">
                 <h6 class="text-primary">Products Enquired</h6>
@@ -54,6 +58,7 @@ $product_ids = get_object_vars(json_decode($enquiry->product_ids));
                     </table>
                 </div>
             </div>
+            @endif
 
             
         </div>
