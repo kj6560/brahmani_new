@@ -342,6 +342,20 @@ class SiteController extends Controller
     }
     public function calculate(Request $request)
     {
+        $validated = $request->validate([
+            'panel_width' => 'required|numeric',
+            'panel_height' => 'required|numeric',
+            'panel_width_unit' => 'required',
+            'panel_height_unit' => 'required',
+            'wall_width.*' => 'required|numeric',
+            'wall_height.*' => 'required|numeric',
+            'wall_width_unit.*' => 'required',
+            'wall_height_unit.*' => 'required',
+            'obstructions.*.width' => 'nullable|numeric',
+            'obstructions.*.height' => 'nullable|numeric',
+            'obstructions.*.width_unit' => 'nullable',
+            'obstructions.*.height_unit' => 'nullable',
+        ]);
         // Get panel dimensions
         $panel_width = $this->convertToMeters($request->panel_width, $request->panel_width_unit);
         $panel_height = $this->convertToMeters($request->panel_height, $request->panel_height_unit);

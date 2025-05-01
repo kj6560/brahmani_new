@@ -293,5 +293,106 @@
         </div>
     </main>
 </body>
+<script>
+    // Validate panel form
+    function validatePanelForm() {
+        let isValid = true;
+        const panelWidth = document.querySelector('input[name="panel_width"]');
+        const panelHeight = document.querySelector('input[name="panel_height"]');
+        const panelWidthUnit = document.querySelector('select[name="panel_width_unit"]');
+        const panelHeightUnit = document.querySelector('select[name="panel_height_unit"]');
+
+        // Validate Panel Width
+        if (!panelWidth.value || isNaN(panelWidth.value)) {
+            alert("Please enter a valid panel width.");
+            isValid = false;
+        }
+
+        // Validate Panel Height
+        if (!panelHeight.value || isNaN(panelHeight.value)) {
+            alert("Please enter a valid panel height.");
+            isValid = false;
+        }
+
+        // Validate Panel Width Unit
+        if (!panelWidthUnit.value) {
+            alert("Please select a unit for panel width.");
+            isValid = false;
+        }
+
+        // Validate Panel Height Unit
+        if (!panelHeightUnit.value) {
+            alert("Please select a unit for panel height.");
+            isValid = false;
+        }
+
+        // Validate Wall Inputs
+        const walls = document.querySelectorAll('.wall-group');
+        walls.forEach((wall, index) => {
+            const wallWidth = wall.querySelector(`input[name="wall_width[${index}]"]`);
+            const wallHeight = wall.querySelector(`input[name="wall_height[${index}]"]`);
+            const wallWidthUnit = wall.querySelector(`select[name="wall_width_unit[${index}]"]`);
+            const wallHeightUnit = wall.querySelector(`select[name="wall_height_unit[${index}]"]`);
+
+            if (!wallWidth.value || isNaN(wallWidth.value)) {
+                alert(`Please enter a valid width for Wall ${index + 1}.`);
+                isValid = false;
+            }
+
+            if (!wallHeight.value || isNaN(wallHeight.value)) {
+                alert(`Please enter a valid height for Wall ${index + 1}.`);
+                isValid = false;
+            }
+
+            if (!wallWidthUnit.value) {
+                alert(`Please select a unit for Wall ${index + 1} width.`);
+                isValid = false;
+            }
+
+            if (!wallHeightUnit.value) {
+                alert(`Please select a unit for Wall ${index + 1} height.`);
+                isValid = false;
+            }
+
+            // Validate Obstructions
+            const obstructions = wall.querySelectorAll('.obstruction-group');
+            obstructions.forEach((obstruction, obstructionIndex) => {
+                const obstructionWidth = obstruction.querySelector(`input[name="obstructions[${index}][${obstructionIndex}][width]"]`);
+                const obstructionHeight = obstruction.querySelector(`input[name="obstructions[${index}][${obstructionIndex}][height]"]`);
+                const obstructionWidthUnit = obstruction.querySelector(`select[name="obstructions[${index}][${obstructionIndex}][width_unit]"]`);
+                const obstructionHeightUnit = obstruction.querySelector(`select[name="obstructions[${index}][${obstructionIndex}][height_unit]"]`);
+
+                if (!obstructionWidth.value || isNaN(obstructionWidth.value)) {
+                    alert(`Please enter a valid width for Obstruction ${obstructionIndex + 1} on Wall ${index + 1}.`);
+                    isValid = false;
+                }
+
+                if (!obstructionHeight.value || isNaN(obstructionHeight.value)) {
+                    alert(`Please enter a valid height for Obstruction ${obstructionIndex + 1} on Wall ${index + 1}.`);
+                    isValid = false;
+                }
+
+                if (!obstructionWidthUnit.value) {
+                    alert(`Please select a unit for Obstruction ${obstructionIndex + 1} width.`);
+                    isValid = false;
+                }
+
+                if (!obstructionHeightUnit.value) {
+                    alert(`Please select a unit for Obstruction ${obstructionIndex + 1} height.`);
+                    isValid = false;
+                }
+            });
+        });
+
+        return isValid;
+    }
+
+    // Attach the validation to form submit
+    document.getElementById('panelForm').onsubmit = function (event) {
+        if (!validatePanelForm()) {
+            event.preventDefault(); // Prevent form submission if invalid
+        }
+    };
+</script>
 
 </html>

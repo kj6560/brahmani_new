@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/2.1.6/css/dataTables.dataTables.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
 
@@ -182,7 +182,9 @@
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">{{$settings['Company_Name']??""}} </span>
+            <span
+              class="text-muted text-center text-sm-left d-block d-sm-inline-block">{{$settings['Company_Name'] ?? ""}}
+            </span>
             <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Copyright © {{date('Y')}}. All rights
               reserved.</span>
           </div>
@@ -196,10 +198,12 @@
   <!-- container-scroller -->
   <!-- plugins:js -->
   <!-- Include jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- In <head> -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-  <!-- Include Select2 JS CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <!-- Before closing </body> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="{{asset('dashboard/assets')}}/vendors/js/vendor.bundle.base.js"></script>
   <script src="{{asset('dashboard/assets')}}/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <!-- endinject -->
@@ -217,7 +221,6 @@
 
 
   <!-- Add DataTables JS and buttons extension -->
-  <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
