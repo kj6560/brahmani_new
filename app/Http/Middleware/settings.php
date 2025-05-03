@@ -104,6 +104,19 @@ class settings
                 }
             }
         }
+        if(!empty($current_url['path']) && str_contains($current_url['path'],'/product_category')) {
+            $parts = explode("/",$current_url['path']);
+            if(!empty($parts[2])) {
+                $product = ProductCategory::where('pro_cat_slug', $parts[2])->first();
+                if(!empty($product->id)) {
+                    $allSettings['page_data']=[
+                        'seo_title' => $product->pro_cat_meta_title,
+                        'seo_desc'=> $product->pro_cat_meta_description,
+                        'seo_keywords'=> $product->pro_cat_meta_keywords,
+                    ];
+                }
+            }
+        }
         $request->merge(['settings' => $allSettings]);
         return $next($request);
 

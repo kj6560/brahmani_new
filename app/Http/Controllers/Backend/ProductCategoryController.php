@@ -101,6 +101,9 @@ class ProductCategoryController extends Controller
         
         // Assign other fields
         $product->pro_cat_slug = $this->slugify($data['pro_cat_name']);
+        $product->pro_cat_meta_title = $data['pro_cat_name'];
+        $product->pro_cat_meta_description = $data['pro_cat_meta_description'];
+        $product->pro_cat_meta_keyword = $data['pro_cat_meta_keyword'];
         $product->pro_cat_name = $data['pro_cat_name'];
         $product->pro_cat_active = $data['pro_cat_status'];
         $product->pro_cat_description = $data['pro_cat_description'];

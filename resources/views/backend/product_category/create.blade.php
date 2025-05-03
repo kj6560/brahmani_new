@@ -84,6 +84,24 @@
                                     </option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Product Category Meta Title</label>
+                                <input type="text" name="pro_cat_meta_title"
+                                    value="{{$product && !empty($product) && $product->pro_cat_meta_title ? $product->pro_cat_meta_title : old('pro_cat_meta_title')}}"
+                                    class="form-control" id="exampleInputUsername1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Product Category Meta Description</label>
+                                <input type="text" name="pro_cat_meta_description"
+                                    value="{{$product && !empty($product) && $product->pro_cat_meta_description ? $product->pro_cat_meta_description : old('pro_cat_meta_description')}}"
+                                    class="form-control" id="exampleInputUsername1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Product Category Meta Keywords</label>
+                                <input type="text" name="pro_cat_meta_keywords"
+                                    value="{{$product && !empty($product) && $product->pro_cat_meta_keywords ? $product->pro_cat_meta_keywords : old('pro_cat_meta_keywords')}}"
+                                    class="form-control" id="exampleInputUsername1">
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary me-2">Submit</button>
                     </form>
