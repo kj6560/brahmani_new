@@ -91,7 +91,7 @@ class settings
             $allSettings['page_data'] = $page;
 
         }
-        if(str_contains($current_url['path'],'/products')) {
+        if(!empty($current_url['path']) && str_contains($current_url['path'],'/products')) {
             $parts = explode("/",$current_url['path']);
             if(!empty($parts[2])) {
                 $product = Product::where('product_slug', $parts[2])->first();
