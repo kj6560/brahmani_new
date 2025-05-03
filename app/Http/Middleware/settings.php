@@ -91,7 +91,19 @@ class settings
             $allSettings['page_data'] = $page;
 
         }
-
+        if(str_contains($current_url['path'],'/products')) {
+            $parts = explode("/",$current_url['path']);
+            if(!empty($parts[2])) {
+                $product = Product::where('product_slug', $parts[2])->first();
+                if(!empty($product->id)) {
+                    $allSettings['page_data']=[
+                        'seo_title' => $product->product_meta_title,
+                        'seo_desc'=> $product->product_meta_discription,
+                        'seo_keywords'=> $product->product_meta_keywords,
+                    ];
+                }
+            }
+        }
         $request->merge(['settings' => $allSettings]);
         return $next($request);
 

@@ -179,7 +179,26 @@
                                         @endforeach
                                     @endif
                                 </div>
+                                
                                 <button id="add-more-meta-tags" class="btn btn-secondary btn-sm mt-2">Add Product Parameters</button>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Product Meta Title</label>
+                                <input type="text" name="product_meta_title"
+                                    value="{{$product && !empty($product) && $product->product_meta_title ? $product->product_meta_title : old('product_meta_title')}}"
+                                    class="form-control" id="exampleInputUsername1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Product Meta Description</label>
+                                <input type="text" name="product_meta_discription"
+                                    value="{{$product && !empty($product) && $product->product_meta_discription ? $product->product_meta_discription : old('product_meta_discription')}}"
+                                    class="form-control" id="exampleInputUsername1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Product Meta Keywords</label>
+                                <input type="text" name="product_meta_keywords"
+                                    value="{{$product && !empty($product) && $product->product_meta_keywords ? $product->product_meta_keywords : old('product_meta_keywords')}}"
+                                    class="form-control" id="exampleInputUsername1">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary me-2">Submit</button>
