@@ -98,8 +98,9 @@ class ProductCategoryController extends Controller
             $slide = $pro_cat_image->storeAs('uploads', $imageName, 'public');
             $product->pro_cat_image = $slide;
         }
-
+        
         // Assign other fields
+        $product->pro_cat_slug = $this->slugify($data['pro_cat_name']);
         $product->pro_cat_name = $data['pro_cat_name'];
         $product->pro_cat_active = $data['pro_cat_status'];
         $product->pro_cat_description = $data['pro_cat_description'];

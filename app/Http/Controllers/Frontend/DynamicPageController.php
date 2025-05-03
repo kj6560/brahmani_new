@@ -49,7 +49,14 @@ class DynamicPageController extends Controller
         if(isset($filters['Panel_Included']) && $filters['Panel_Included'] != ''){
             $category_products = $category_products->where('panel_included', $filters['Panel_Included']);
         }
-        $category_products = $category_products->paginate(12);
+        $category_products = $category_products->get();
+        foreach ($category_products as $category_product) {
+            if(empty($category_product->product_slug) && !empty($category_product->product_name)){
+                $slug =  $this->slugify($category_product->product_name);
+                $category_product->product_slug = $slug;
+                $category_product->save();
+            }
+        }
         return view('frontend.dynamic_cat_page', ['settings' => $request->settings, 'category' => $product_category, 'category_products' => $category_products,'filters' => $filters]);
     }
     public function loadProductCategoryAll(Request $request)

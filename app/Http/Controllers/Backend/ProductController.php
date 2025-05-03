@@ -89,6 +89,7 @@ class ProductController extends Controller
             $product->product_banner = $productBanner;
         }
         $product->product_sku = $data['product_sku'];
+        $product->product_slug = $this->slugify($data['product_name']);
         $product->product_price = $data['product_price'];
         $product->product_short_description = $data['product_short_description'];
         $product->product_category = $data['product_category'];

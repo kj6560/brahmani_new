@@ -57,7 +57,7 @@ Route::post('/calculate',[SiteController::class,'calculate'])->middleware([setti
 //product_category
 Route::get('/product_category_all', [DynamicPageController::class, 'loadProductCategoryAll'])->middleware([settings::class,LogUserVisit::class])->name("product_category_all");
 Route::get('/product_category/{slug}', [DynamicPageController::class, 'loadProductCategory'])->middleware([settings::class,LogUserVisit::class])->name("product_category");
-Route::get('/products/{id}', [DynamicPageController::class, 'loadProducts'])->middleware([settings::class,LogUserVisit::class])->name("products.load");
+Route::get('/products/{slug}', [DynamicPageController::class, 'loadProducts'])->middleware([settings::class,LogUserVisit::class])->name("products.load");
 //dynamic pages
 $pages = DB::table('pages')->get();
 foreach($pages as $page){
