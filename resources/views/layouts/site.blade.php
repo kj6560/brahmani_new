@@ -63,8 +63,8 @@ if (!empty($page_data['page_meta'])) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php
     echo $settings['gtag'] ?? "";
-    if (!empty($settings['schema'])) {
-        echo prepareSchema($settings, $settings['schema']);
+    if (!empty($page_data['page_schema'])) {
+        echo prepareSchema($settings, $page_data['page_schema']);
     }
     ?>
     <style>

@@ -3,7 +3,6 @@
 <?php
 
 $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->page_sliders) : [];
-
 ?>
 <style>
     .product-image {
