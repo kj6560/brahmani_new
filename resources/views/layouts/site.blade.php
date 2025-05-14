@@ -303,7 +303,7 @@ $errorText .= $value[0] . '\n';
         <!-- Page Content End -->
         <a href="https://wa.me/{{ preg_replace('/\D/', '', $settings['Official_Number']) }}"
             class="whatsapp-button" target="_blank">
-            <img src="https://www.authenticdesigner.in/labeling-machine-manufacturer/img/whatsapp-labeling-machine.png" alt="WhatsApp">
+            <img src="{{asset('brahmani_frontend_assets')}}/images/whatsapp.png" alt="WhatsApp">
         </a>
 
         <script>
