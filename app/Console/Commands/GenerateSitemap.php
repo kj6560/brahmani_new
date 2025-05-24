@@ -24,21 +24,21 @@ class GenerateSitemap extends Command
         $urls[] = [
             'loc' => "{$baseUrl}/",
             'lastmod' => $now,
-            'changefreq' => 'daily',
+            'changefreq' => 'hourly',
             'priority' => '1.0',
         ];
 
         $urls[] = [
             'loc' => "{$baseUrl}/about-us",
             'lastmod' => $now,
-            'changefreq' => 'monthly',
+            'changefreq' => 'hourly',
             'priority' => '1.0',
         ];
 
         $urls[] = [
             'loc' => "{$baseUrl}/contact-us",
             'lastmod' => $now,
-            'changefreq' => 'yearly',
+            'changefreq' => 'hourly',
             'priority' => '1.0',
         ];
 
@@ -48,7 +48,7 @@ class GenerateSitemap extends Command
             $urls[] = [
                 'loc' => "{$baseUrl}/product_category/{$slug}",
                 'lastmod' => $now,
-                'changefreq' => 'weekly',
+                'changefreq' => 'hourly',
                 'priority' => '1.0',
             ];
         }
@@ -59,7 +59,7 @@ class GenerateSitemap extends Command
             $urls[] = [
                 'loc' => "{$baseUrl}/products/{$slug}",
                 'lastmod' => $now,
-                'changefreq' => 'weekly',
+                'changefreq' => 'hourly',
                 'priority' => '1.0',
             ];
         }
@@ -70,7 +70,7 @@ class GenerateSitemap extends Command
             $urls[] = [
                 'loc' => "{$baseUrl}/blog_detail/{$slug}",
                 'lastmod' => $now,
-                'changefreq' => 'weekly',
+                'changefreq' => 'hourly',
                 'priority' => '1.0',
             ];
         }
