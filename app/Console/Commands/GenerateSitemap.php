@@ -32,14 +32,14 @@ class GenerateSitemap extends Command
             'loc' => "{$baseUrl}/about-us",
             'lastmod' => $now,
             'changefreq' => 'monthly',
-            'priority' => '0.8',
+            'priority' => '1.0',
         ];
 
         $urls[] = [
             'loc' => "{$baseUrl}/contact-us",
             'lastmod' => $now,
             'changefreq' => 'yearly',
-            'priority' => '0.5',
+            'priority' => '1.0',
         ];
 
         // Product categories
@@ -49,7 +49,7 @@ class GenerateSitemap extends Command
                 'loc' => "{$baseUrl}/product_category/{$slug}",
                 'lastmod' => $now,
                 'changefreq' => 'weekly',
-                'priority' => '0.9',
+                'priority' => '1.0',
             ];
         }
 
@@ -60,7 +60,7 @@ class GenerateSitemap extends Command
                 'loc' => "{$baseUrl}/products/{$slug}",
                 'lastmod' => $now,
                 'changefreq' => 'weekly',
-                'priority' => '0.9',
+                'priority' => '1.0',
             ];
         }
 
@@ -71,7 +71,7 @@ class GenerateSitemap extends Command
                 'loc' => "{$baseUrl}/blog_detail/{$slug}",
                 'lastmod' => $now,
                 'changefreq' => 'weekly',
-                'priority' => '0.9',
+                'priority' => '1.0',
             ];
         }
         // Build the XML string manually
