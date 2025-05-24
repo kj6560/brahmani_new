@@ -108,6 +108,7 @@ class ProductCategoryController extends Controller
         $product->pro_cat_active = $data['pro_cat_status'];
         $product->pro_cat_description = $data['pro_cat_description'];
         $product->show_on_home_page = $data['show_on_home_page'];
+        $product->product_category_schema = $data['product_category_schema'];
         // Handle product category order
         $newOrder = $data['product_category_order'] ?? null;
 

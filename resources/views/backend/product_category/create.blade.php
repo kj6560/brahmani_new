@@ -102,6 +102,11 @@
                                     value="{{$product && !empty($product) && $product->pro_cat_meta_keywords ? $product->pro_cat_meta_keywords : old('pro_cat_meta_keywords')}}"
                                     class="form-control" id="exampleInputUsername1">
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Product Category Schema</label>
+                                <textarea class="exp_text" name="product_category_schema" rows="10"
+                                    id="product_category_schema">{{!empty($product) && $product->product_category_schema ? $product->product_category_schema : old('product_category_schema')}}</textarea>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary me-2">Submit</button>
                     </form>

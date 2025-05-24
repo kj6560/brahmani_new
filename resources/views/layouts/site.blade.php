@@ -3,7 +3,7 @@
 <?php
 
 $page_data = !empty($settings['page_data']) ? $settings['page_data'] : [];
-$og_tags = $page_data["og_tags"];
+$og_tags = !empty($page_data["og_tags"])?$page_data["og_tags"]:[];
 if (!empty($page_data['page_meta'])) {
     $metas = json_decode($page_data['page_meta']);
 }
@@ -72,6 +72,16 @@ if (!empty($page_data['page_meta'])) {
     echo $settings['gtag'] ?? "";
     if (!empty($page_data['page_schema'])) {
         echo prepareSchema($settings, $page_data['page_schema']);
+    }
+    ?>
+        <?php
+    if (!empty($page_data['product_schema'])) {
+        echo prepareSchema($settings, $page_data['product_schema']);
+    }
+    ?>
+    <?php
+    if (!empty($page_data['product_category_schema'])) {
+        echo prepareSchema($settings, $page_data['product_category_schema']);
     }
     ?>
     <style>

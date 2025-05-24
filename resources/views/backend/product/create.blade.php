@@ -225,6 +225,11 @@
                                 <button id="add-more-og-meta-tags" class="btn btn-secondary btn-sm mt-2">Add Og Meta
                                     Tags</button>
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Product Schema</label>
+                                <textarea class="exp_text" name="product_schema" rows="10"
+                                    id="product_schema">{{!empty($product) && $product->product_schema ? $product->product_schema : old('page_schema')}}</textarea>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary me-2">Submit</button>
                     </form>

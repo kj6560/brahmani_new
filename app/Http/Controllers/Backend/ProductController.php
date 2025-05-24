@@ -107,6 +107,7 @@ class ProductController extends Controller
         $product->product_meta_title = $data['product_meta_title'];
         $product->product_meta_discription = $data['product_meta_discription'];
         $product->product_meta_keywords = $data['product_meta_keywords'];
+        $product->product_schema = $data['product_schema'];
         if (!empty($data['pro_params'])) {
             $product->pro_params = json_encode($this->processProductParams($data['pro_params']));
         }

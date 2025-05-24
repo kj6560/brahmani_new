@@ -102,6 +102,7 @@ class settings
                         'seo_title' => $product->product_meta_title,
                         'seo_desc' => $product->product_meta_discription,
                         'seo_keywords' => $product->product_meta_keywords,
+                        'product_schema' => $product->product_schema
                     ];
                     $og_tags = json_decode($product->product_og_meta, true);
                     if (!empty($og_tags)) {
@@ -129,6 +130,7 @@ class settings
                         'seo_title' => $product->pro_cat_meta_title,
                         'seo_desc' => $product->pro_cat_meta_description,
                         'seo_keywords' => $product->pro_cat_meta_keywords,
+                        'product_category_schema' =>$product->product_category_schema
                     ];
                 }
             }
