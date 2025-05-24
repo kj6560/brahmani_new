@@ -75,6 +75,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        
         unset($data['settings']);
         if (!empty($data['id'])) {
             $product = Product::find($data['id']);
@@ -108,6 +109,9 @@ class ProductController extends Controller
         $product->product_meta_keywords = $data['product_meta_keywords'];
         if (!empty($data['pro_params'])) {
             $product->pro_params = json_encode($this->processProductParams($data['pro_params']));
+        }
+        if (!empty($data['og_meta_tags'])) {
+            $product->product_og_meta = json_encode($this->processProductParams($data['og_meta_tags']));
         }
         if ($product->save()) {
             return redirect()->back()->with('success', 'Product created successfully.');

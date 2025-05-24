@@ -200,6 +200,31 @@
                                     value="{{$product && !empty($product) && $product->product_meta_keywords ? $product->product_meta_keywords : old('product_meta_keywords')}}"
                                     class="form-control" id="exampleInputUsername1">
                             </div>
+                            <!-- Meta Tags Section -->
+                            <div class="form-group">
+                                <label>Meta Tags</label>
+                                <?php 
+                                    $metaTags = [];
+                                    if($product !=null){
+                                        $metaTags = json_decode($product->product_og_meta);
+                                    }
+                                    
+                                ?>
+                                <div id="og-meta-tags-container">
+                                    @if (!empty($metaTags))
+                                        @foreach ($metaTags as $tag)
+                                            <div class="ogmeta-tag-pair" style="margin-bottom: 10px;">
+                                                <input type="text" name="og_meta_tags[][name]" placeholder="Tag Name"
+                                                    class="form-control" style="margin-right: 10px;" value="{{ $tag->name }}">
+                                                <input type="text" name="og_meta_tags[][value]" placeholder="Tag Value"
+                                                    class="form-control" value="{{ $tag->value }}">
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                                <button id="add-more-og-meta-tags" class="btn btn-secondary btn-sm mt-2">Add Og Meta
+                                    Tags</button>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary me-2">Submit</button>
                     </form>
@@ -242,5 +267,37 @@
         document.getElementById('meta-tags-container').appendChild(metaTagPair);
     });
 </script>
+<script>
+    // JavaScript for Adding Dynamic Inputs
+    document.getElementById('add-more-og-meta-tags').addEventListener('click', function (e) {
+        e.preventDefault();
 
+        // Create a new div for the meta-tag pair
+        const metaTagPair = document.createElement('div');
+        metaTagPair.classList.add('ogmeta-tag-pair');
+        metaTagPair.style.marginBottom = '10px';
+
+        // Create the 'name' input
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.name = 'og_meta_tags[][name]';
+        nameInput.placeholder = 'Tag Name';
+        nameInput.classList.add('form-control');
+        nameInput.style.marginRight = '10px';
+
+        // Create the 'value' input
+        const valueInput = document.createElement('input');
+        valueInput.type = 'text';
+        valueInput.name = 'og_meta_tags[][value]';
+        valueInput.placeholder = 'Tag Value';
+        valueInput.classList.add('form-control');
+
+        // Append inputs to the metaTagPair div
+        metaTagPair.appendChild(nameInput);
+        metaTagPair.appendChild(valueInput);
+
+        // Append the metaTagPair div to the container
+        document.getElementById('og-meta-tags-container').appendChild(metaTagPair);
+    });
+</script>
 @endsection

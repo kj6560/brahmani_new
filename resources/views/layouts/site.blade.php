@@ -3,6 +3,7 @@
 <?php
 
 $page_data = !empty($settings['page_data']) ? $settings['page_data'] : [];
+$og_tags = $page_data["og_tags"];
 if (!empty($page_data['page_meta'])) {
     $metas = json_decode($page_data['page_meta']);
 }
@@ -25,6 +26,12 @@ if (!empty($page_data['page_meta'])) {
     <meta name="rating" content="General">
     <meta name="audience" content="All">
     <meta name="Revisit-After" content="7 days">
+    @if(!empty($og_tags))
+    @foreach ($og_tags as $tag)
+<meta name="og:{{ $tag["key"] }}" content="{{ $tag['value'] }}">
+    @endforeach
+    
+    @endif
     @if (!empty($metas))
     @foreach ($metas as $meta)
     <meta name="{{$meta->name}}" content="{{$meta->value}}">
