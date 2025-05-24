@@ -1,9 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <sitemap>
-        <url><loc>https://brahmanienterprise.co.in/sitemap-pages.xml</loc></url>
-    </sitemap>
-    <sitemap>
-    <url><loc>https://brahmanienterprise.co.in/sitemap-products.xml</loc></url>
-    </sitemap>
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    <url>
+        <loc>https://brahmanienterprise.co.in/</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/about-us</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/contact-us</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/premium-fluted-panels</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/premium-charcoal-louvers</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/charcoal-louvers</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/fluted-panel</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/pvc-louvers</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/wpc-panels</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/premium-wpc-panels</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/super-heavy-panels</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/soffit-panels</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/pvc-panel-two-groove</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/pvc-panel-u-groove</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/pvc-panel-hot-stamping</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/pu-stone-panels</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/ultimate-super-heavy-panel</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/moulding</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/glass-mosaic-tiles</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/accessories-and-gi-framing</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/cement-sheet</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/glass-wool</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/gypsum-board</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/gypsum-powder</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/pvc-gypsum-tiles</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/t-grid</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/products/floor-gaurd</loc>
+    
+            </url>
+    <url>
+        <loc>https://brahmanienterprise.co.in/blog</loc>
+    
+            </url>
+</urlset>
