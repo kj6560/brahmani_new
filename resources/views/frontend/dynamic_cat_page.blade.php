@@ -187,7 +187,7 @@ $banner = !empty($page_data->page_banner)
                 </div>
                 <div class="col-lg-2 service-left-col sidebar">
                     <label for="filt">Filters</label>
-                    <form action="/product_category/{{$category->id ?? 0}}" method="get" id="filt">
+                    <form action="/product_category/{{$category->pro_cat_slug ?? 0}}" method="get" id="filt">
                         <aside class="service-sidebar" style="border: 1px solid black;margin:15px;padding:15px;">
                             <div class="filter-section">
                                 <h3>Usage Of Panels</h3>
