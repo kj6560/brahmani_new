@@ -52,7 +52,7 @@ class GenerateSitemap extends Command
         ];
 
         foreach ($productCategories as $slug) {
-            $sitemap->add(Url::create("{$baseUrl}/products/{$slug}"));
+            $sitemap->add(Url::create("{$baseUrl}/product_category/{$slug}"));
         }
 
         // Add blog and contact pages
