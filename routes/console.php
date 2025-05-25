@@ -2,4 +2,4 @@
 
 use Illuminate\Support\Facades\Schedule;
 
-Schedule::command('command:generate')->everyMinute()->withoutOverlapping()->runInBackground();
+Schedule::command('sitemap:generate')->everyMinute()->withoutOverlapping()->runInBackground();
