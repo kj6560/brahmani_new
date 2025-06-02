@@ -44,8 +44,8 @@
     <div class="container">
         {{-- Use your own image or a CDN link --}}
         <img src="{{asset('brahmani_frontend_assets')}}/images/errors/500.jpg" alt="500 Illustration">
-        <h1>Oops! Page not found.</h1>
-        <p>The page you're looking for doesn’t exist or has been moved.</p>
+        <h1>Oops! This is an unexpected server behaviour.</h1>
+        <p>This needs some fixation. Plz visit later</p>
         <a href="{{ url('/') }}">Go Back Home</a>
     </div>
 </body>
