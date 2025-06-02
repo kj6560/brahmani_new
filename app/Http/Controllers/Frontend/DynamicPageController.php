@@ -19,6 +19,9 @@ class DynamicPageController extends Controller
     {
         $filters = $request->all();
         $product_category = ProductCategory::where('pro_cat_slug',$slug)->first();
+        if(empty($product_category)){
+            return redirect()->back()->with('error', 'Product category not found');
+        }
         $category_products = Product::
             where('product_status', 1)
             ->groupBy('id');
