@@ -98,7 +98,7 @@ class DynamicPageController extends Controller
     }
     public function loadProducts(Request $request, $slug)
     {
-        $product = Product::leftJoin('product_image as pi', 'pi.product_id', '=', 'products.id')
+        $product = Product::leftJoin('product_images as pi', 'pi.product_id', '=', 'products.id')
             ->where('products.product_slug', $slug)
             ->where('pi.image_status', 1)
             ->where('products.product_status', 1)
