@@ -43,7 +43,7 @@
 <body>
     <div class="container">
         {{-- Use your own image or a CDN link --}}
-        <img src="https://i.imgur.com/qIufhof.png" alt="404 Illustration">
+        <img src="{{asset('brahmani_frontend_assets')}}/images/errors/404.png" alt="404 Illustration">
         <h1>Oops! Page not found.</h1>
         <p>The page you're looking for doesn’t exist or has been moved.</p>
         <a href="{{ url('/') }}">Go Back Home</a>
