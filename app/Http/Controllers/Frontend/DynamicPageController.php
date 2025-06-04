@@ -18,49 +18,49 @@ class DynamicPageController extends Controller
     public function loadProductCategory(Request $request, $slug)
     {
         $filters = $request->all();
-        $product_category = ProductCategory::where('pro_cat_slug',$slug)->first();
-        if(empty($product_category)){
-            return redirect()->back()->with('error', 'Product category not found');
+        $product_category = ProductCategory::where('pro_cat_slug', $slug)->first();
+        if (empty($product_category)) {
+            abort(404); // Category not found
         }
         $category_products = Product::
             where('product_status', 1)
             ->groupBy('id');
-        if(!empty($slug)){
+        if (!empty($slug)) {
             $category_products = $category_products->where('product_category', $product_category->id);
         }
-        if((isset($filters['Min_Price']) && $filters['Min_Price'] != '') && ($filters['Min_Price'] != 0 && $filters['Max_Price'] != 0)){
+        if ((isset($filters['Min_Price']) && $filters['Min_Price'] != '') && ($filters['Min_Price'] != 0 && $filters['Max_Price'] != 0)) {
             $category_products = $category_products->where('product_price', '>=', $filters['Min_Price']);
         }
-        if(isset($filters['Length']) && $filters['Length'] != ''){
+        if (isset($filters['Length']) && $filters['Length'] != '') {
             $category_products = $category_products->where('length', $filters['Length']);
         }
-        if(isset($filters['Width']) && $filters['Width'] != ''){
+        if (isset($filters['Width']) && $filters['Width'] != '') {
             $category_products = $category_products->where('width', $filters['Width']);
         }
-        if(isset($filters['Thickness']) && $filters['Thickness'] != ''){
+        if (isset($filters['Thickness']) && $filters['Thickness'] != '') {
             $category_products = $category_products->where('thickness', $filters['Thickness']);
         }
-        if(isset($filters['Color']) && $filters['Color'] != ''){
+        if (isset($filters['Color']) && $filters['Color'] != '') {
             $category_products = $category_products->where('color', $filters['Color']);
         }
-        if(isset($filters['Usage_Of_Panels']) && $filters['Usage_Of_Panels'] != ''){
+        if (isset($filters['Usage_Of_Panels']) && $filters['Usage_Of_Panels'] != '') {
             $category_products = $category_products->where('usage_of_panel', $filters['Usage_Of_Panels']);
         }
-        if(isset($filters['Instock']) && $filters['Instock'] != ''){
+        if (isset($filters['Instock']) && $filters['Instock'] != '') {
             $category_products = $category_products->where('instock', $filters['Instock']);
         }
-        if(isset($filters['Panel_Included']) && $filters['Panel_Included'] != ''){
+        if (isset($filters['Panel_Included']) && $filters['Panel_Included'] != '') {
             $category_products = $category_products->where('panel_included', $filters['Panel_Included']);
         }
         $category_products = $category_products->get();
         foreach ($category_products as $category_product) {
-            if(empty($category_product->product_slug) && !empty($category_product->product_name)){
-                $slug =  $this->slugify($category_product->product_name);
+            if (empty($category_product->product_slug) && !empty($category_product->product_name)) {
+                $slug = $this->slugify($category_product->product_name);
                 $category_product->product_slug = $slug;
                 $category_product->save();
             }
         }
-        return view('frontend.dynamic_cat_page', ['settings' => $request->settings, 'category' => $product_category, 'category_products' => $category_products,'filters' => $filters]);
+        return view('frontend.dynamic_cat_page', ['settings' => $request->settings, 'category' => $product_category, 'category_products' => $category_products, 'filters' => $filters]);
     }
     public function loadProductCategoryAll(Request $request)
     {
@@ -68,33 +68,33 @@ class DynamicPageController extends Controller
         $category_products = Product::
             where('product_status', 1)
             ->groupBy('id');
-        
-        if((isset($filters['Min_Price']) && $filters['Min_Price'] != '') && ($filters['Min_Price'] != 0 && $filters['Max_Price'] != 0)){
+
+        if ((isset($filters['Min_Price']) && $filters['Min_Price'] != '') && ($filters['Min_Price'] != 0 && $filters['Max_Price'] != 0)) {
             $category_products = $category_products->where('product_price', '>=', $filters['Min_Price']);
         }
-        if(isset($filters['Length']) && $filters['Length'] != ''){
+        if (isset($filters['Length']) && $filters['Length'] != '') {
             $category_products = $category_products->where('length', $filters['Length']);
         }
-        if(isset($filters['Width']) && $filters['Width'] != ''){
+        if (isset($filters['Width']) && $filters['Width'] != '') {
             $category_products = $category_products->where('width', $filters['Width']);
         }
-        if(isset($filters['Thickness']) && $filters['Thickness'] != ''){
+        if (isset($filters['Thickness']) && $filters['Thickness'] != '') {
             $category_products = $category_products->where('thickness', $filters['Thickness']);
         }
-        if(isset($filters['Color']) && $filters['Color'] != ''){
+        if (isset($filters['Color']) && $filters['Color'] != '') {
             $category_products = $category_products->where('color', $filters['Color']);
         }
-        if(isset($filters['Usage_Of_Panels']) && $filters['Usage_Of_Panels'] != ''){
+        if (isset($filters['Usage_Of_Panels']) && $filters['Usage_Of_Panels'] != '') {
             $category_products = $category_products->where('usage_of_panel', $filters['Usage_Of_Panels']);
         }
-        if(isset($filters['Instock']) && $filters['Instock'] != ''){
+        if (isset($filters['Instock']) && $filters['Instock'] != '') {
             $category_products = $category_products->where('instock', $filters['Instock']);
         }
-        if(isset($filters['Panel_Included']) && $filters['Panel_Included'] != ''){
+        if (isset($filters['Panel_Included']) && $filters['Panel_Included'] != '') {
             $category_products = $category_products->where('panel_included', $filters['Panel_Included']);
         }
         $category_products = $category_products->paginate(12);
-        return view('frontend.dynamic_cat_page', ['settings' => $request->settings, 'category_products' => $category_products,'filters' => $filters]);
+        return view('frontend.dynamic_cat_page', ['settings' => $request->settings, 'category_products' => $category_products, 'filters' => $filters]);
     }
     public function loadProducts(Request $request, $slug)
     {
@@ -109,8 +109,8 @@ class DynamicPageController extends Controller
             )
             ->groupBy('products.id')
             ->first();
-        if(!$product){
-            return redirect()->back()->with('error', 'Product not found');
+        if (empty($product->id)) {
+            abort(404);
         }
         return view('frontend.dynamic_product_page', ['settings' => $request->settings, 'product' => $product]);
     }
