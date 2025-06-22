@@ -1,25 +1,24 @@
 @extends('layouts.site')
 @section('content')
 @php
-$page_data = $settings['page_data'] ?? null;
-$banner = !empty($page_data->page_banner)
-? asset("storage/".$page_data->page_banner)
-: asset("brahmani_frontend_assets/images/bg/titlebar-img.jpg");
+    $page_data = $settings['page_data'] ?? null;
+    $banner = !empty($page_data->page_banner)
+        ? asset("storage/" . $page_data->page_banner)
+        : asset("brahmani_frontend_assets/images/bg/titlebar-img.jpg");
 @endphp
+	<style>
+		.pbmit-title-bar-wrapper {
+			background-image: url('{{ $banner }}');
+			max-height: 600px !important;
+			padding-top: 100px;
+		}
 
-<style>
-    .pbmit-title-bar-wrapper {
-        background-image: url('{{ $banner }}');
-        max-height: 600px !important;
-        padding-top: 100px;
-    }
-
-    .header-style-1 {
-        position: relative;
-        margin: 0px 0px 0;
-    }
-</style>
-<style>
+		.header-style-1 {
+			position: relative;
+			margin: 0px 0px 0;
+		}
+	</style>
+	<style>
 		.banner_new {
 			position: relative;
 			width: 100%;
@@ -45,47 +44,48 @@ $banner = !empty($page_data->page_banner)
 			padding: 10px 20px;
 			border-radius: 5px;
 		}
-		.r_text{
+
+		.r_text {
 			color: #fff;
 			font-size: 16px;
 		}
 	</style>
-	<!-- Title Bar -->
-	<div class="banner_new">
-		<img src="{{ $banner }}" alt="Banner">
-		<div class="banner_new-text">
-		<h1 class="pbmit-tbar-title"> Sitemap</h1>
-			<span>
-				<a title="" href="/" class="home"><span class="r_text">Home</span></a>
-			</span>
-			<span class="sep">
-				<i class="pbmit-base-icon-angle-right"></i>
-			</span>
-			<span><span class="r_text"> Sitemap</span></span>
-		</div>
-	</div>
-	<!-- Title Bar End-->
+<!-- Title Bar -->
+<div class="banner_new">
+    <img src="{{ $banner }}" alt="Banner">
+    <div class="banner_new-text">
+        <h1 class="pbmit-tbar-title"> Sitemap</h1>
+        <span>
+            <a href="/" class="home"><span class="r_text">Home</span></a>
+        </span>
+        <span class="sep">
+            <i class="pbmit-base-icon-angle-right"></i>
+        </span>
+        <span><span class="r_text"> Sitemap</span></span>
+    </div>
+</div>
+<!-- Title Bar End-->
 
 <!-- Page Content -->
 <div class="page-content about-us">
+    <div class="container">
+        <h5 class="mb-4">Sitemap URLs</h5>
 
-    <div class="container my-5">
-        <div class="col">
-            @foreach($allUrls as $file=>$urls)
-            <ul>
-                <label>{{$file}}</label>
-                <br>
-                <br>
-                @foreach($urls as $url)
-                <li>{{$url}}</li>
-                @endforeach
-                <br>
-            </ul>
-            @endforeach
+        <div class="row">
+            <div class="col-md-3">
+                <?php renderLink('🛒 Product Categories', $productCategories); ?>
+            </div>
+            <div class="col-md-3">
+                <?php renderLink('📦 Products', $products); ?>
+            </div>
+            <div class="col-md-3">
+                <?php renderLink('📝 Blog Details', $blogDetails); ?>
+            </div>
+            <div class="col-md-3">
+                <?php if (!empty($others)) renderLink('🔗 Other Links', $others); ?>
+            </div>
         </div>
-
     </div>
-
 </div>
 <!-- Page Content End -->
 @endsection

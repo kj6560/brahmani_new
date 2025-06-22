@@ -38,13 +38,57 @@ class SiteController extends Controller
     }
     public function sitemap(Request $request)
     {
-        $sitemapUrls = $this->getSitemapUrls(public_path('sitemap.xml'));
-        $allurls = [];
-        foreach ($sitemapUrls as $urls) {
-            $url = explode("https://brahmanienterprise.co.in/", $urls)[1];
-            $allurls[$url] = $this->getSitemapUrls1(public_path($url));
+        $sitemapUrl = 'https://brahmanienterprise.co.in/sitemap.xml';
+
+        // Load the sitemap
+        $xmlContent = file_get_contents($sitemapUrl);
+
+        // Check if the content was fetched successfully
+        if ($xmlContent === false) {
+            die('Failed to load sitemap.');
         }
-        return view('frontend.sitemap', ['settings' => $request->settings, 'allUrls' => $allurls]);
+
+        // Parse the XML
+        $xml = simplexml_load_string($xmlContent);
+
+        // Check if parsing succeeded
+        if ($xml === false) {
+            die('Failed to parse XML.');
+        }
+        $allurls = [];
+        $sitemapUrl = 'https://brahmanienterprise.co.in/sitemap.xml';
+        $xmlContent = file_get_contents($sitemapUrl);
+
+        if ($xmlContent === false) {
+            die('Failed to load sitemap.');
+        }
+
+        $xml = simplexml_load_string($xmlContent);
+        if ($xml === false) {
+            die('Failed to parse XML.');
+        }
+
+        // Prepare arrays
+        $productCategories = [];
+        $products = [];
+        $blogDetails = [];
+        $others = [];
+
+        // Loop through sitemap URLs
+        foreach ($xml->url as $url) {
+            $loc = (string) $url->loc;
+
+            if (strpos($loc, 'product_category') !== false) {
+                $productCategories[] = $loc;
+            } elseif (strpos($loc, 'product') !== false) {
+                $products[] = $loc;
+            } elseif (strpos($loc, 'blog_detail') !== false) {
+                $blogDetails[] = $loc;
+            } else {
+                $others[] = $loc;
+            }
+        }
+        return view('frontend.sitemap', ['settings' => $request->settings, 'productCategories' => $productCategories, 'products' => $products, 'blogDetails' => $blogDetails, 'others' => $others]);
     }
     public function getSitemapUrls($sitemapPath)
     {
@@ -356,28 +400,28 @@ class SiteController extends Controller
             'obstructions.*.width_unit' => 'nullable',
             'obstructions.*.height_unit' => 'nullable',
         ]);
-    
+
         $panel_width = $this->convertToMeters($request->panel_width, $request->panel_width_unit);
         $panel_height = $this->convertToMeters($request->panel_height, $request->panel_height_unit);
         $panel_area = $panel_width * $panel_height;
-    
+
         $wall_widths = $request->wall_width;
         $wall_width_units = $request->wall_width_unit;
         $wall_heights = $request->wall_height;
         $wall_height_units = $request->wall_height_unit;
-    
+
         $total_wall_area = 0;
         $wall_panel_data = [];
-    
+
         for ($i = 0; $i < count($wall_widths); $i++) {
             $wHeight = $this->convertToMeters($wall_heights[$i], $wall_height_units[$i]);
             $mPanelHeight = $this->adjustHeight($wHeight, $panel_height, $request->obstructions[$i] ?? []);
-    
+
             $wall_width_m = $this->convertToMeters($wall_widths[$i], $wall_width_units[$i]);
             $wall_area = $wall_width_m * $mPanelHeight;
             $obstruction_area = 0;
             $obstruction_data = [];
-    
+
             if (!empty($request->obstructions[$i])) {
                 foreach ($request->obstructions[$i] as $obstruction) {
                     $obs_width_m = $this->convertToMeters($obstruction['width'], $obstruction['width_unit']);
@@ -393,11 +437,11 @@ class SiteController extends Controller
                     ];
                 }
             }
-    
+
             $net_wall_area = max(0, $wall_area - $obstruction_area);
             $total_wall_area += $net_wall_area;
             $panels_required = ceil($net_wall_area / $panel_area);
-    
+
             $wall_panel_data[] = [
                 'width' => $wall_widths[$i],
                 'width_unit' => $wall_width_units[$i],
@@ -410,11 +454,11 @@ class SiteController extends Controller
                 'obstructions' => $obstruction_data,
             ];
         }
-    
+
         $total_panel_required = ceil($total_wall_area / $panel_area);
         $used_panel_area = $total_panel_required * $panel_area;
         $excess_area = $used_panel_area - $total_wall_area;
-    
+
         return redirect()->back()->with([
             'panel_width' => $request->panel_width,
             'panel_width_unit' => $request->panel_width_unit,
@@ -427,11 +471,11 @@ class SiteController extends Controller
             'excess_area' => $excess_area
         ]);
     }
-    
+
     private function adjustHeight($wallHeight, $panelHeight, $obstructions)
     {
         $adjustedHeight = $wallHeight;
-    
+
         if ($wallHeight <= $panelHeight / 2) {
             $adjustedHeight = $wallHeight;
         } elseif ($wallHeight > $panelHeight / 2 && $wallHeight <= $panelHeight) {
@@ -439,14 +483,14 @@ class SiteController extends Controller
         } elseif ($wallHeight > $panelHeight) {
             $adjustedHeight = $wallHeight;
         }
-    
+
         foreach ($obstructions as $obstruction) {
             $obsHeight = $this->convertToMeters($obstruction['height'], $obstruction['height_unit']);
             if ($obsHeight > $adjustedHeight) {
                 $adjustedHeight = $obsHeight;
             }
         }
-    
+
         return $adjustedHeight;
     }
 
