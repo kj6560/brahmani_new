@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImageController;
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\VisitorsController;
 use App\Http\Controllers\Frontend\DynamicPageController;
 use App\Http\Controllers\Frontend\ExportersCategory;
@@ -171,4 +172,11 @@ Route::prefix('admin')->middleware(['auth:web',settings::class])->group(function
 
     //visitors
     Route::get('/visitorTrace', [VisitorsController::class, 'index'])->name('admin.visitors.index');
+
+    //users
+    Route::get('/userList', [UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');
+    Route::post('/users/store', [UserController::class, 'store'])->name('admin.users.store');
+    Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::get('/users/delete/{id}', [UserController::class, 'delete'])->name('admin.users.delete');
 });

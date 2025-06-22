@@ -97,6 +97,19 @@
             </div>
         </div>
     </div>
+
+    <div class="card shadow text-white bg-success mb-3" id="users" style="margin:10px;width: 300px;cursor:pointer;">
+        <div class="card-body">
+            <div class="row">
+                <div class="col" style="margin-top:15px;">
+                    <h2>User Management</h2>
+                </div>
+                <div class="col">
+                    <i class="fa fa-5x fa-cogs"></i>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </div>
 @endsection
@@ -126,6 +139,9 @@
     }
     document.getElementById('visitors').onclick = function() {
         window.location.href = "/admin/visitorTrace";
+    }
+    document.getElementById('users').onclick = function() {
+        window.location.href = "/admin/userList";
     }
 </script>
 @endsection

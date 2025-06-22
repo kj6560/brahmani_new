@@ -166,7 +166,7 @@
                 <li class="nav-item"> <a class="nav-link" href="/admin/emailSettings">Email
                     Settings</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/admin/visitorTrace">Visitor Trace</a></li>
-
+                <li class="nav-item"> <a class="nav-link" href="/admin/userList">User Management</a></li>
               </ul>
             </div>
           </li>
