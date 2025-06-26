@@ -72,16 +72,13 @@
         <h5 class="mb-4">Sitemap URLs</h5>
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <?php renderLink('🛒 Product Categories', $productCategories); ?>
             </div>
-            <div class="col-md-3">
-                
-            </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <?php renderLink('📝 Blog Details', $blogDetails); ?>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <?php if (!empty($others)) renderLink('🔗 Other Links', $others); ?>
             </div>
         </div>

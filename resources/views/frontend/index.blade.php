@@ -558,14 +558,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                                 <div class="pbminfotech-testimonial-detail">Mumbai</div>
                                             </div>
                                         </div>
-                                        <div class="pbminfotech-box-img">
-                                            <div class="pbmit-featured-img-wrapper">
-                                                <div class="pbmit-featured-wrapper">
-                                                    <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/reviewer/reviewer-01.jpg"
-                                                        class="img-fluid" alt="reviewer-04">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </article>
@@ -594,14 +587,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                                 <div class="pbminfotech-testimonial-detail">Vadodara</div>
                                             </div>
                                         </div>
-                                        <div class="pbminfotech-box-img">
-                                            <div class="pbmit-featured-img-wrapper">
-                                                <div class="pbmit-featured-wrapper">
-                                                    <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/reviewer/reviewer-02.jpg"
-                                                        class="img-fluid" alt="reviewer-04">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </article>
@@ -630,14 +616,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                                 <div class="pbminfotech-testimonial-detail">Channi, Vadodara</div>
                                             </div>
                                         </div>
-                                        <div class="pbminfotech-box-img">
-                                            <div class="pbmit-featured-img-wrapper">
-                                                <div class="pbmit-featured-wrapper">
-                                                    <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/reviewer/reviewer-03.jpg"
-                                                        class="img-fluid" alt="reviewer-04">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </article>
@@ -665,14 +644,7 @@ $sliders = !empty($settings['page_data']) ? json_decode($settings['page_data']->
                                                 <div class="pbminfotech-testimonial-detail">Meerut</div>
                                             </div>
                                         </div>
-                                        <div class="pbminfotech-box-img">
-                                            <div class="pbmit-featured-img-wrapper">
-                                                <div class="pbmit-featured-wrapper">
-                                                    <img src="{{asset('brahmani_frontend_assets')}}/images/homepage-1/reviewer/reviewer-04.jpg"
-                                                        class="img-fluid" alt="reviewer-04">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </article>
