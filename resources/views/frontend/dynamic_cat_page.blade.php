@@ -134,6 +134,10 @@ $banner = !empty($page_data->page_banner)
 				<i class="pbmit-base-icon-angle-right"></i>
 			</span>
 			<span><span class="r_text"> Categories</span></span>
+            <span class="sep">
+				<i class="pbmit-base-icon-angle-right"></i>
+			</span>
+			<span><span class="r_text"> {{$category->pro_cat_name ??"Categories"}}</span></span>
 		</div>
 	</div>
 	<!-- Title Bar End-->

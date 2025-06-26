@@ -75,10 +75,14 @@
 			<span>
 				<a title="" href="/" class="home"><span class="r_text">Home</span></a>
 			</span>
-			<span class="sep">
+			
+            <span class="sep">
 				<i class="pbmit-base-icon-angle-right"></i>
 			</span>
-			<span><span class="r_text"> About Us</span></span>
+			<span><span class="r_text"> Products</span></span><span class="sep">
+				<i class="pbmit-base-icon-angle-right"></i>
+			</span>
+			<span><span class="r_text"> {{$product->product_name ?? "Products"}}</span></span>
 		</div>
 	</div>
 	<!-- Title Bar End-->
