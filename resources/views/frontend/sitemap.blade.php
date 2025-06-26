@@ -76,7 +76,7 @@
                 <?php renderLink('🛒 Product Categories', $productCategories); ?>
             </div>
             <div class="col-md-3">
-                <?php renderLink('📦 Products', $products); ?>
+                
             </div>
             <div class="col-md-3">
                 <?php renderLink('📝 Blog Details', $blogDetails); ?>
