@@ -15,7 +15,7 @@ class GenerateSitemap extends Command
 
     public function handle()
     {
-        $baseUrl = config('app.url');
+        $baseUrl = "https://www.brahmanienterprise.co.in";//config('app.url');
         $now = Carbon::now()->toAtomString();
 
         $urls = [];
