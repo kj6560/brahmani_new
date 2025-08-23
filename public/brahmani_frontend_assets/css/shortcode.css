@@ -3597,7 +3597,7 @@ body {
     display: none;
 }
 .header-style-1 .site-navigation ul.navigation > li > a{
-	color: var(--pbmit-white-color);
+	color: #bb9a65;
 }
 .header-style-1 .pbmit-header-search-btn a{
 	color: var(--pbmit-blackish-color);

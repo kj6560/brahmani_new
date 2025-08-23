@@ -4325,7 +4325,7 @@ body {
 	.header-style-1 .pbmit-button-box .pbmit-header-button a {
 		display: flex;
 		align-items: center;
-		color: var(--pbmit-white-color);
+		color: #bb9a65;
 	}
 
 	.header-style-1 .pbmit-button-box .pbmit-header-button a:hover {

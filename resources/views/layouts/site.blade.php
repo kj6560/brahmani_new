@@ -3,7 +3,7 @@
 <?php
 
 $page_data = !empty($settings['page_data']) ? $settings['page_data'] : [];
-$og_tags = !empty($page_data["og_tags"])?$page_data["og_tags"]:[];
+$og_tags = !empty($page_data["og_tags"]) ? $page_data["og_tags"] : [];
 if (!empty($page_data['page_meta'])) {
     $metas = json_decode($page_data['page_meta']);
 }
@@ -27,15 +27,15 @@ if (!empty($page_data['page_meta'])) {
     <meta name="audience" content="All">
     <meta name="Revisit-After" content="7 days">
     @if(!empty($og_tags))
-    @foreach ($og_tags as $tag)
-<meta name="og:{{ $tag["key"] }}" content="{{ $tag['value'] }}">
-    @endforeach
-    
+        @foreach ($og_tags as $tag)
+            <meta name="og:{{ $tag["key"] }}" content="{{ $tag['value'] }}">
+        @endforeach
+
     @endif
     @if (!empty($metas))
-    @foreach ($metas as $meta)
-    <meta name="{{$meta->name}}" content="{{$meta->value}}">
-    @endforeach
+        @foreach ($metas as $meta)
+            <meta name="{{$meta->name}}" content="{{$meta->value}}">
+        @endforeach
     @endif
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('brahmani_frontend_assets')}}/images/favicon.ico">
@@ -69,20 +69,20 @@ if (!empty($page_data['page_meta'])) {
     <link rel="stylesheet" href="{{asset('brahmani_frontend_assets')}}/css/twentytwenty.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php
-    echo $settings['gtag'] ?? "";
-    if (!empty($page_data['page_schema'])) {
-        echo prepareSchema($settings, $page_data['page_schema']);
-    }
-    ?>
-        <?php
-    if (!empty($page_data['product_schema'])) {
-        echo prepareSchema($settings, $page_data['product_schema']);
-    }
+echo $settings['gtag'] ?? "";
+if (!empty($page_data['page_schema'])) {
+    echo prepareSchema($settings, $page_data['page_schema']);
+}
     ?>
     <?php
-    if (!empty($page_data['product_category_schema'])) {
-        echo prepareSchema($settings, $page_data['product_category_schema']);
-    }
+if (!empty($page_data['product_schema'])) {
+    echo prepareSchema($settings, $page_data['product_schema']);
+}
+    ?>
+    <?php
+if (!empty($page_data['product_category_schema'])) {
+    echo prepareSchema($settings, $page_data['product_category_schema']);
+}
     ?>
     <style>
         .whatsapp-button {
@@ -163,20 +163,30 @@ if (!empty($page_data['page_meta'])) {
             z-index: 5;
             border: none !important;
         }
+
+        .navigation a {
+            color: #000;
+            /* Set link color to contrast with background */
+            text-decoration: none;
+            /* Remove underline */
+            padding: 5px 10px;
+            /* Optional: link padding */
+            display: inline-block;
+        }
     </style>
 </head>
 @php
-use App\Http\Controllers\Controller;
-$success = Session::get('success');
-$error = Session::get('error');
+    use App\Http\Controllers\Controller;
+    $success = Session::get('success');
+    $error = Session::get('error');
 
-$errorText = "";
-if (!empty(Session::get("errors"))) {
-$er = get_object_vars(json_decode(Session::get("errors")));
-foreach ($er as $key => $value) {
-$errorText .= $value[0] . '\n';
-}
-}
+    $errorText = "";
+    if (!empty(Session::get("errors"))) {
+        $er = get_object_vars(json_decode(Session::get("errors")));
+        foreach ($er as $key => $value) {
+            $errorText .= $value[0] . '\n';
+        }
+    }
 
 
 @endphp
@@ -197,9 +207,8 @@ $errorText .= $value[0] . '\n';
                                     <h6 class="site-title">
                                         <a href="/">
                                             @if (!empty($settings['logo']))
-                                            <img src="{{asset('storage')}}/{{$settings['logo']}}"
-                                                class="Logo"
-                                                alt="{{$settings['Company_Name'] ?? ''}}">
+                                                <img src="{{asset('storage')}}/{{$settings['logo']}}" class="Logo"
+                                                    alt="{{$settings['Company_Name'] ?? ''}}">
                                             @endif
                                         </a>
                                     </h6>
@@ -261,9 +270,9 @@ $errorText .= $value[0] . '\n';
                                                     <a href="/product_category_all">Products & Services</a>
                                                     <ul>
                                                         @foreach ($settings['product_categories'] as $category)
-                                                        <li><a
-                                                                href="/product_category/{{$category->pro_cat_slug}}">{{$category->pro_cat_name ?? ""}}</a>
-                                                        </li>
+                                                            <li><a
+                                                                    href="/product_category/{{$category->pro_cat_slug}}">{{$category->pro_cat_name ?? ""}}</a>
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                 </li>
@@ -278,9 +287,9 @@ $errorText .= $value[0] . '\n';
                                                 <li>
                                                     <?php $product_ids = Session::get('wishlist', []); ?>
                                                     <a href="/showWishlist">Wishlist<?php
-                                                                                    if (count($product_ids) > 0) {
-                                                                                        echo "<h6 style='color:green'>" . count($product_ids) . "</h6>";
-                                                                                    }
+if (count($product_ids) > 0) {
+    echo "<h6 style='color:green'>" . count($product_ids) . "</h6>";
+}
                                                                                     ?></a>
 
                                                 </li>
@@ -318,27 +327,28 @@ $errorText .= $value[0] . '\n';
 
         </div>
         <!-- Page Content End -->
-        <a href="https://wa.me/{{ preg_replace('/\D/', '', $settings['Official_Number']) }}"
-            class="whatsapp-button" target="_blank">
+        <a href="https://wa.me/{{ preg_replace('/\D/', '', $settings['Official_Number']) }}" class="whatsapp-button"
+            target="_blank">
             <img src="{{asset('brahmani_frontend_assets')}}/images/whatsapp.png" alt="WhatsApp">
         </a>
 
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("DOMContentLoaded", function () {
                 var productDetailModal = new bootstrap.Modal(document.getElementById('citySelectModal'));
                 var callModel = new bootstrap.Modal(document.getElementById('citySelectModalForCall'));
-                document.querySelector(".whatsapp-button").addEventListener("click", function(event) {
+                document.querySelector(".whatsapp-button").addEventListener("click", function (event) {
                     event.preventDefault();
                     productDetailModal.show();
                 });
-                document.querySelector(".call_button").addEventListener("click", function(event) {
+                document.querySelector(".call_button").addEventListener("click", function (event) {
                     event.preventDefault();
                     callModel.show();
                 });
             });
         </script>
 
-        <a href="tel:{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}" class="mail-button call_button" id="call_button" target="_blank">
+        <a href="tel:{{htmlspecialchars(!empty($settings['Official_Number']) ? $settings['Official_Number'] : '')}}"
+            class="mail-button call_button" id="call_button" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="call">
         </a>
 
@@ -369,8 +379,8 @@ $errorText .= $value[0] . '\n';
                                 <div class="textwidget">
                                     <div class="pbmit-footer-logo">
                                         @if (!empty($settings['logo']) && !empty($settings['Company_Name']))
-                                        <img src="{{asset('storage')}}/{{$settings['logo']}}"
-                                            alt="{{$settings['Company_Name'] ?? ''}}">
+                                            <img src="{{asset('storage')}}/{{$settings['logo']}}"
+                                                alt="{{$settings['Company_Name'] ?? ''}}">
                                         @endif
                                         <h3 style="color: white;">{{$settings['Company_Name'] ?? ''}}</h3>
                                         <p style="color: white;">{{$settings['Office_Address'] ?? ''}}</p>
@@ -404,8 +414,7 @@ $errorText .= $value[0] . '\n';
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-md-4 pbmit-footer-left">
-                                <span class="pbmit-email-text"> <a
-                                        href="mailto:{{$settings['Official_Email'] ?? ""}}"
+                                <span class="pbmit-email-text"> <a href="mailto:{{$settings['Official_Email'] ?? ""}}"
                                         class="__cf_email__"
                                         data-cfemail="2c44494040436c49544d415c4049024f4341">{{$settings['Official_Email'] ?? ""}}</a></span>
                                 <span class="pbmit-phone-number"> {{$settings['Official_Number'] ?? ''}}</span>
@@ -416,7 +425,8 @@ $errorText .= $value[0] . '\n';
                             <div class="col-md-4 pbmit-footer-right-social">
                                 <ul class="pbmit-social-links">
                                     <li class="pbmit-social-li pbmit-social-facebook">
-                                        <a title="Facebook" href="{{$settings['Facebook_Link'] ?? '#'}}" target="_blank">
+                                        <a title="Facebook" href="{{$settings['Facebook_Link'] ?? '#'}}"
+                                            target="_blank">
                                             <span><i class="pbmit-base-icon-facebook-f"></i></span>
                                         </a>
                                     </li>
@@ -426,7 +436,8 @@ $errorText .= $value[0] . '\n';
                                         </a>
                                     </li>
                                     <li class="pbmit-social-li pbmit-social-linkedin">
-                                        <a title="LinkedIn" href="{{$settings['Linkedin_Link'] ?? '#'}}" target="_blank">
+                                        <a title="LinkedIn" href="{{$settings['Linkedin_Link'] ?? '#'}}"
+                                            target="_blank">
                                             <span><i class="pbmit-base-icon-linkedin-in"></i></span>
                                         </a>
                                     </li>
@@ -451,7 +462,8 @@ $errorText .= $value[0] . '\n';
                             </div>
                         </div>
                         <div class="col-md-6 text-end">
-                            <div class="pbmit-footer-copyright-text-area"> Designed By <a href="https://digitalvyapaar.com" target="_blank">Digital Vyapaar</a>
+                            <div class="pbmit-footer-copyright-text-area"> Designed By <a
+                                    href="https://digitalvyapaar.com" target="_blank">Digital Vyapaar</a>
                             </div>
                         </div>
                     </div>
@@ -537,7 +549,8 @@ $errorText .= $value[0] . '\n';
             </div>
         </div>
     </div>
-    <div class="modal fade" id="citySelectModalForCall" tabindex="-1" aria-labelledby="cityModalLabel" aria-hidden="true">
+    <div class="modal fade" id="citySelectModalForCall" tabindex="-1" aria-labelledby="cityModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
@@ -615,7 +628,7 @@ $errorText .= $value[0] . '\n';
     <script src="{{asset('brahmani_frontend_assets')}}/js/scripts.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var search = "<?php echo isset($settings['search']) ? addslashes($settings['search']) : ''; ?>";
             console.log(search);
             if (search !== "") {
@@ -623,7 +636,7 @@ $errorText .= $value[0] . '\n';
                 productDetailModal.show();
             }
         });
-        document.getElementById('productDetailModal').addEventListener('hide.bs.modal', function() {
+        document.getElementById('productDetailModal').addEventListener('hide.bs.modal', function () {
             // Remove query string
             const url = new URL(window.location.href);
             url.search = ""; // Clear the query string
@@ -638,7 +651,7 @@ $errorText .= $value[0] . '\n';
             $.ajax({
                 url: '/wishlist/' + id + '/' + 1,
                 type: 'GET',
-                success: function(response) {
+                success: function (response) {
                     console.log(response);
                     if (response.success) {
                         Swal.fire({
@@ -654,7 +667,7 @@ $errorText .= $value[0] . '\n';
                         })
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error(xhr.responseText);
                 }
             });
@@ -699,20 +712,20 @@ $errorText .= $value[0] . '\n';
         var vadodaraCall = document.getElementById('vadodaraCall');
         var merutCall = document.getElementById('merutCall');
         var city = "vadodara";
-        vadodara.addEventListener('click', function() {
+        vadodara.addEventListener('click', function () {
             triggerWhatsapp("{{ preg_replace('/\D/', '', $settings['Official_Number_Vadodara']) }}");
         });
-        merut.addEventListener('click', function() {
+        merut.addEventListener('click', function () {
             triggerWhatsapp("{{ preg_replace('/\D/', '', $settings['Official_Number_Merut']) }}");
         });
-        vadodaraCall.addEventListener('click', function() {
+        vadodaraCall.addEventListener('click', function () {
             triggerCall("{{ preg_replace('/\D/', '', $settings['Official_Number_Vadodara']) }}");
         });
-        merutCall.addEventListener('click', function() {
+        merutCall.addEventListener('click', function () {
             triggerCall("{{ preg_replace('/\D/', '', $settings['Official_Number_Merut']) }}");
         });
-        function triggerCall(number){
-            var url = "tel:"+number;
+        function triggerCall(number) {
+            var url = "tel:" + number;
             let newTab = window.open(url);
             if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
                 alert("Popup blocked! Please allow popups for this site.");
