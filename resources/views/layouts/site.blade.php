@@ -20,12 +20,12 @@ if (!empty($page_data['page_meta'])) {
     <meta name="title" content="{{$page_data['seo_title'] ?? ""}}">
     <meta name="description" content="{{$page_data['seo_desc'] ?? ''}}">
     <meta name="keywords" content="{{$page_data['seo_keywords'] ?? ''}}">
-    <meta name="robots" content="noindex, follow">
+    <meta name="robots" content="index, follow">
     <meta name="Robots" content="all">
     <meta name="language" content="en-gb">
     <meta name="rating" content="General">
     <meta name="audience" content="All">
-    <meta name="Revisit-After" content="7 days">
+    <meta name="Revisit-After" content="daily">
     @if(!empty($og_tags))
         @foreach ($og_tags as $tag)
             <meta name="og:{{ $tag["key"] }}" content="{{ $tag['value'] }}">
